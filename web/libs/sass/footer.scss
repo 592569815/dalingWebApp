@@ -1,5 +1,35 @@
+//引入公共scss
+@import 'common';
 
-
-.index-table{
-	
+//底栏
+.index-tabs{
+	display:flex;
+	justify-content:space-around;
+	position:fixed;
+	bottom:0;
+	z-index:999;
+	width:100%;
+	background:$bgcolor;
+	border-top:0.01rem solid #ddd;
+	a{
+		display:block;
+		height:1.33rem;
+		position:relative;
+		color:$acolor;
+		background-size:0.59rem 0.53rem;
+		background-repeat:no-repeat;
+		background-position: center 0.17rem ;
+		span{
+			font-size:0.27rem
+		}
+	}
+	a:nth-of-type(1){background-image:url(../img/home.e3d81a.png)}
+	a:nth-of-type(2){background-image:url(../img/classify.c56e8f.png)}
+	a:nth-of-type(3){background-image:url(../img/car.10e6a1.png)}
+	a:nth-of-type(4){background-image:url(../img/my.c423c1.png)}
+	a:nth-of-type(1).active{background-image:url(../img/home-1.75dcc7.png)}
+	a:nth-of-type(2).active{background-image:url(../img/classify-1.70cfc0.png)}
+	a:nth-of-type(3).active{background-image:url(../img/car-1.77d414.png)}
+	a:nth-of-type(4).active{background-image:url(../img/my-1.81e333.png)}
+	a.active span{color:#af5bbf;}
 }
