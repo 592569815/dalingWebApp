@@ -1,8 +1,9 @@
+
 var global = global || {};
 
 global.baseurl = 'http://localhost:1703/';
 
-/*
+
 //动态设置viewport的scale
      var iScale = 1;
     iScale = iScale / window.devicePixelRatio;
@@ -11,4 +12,5 @@ global.baseurl = 'http://localhost:1703/';
     var iWidth = document.documentElement.clientWidth;
     document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';        
     //1rem=75px
-*/
+
+

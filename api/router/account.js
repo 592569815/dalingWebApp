@@ -1,29 +1,70 @@
 var bodyParser = require('body-parser');
+
+//新引入的模块；
+var url =require("url");
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var db = require('../dbhelpter');
 
 exports.register = function(app){
-
+    //用户登录；
     app.post('/login', urlencodedParser, function(request, response){
         //请求数据库
-        db.add('users', request.body, function(data){
+        db.login('user', request.body, function(data){
+            console.log(data.status)
             if(data.status){
-                response.send({status: true, message: null, data: null})
-            } else {
-                response.send({status: false, message: null})
+                //登录成功返回提示信息；
+                response.send({status: true, message: data.message, data: null})
+            } else { 
+                //登录失败返回提示信息；
+                response.send({status: false, message: data.message,data:null})
             }
         })
         
-    })
+    });
 
-    app.post('/regitster', urlencodedParser, function(request, response){
+    //用户注册；
+    app.post('/register', urlencodedParser, function(request, response){
         //请求数据库
-        response.send({status: true, message: null})
-    })
+        db.register("user",request.body, function(data){
+            if(data.status){
+                //注册成功返回提示信息；
+                response.send({status: true, message: data.message, data: null})
+            } else { 
+                //注册成功返回提示信息；
+                response.send({status: false, message: data.message,data:null})
+            }
+        });
+    });
 
-    app.get('/getAccounts', function(request, response){
+    //单个商品查询
+    app.get('/getAccount', function(request, response){
+
+        //get请求提取参数；
+        var urlObj = url.parse(request.url,true);
+
+        //商品id;
+        var goodsId = Number(urlObj.query.id);
+        
+
         //请求数据库
-        response.send({status: true, message: null, data: [{name: 'sam', age: 18}, {}]})
-    })
+        db.getAccount("products",goodsId,function(data){
+            if(data.status){
+                response.send({status: true, message: data.message, data:data.details});
+            }else{
+                response.send({status:false,message:"商品不存在！",data:null});
+            }
+        })
+    });
 
+    //所有商品查询；
+    app.get("/getAccounts",function(request,response){
+        console.log(99999)
+        db.getAccounts("products",function(data){
+             if(data.status){
+                response.send({status: true, message: data.message, data:data.allGoods});
+            }else{
+                response.send({status:false,message:"商品不存在！",data:null});
+            }
+        })
+    })
 }
