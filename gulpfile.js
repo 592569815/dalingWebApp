@@ -1,35 +1,39 @@
-//nodejs引用模块的方式
-//commonjs规范(*同步*)
 
-/*
-	方法：
-		* task() 创建任务
-		* src()	查找文件
-		* dest() 输出
-		* watch()监听
-	gulp-sass：编译sass
-		* outputStyle:nested默认、expanded展开、compact单行、compressed压缩
-*/
-//引用gulp gulp-sass 插件
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var gulp = require("gulp");
+var sass = require("gulp-sass");
 
-//创建任务 目的是为了编译sass
-gulp.task('bySass',function(){
-	//console.log('hello world');
-	//匹配(查找)sass文件
-	gulp.src('./web/libs/sass/*.scss')
-		//处理,编译
+//建立任务：
+gulp.task("daling",function(){
+	//匹配、查找文件；
+	gulp.src("./web/libs/page-scss/*.scss")
+	//编译
 		.pipe(sass({
-			//outputStyle: nested默认、expanded展开、compact单行、compressed压缩
-			outputStyle:'expanded',
-		}).on('error',sass.logError))
-		//输出
-		.pipe(gulp.dest('./web/libs/page-css/'))
+			//输入的效果；
+			outputStyle:"expanded"//compact,expanded,compressed
+		}).on("error",sass.logError))
+		.pipe(gulp.dest("./web/libs/page-css/"))
 });
 
-//创建任务 目的监听sass并自动编译
-gulp.task('jtSass',function(){
-	gulp.watch('./web/libs/sass/*.scss',['bySass'])
+//监听任务；
+gulp.task("listenersass",()=>{
+
+	//监听一类文件，可以用*代替；一个文件夹可以用**代替；
+	gulp.watch("./web/libs/**/*.scss",["daling"]);
+});
+
+//浏览器同步
+var browserSync = require("browser-sync");
+
+gulp.task("mydaling",function(){
+	browserSync({
+		// server:"./src/",
+		// 代理服务器
+		proxy:'http://localhost:1703',
+		//修改默认端口
+		// port:10011,
+		files:["./web/libs/**/*.html","./web/libs/page-css/*.css","./web*.html"]
+	});
+	//监听一类文件，可以用*代替；一个文件夹可以用**代替；
+	gulp.watch("./web/libs/page-scss/*.scss",["daling"]);
 })
 
