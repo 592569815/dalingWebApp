@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*公共css*/
-body, p, ul, li, input, h3, h1, h4, i, h2, b, dl, dd, dt, img {
+body, p, ul, li, input, h3, h1, h4, i, h2, b, dl, dd, dt, img, form {
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -24,7 +24,7 @@ img {
   display: block;
 }
 
-.index-tabs {
+.footer-tabs {
   display: flex;
   justify-content: space-around;
   position: fixed;
@@ -35,7 +35,7 @@ img {
   border-top: 0.01rem solid #ddd;
 }
 
-.index-tabs a {
+.footer-tabs a {
   display: block;
   height: 1.33rem;
   position: relative;
@@ -45,42 +45,42 @@ img {
   background-position: center 0.17rem;
 }
 
-.index-tabs a span {
+.footer-tabs a span {
   font-size: 0.27rem;
 }
 
-.index-tabs a:nth-of-type(1) {
+.footer-tabs a:nth-of-type(1) {
   background-image: url(../img/home.e3d81a.png);
 }
 
-.index-tabs a:nth-of-type(2) {
+.footer-tabs a:nth-of-type(2) {
   background-image: url(../img/classify.c56e8f.png);
 }
 
-.index-tabs a:nth-of-type(3) {
+.footer-tabs a:nth-of-type(3) {
   background-image: url(../img/car.10e6a1.png);
 }
 
-.index-tabs a:nth-of-type(4) {
+.footer-tabs a:nth-of-type(4) {
   background-image: url(../img/my.c423c1.png);
 }
 
-.index-tabs a:nth-of-type(1).active {
+.footer-tabs a:nth-of-type(1).active {
   background-image: url(../img/home-1.75dcc7.png);
 }
 
-.index-tabs a:nth-of-type(2).active {
+.footer-tabs a:nth-of-type(2).active {
   background-image: url(../img/classify-1.70cfc0.png);
 }
 
-.index-tabs a:nth-of-type(3).active {
+.footer-tabs a:nth-of-type(3).active {
   background-image: url(../img/car-1.77d414.png);
 }
 
-.index-tabs a:nth-of-type(4).active {
+.footer-tabs a:nth-of-type(4).active {
   background-image: url(../img/my-1.81e333.png);
 }
 
-.index-tabs a.active span {
+.footer-tabs a.active span {
   color: #af5bbf;
 }
