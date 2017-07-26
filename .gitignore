@@ -1,9 +1,15 @@
+﻿
 ﻿#过滤文件
 test.txt
 
 #过滤文件夹
+
 /node_modules/
 
-/web/img/
+
+
+/web/libs/img
+
 #过滤压缩包
 *.zip
+
