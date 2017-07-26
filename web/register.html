@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<script type="text/javascript">		
+		//动态设置viewport的scale
+		 var iScale = 1;
+	    iScale = iScale / window.devicePixelRatio;
+	    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
+		//动态计算html的font-size
+		var iWidth = document.documentElement.clientWidth;
+        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';       	
+        //1rem=75px
+	</script>
+	<script src="./libs/page-js/require.js" data-main="./libs/page-js/register"></script>
+	<link rel="stylesheet" type="text/css" href="./libs/page-css/register.css"/>
+	
+</head>
+<body>
+	<div class="bigbox">
+		<div class="head">
+			<p>
+				<a href="index.html"><img src="./libs/img/imgIMG_0396_03.jpg"/></a>
+				<span>注册</span>
+			</p>
+		</div>
+		<div class="body">
+			<div class="phoneNumber">
+				<span></span>
+				<input type="text" placeholder="请输入手机号" id="number"/>
+			</div>
+			<div class="auth_code">
+                <span></span>
+                <input type="text" placeholder="请输入验证码" id="auth"/>
+                <span id="gain">获取短信验证码</span>
+            </div>
+            <div class="password">
+                <span></span>
+                <input type="password" placeholder="请输入6-12位登录密码" id="sureAuth"/>
+            </div>
+            <span class="register">注册</span>
+            <p>
+                <input type="checkbox" />
+                <span>已阅读并同意</span>
+                <span>达令用户协议</span>
+            </p>
+		</div>
+	</div>
+	
+</body>
+</html>

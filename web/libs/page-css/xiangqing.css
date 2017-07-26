@@ -1,0 +1,316 @@
+html, body {
+  width: 10.0rem;
+  height: 17.79rem;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+}
+
+html a, body a {
+  text-decoration: none;
+}
+
+html ul li, body ul li {
+  list-style: none;
+}
+
+.xq_header {
+  height: 1.68rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.xq_header p {
+  width: 5.33rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.45rem;
+  text-align: center;
+  margin-left: 1.07rem;
+}
+
+.xq_header .s1 {
+  display: block;
+  width: 0.32rem;
+  height: 0.55rem;
+  margin-left: 0.28rem;
+  margin-bottom: 0.29rem;
+}
+
+.xq_header .s2 {
+  display: block;
+  width: 0.53rem;
+  height: 0.53rem;
+  margin-left: 1.27rem;
+  margin-bottom: 0.29rem;
+}
+
+.xq_header .s3 {
+  display: block;
+  width: 0.61rem;
+  height: 0.55rem;
+  margin-left: 0.25rem;
+  margin-bottom: 0.29rem;
+}
+
+.xq_header span img {
+  width: 100%;
+}
+
+.xq_header p, .xq_header span {
+  float: left;
+  line-height: 1.68rem;
+}
+
+.bgimg {
+  height: 6rem;
+  width: 100%;
+  text-align: center;
+}
+
+.bgimg img {
+  width: 6.0rem;
+  height: 6.0rem;
+}
+
+.xq_main {
+  height: 6.0rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 10px solid #F6F5F7;
+  overflow: hidden;
+}
+
+.xq_main .main_t {
+  width: 100%;
+  height: 2.45rem;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.xq_main .main_t .p1 {
+  margin: 0;
+  padding: 0;
+  height: 1.01rem;
+  width: 100%;
+  margin-top: 0.31rem;
+}
+
+.xq_main .main_t .p1 .title {
+  width: 8.43rem;
+  height: 1.01rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.37rem;
+  border-right: 1px solid #ccc;
+  float: left;
+}
+
+.xq_main .main_t .p1 span {
+  display: block;
+  width: 1.55rem;
+  height: 1.01rem;
+  float: left;
+}
+
+.xq_main .main_t .p1 span img {
+  width: 100%;
+}
+
+.xq_main .main_t .p2 {
+  margin: 0;
+  padding: 0;
+  height: 1.12rem;
+  width: 100%;
+}
+
+.xq_main .main_t .p2 h3, .xq_main .main_t .p2 h4 {
+  float: left;
+  margin: 0;
+  padding: 0;
+  height: 1.12rem;
+  line-height: 1.12rem;
+  text-align: center;
+}
+
+.xq_main .main_t .p2 h3 {
+  width: 3.52rem;
+  font-size: 0.45rem;
+  color: #F0593F;
+}
+
+.xq_main .main_t .p2 h4 {
+  width: 3.01rem;
+  font-size: 0.27rem;
+  text-decoration: line-through;
+}
+
+.xq_main .main_b {
+  width: 100%;
+  height: 3.55rem;
+}
+
+.xq_main .main_b img {
+  width: 100%;
+}
+
+.main_pl {
+  width: 100%;
+  height: 7.92rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  border-bottom: 10px solid #F6F5F7;
+}
+
+.shai {
+  width: 100%;
+  height: 4.72rem;
+  border-bottom: 2px solid #ddd;
+  overflow: hidden;
+}
+
+.shai p {
+  line-height: 1.11rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.4rem;
+}
+
+.shai .ding {
+  width: 1.07rem;
+  height: 1.07rem;
+  font-size: 0.4rem;
+  position: fixed;
+  right: 0.35rem;
+  bottom: 2.27rem;
+  border-radius: 50%;
+  z-index: 1000;
+  background: #888;
+  display: none;
+}
+
+.shai span {
+  display: block;
+  height: 0.93rem;
+}
+
+.shai span img {
+  width: 100%;
+}
+
+.shuo {
+  width: 100%;
+  height: 3.2rem;
+}
+
+.shuo .shuo_t {
+  overflow: hidden;
+}
+
+.shuo p {
+  line-height: 1.17rem;
+  width: 4.0rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.4rem;
+  float: left;
+}
+
+.shuo span {
+  line-height: 1.17rem;
+  width: 2.67rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.4rem;
+  float: right;
+}
+
+.shuo .shuo_b {
+  height: 2.0rem;
+  width: 100%;
+}
+
+.shuo .shuo_b span {
+  display: block;
+  width: 100%;
+  height: 2.0rem;
+}
+
+.shuo .shuo_b span img {
+  width: 100%;
+}
+
+.xqimg {
+  width: 100%;
+  height: 14.29rem;
+}
+
+.xqimg img {
+  width: 100%;
+}
+
+.car {
+  width: 100%;
+  height: 1.33rem;
+  z-index: 1000;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  display: inline-flex;
+}
+
+.car .s4 {
+  flex: 1;
+  line-height: 1.33rem;
+  background-color: #FFFFFF;
+  float: left;
+  font-size: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.car .s4 img {
+  display: block;
+  float: left;
+  width: 1.04rem;
+  height: 1.04rem;
+}
+
+.car .s4 .goodsqty {
+  display: block;
+  height: 1.07rem;
+  width: 0.67rem;
+  float: left;
+}
+
+.car .s5 {
+  flex: 1;
+  height: 1.33rem;
+  line-height: 1.33rem;
+  background-color: #AF5BBF;
+  float: left;
+  color: #fff;
+  text-align: center;
+  font-size: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.car .s6 {
+  flex: 1;
+  height: 1.33rem;
+  line-height: 1.33rem;
+  float: left;
+  font-size: 0.4rem;
+  background-color: #7A298B;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}

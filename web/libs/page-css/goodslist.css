@@ -1,3 +1,29 @@
+@charset "UTF-8";
+/*公共css*/
+body, p, ul, li, input, h3, h1, h4, i, h2, b, dl, dd, dt, img, form {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+}
+
+img {
+  border: 0;
+  display: block;
+}
+
 body, p, ul, li, form, input {
   margin: 0;
   padding: 0;
@@ -296,4 +322,35 @@ a {
   height: 1.04rem;
   background: url(../img/nav_top.png) no-repeat;
   background-size: contain;
+}
+
+.join-success {
+  position: fixed;
+  top: 50%;
+  z-index: 999;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+}
+
+.join-success .join-success-box {
+  max-width: 6.0rem;
+  font-size: 0.5rem;
+  padding: 0.45rem;
+  border-radius: 0.3rem;
+  background: rgba(0, 0, 0, 0.3);
+  margin: auto;
+}
+
+.join-success .join-success-box .success-icon {
+  background-image: url(../img/current.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.67rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: 0.27rem auto;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: #fff;
 }

@@ -1,3 +1,4 @@
+@import 'common';
 body,p,ul,li,form,input{margin:0;padding:0;};
 li{
 	list-style: none;
@@ -257,5 +258,14 @@ $maincolor:#efefef;
 	    height: 1.04rem;
 	    background: url(../img/nav_top.png) no-repeat;
 	    background-size: contain;
+	}
+}
+.join-success{
+	position:fixed;top:50%;z-index:999;text-align:center;color:$bgcolor;width:100%;
+	.join-success-box{
+		max-width: 6.0rem;font-size:0.5rem;padding:0.45rem;border-radius:0.3rem;background:rgba(0,0,0,0.3);margin:auto;
+		.success-icon{
+			background-image:url(../img/current.png);background-repeat:no-repeat;background-position:center;background-size:0.67rem;width:0.8rem;height:0.8rem;margin: 0.27rem auto; border:1px solid #fff;border-radius:50%;background-color:#fff;
+		}
 	}
 }

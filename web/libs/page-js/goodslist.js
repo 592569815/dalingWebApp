@@ -1,14 +1,14 @@
 jQuery(function($){
 
 	//请求发送数据；
-	$.post("http://localhost:1234/getProducts",function(res){
+	$.post("http://10.3.134.237:1234/getProducts",function(res){
 		console.log(res)
 
 		//创建ul;
 		var $ul = $("<ul/>").addClass("g_goods");
 		res.data.map(function(item){
-			$("<li/>").html(`
-				<div class="g_goodsImg"><img src="./libs/img/${item.img}" /></div>
+			$("<li/>").attr("data-id",item.id).html(`
+				<div class="g_goodsImg"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></div>
 				<div class="g_goodsTitle">${item.title}</div>
 				<div class="g_goodsDesc">${item.desc}</div>
 				<div class="g_goodsPrice">
@@ -20,9 +20,56 @@ jQuery(function($){
 		$ul.appendTo($(".g_goodslist"));
 	});
 
+
 	$(".g_goodslist").on("click","img",function(){
 		console.log(9999)
 	})
+
+	//点击商品跳转详情页
+	$(".g_goodslist").on("click","img",function(){
+		var id = $(this).parents("li").data("id");
+		console.log(9999999,id)
+		location.href = "xiangqing.html?id=" + id;
+	});
+
+	//加入购物车，传数据给购物车
+	//先获取localStorage
+	var goodsdatas = localStorage.goodsdatas;
+	if(goodsdatas){
+		goodsdatas = JSON.parse(goodsdatas)
+	}else{
+		goodsdatas = [];
+	}
+	$(document).on('click','.g_addCar',function(){	
+		console.log($(this).parents("li").find('.g_goodsImg img').data('src'))
+		$('.success').stop(true).fadeIn().delay(2000).fadeOut();
+		//数据传输
+		var currentId = $(this).parents("li").data('id');
+		var res = goodsdatas.filter(function(item){
+			return item.id === currentId;
+		})	
+		if(res.length>0){
+			res[0].qty++;
+		}else{
+			var item = {
+				id:currentId,
+				title:$(this).parents("li").find('.g_goodsTitle').text(),
+				imgsrc:$(this).parents("li").find('.g_goodsImg img').data('src'),
+				desc:$(this).parents("li").find('.g_goodsDesc').text(),
+				price:$(this).parents("li").find('.g_goodsPrice').text(),
+				qty:1
+			}
+			goodsdatas.push(item);
+		}
+		localStorage.goodsdatas = JSON.stringify(goodsdatas);
+	});
+	console.log(9999,goodsdatas)
+
+	//跳转购物车
+	$(".car_fixed").click(function(){
+		location.href = "shoppingCar.html";
+	})
+	
 
 	//点击搜索；
 	$(".search").click(function(){
@@ -136,7 +183,7 @@ jQuery(function($){
 
 		//懒加载函数；
 		function lazyLoad(data){
-			$.post("http://localhost:1234/getProducts",data,function(res){
+			$.post("http://10.3.134.237:1234/getProducts",data,function(res){
 				//返回的数组为空时，提示加载完毕；
 				console.log(res.data.length)
 				if(res.data.length <= 0){
@@ -146,7 +193,7 @@ jQuery(function($){
 
 				res.data.map(function(item){
 					$("<li/>").html(`
-						<div class="g_goodsImg"><img src="./libs/img/${item.img}" /></div>
+						<div class="g_goodsImg"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></div>
 						<div class="g_goodsTitle">${item.title}</div>
 						<div class="g_goodsDesc">${item.desc}</div>
 						<div class="g_goodsPrice">

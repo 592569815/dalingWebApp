@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">		
+			//动态设置viewport的scale
+			 var iScale = 1;
+		    iScale = iScale / window.devicePixelRatio;
+		    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
+			//动态计算html的font-size
+			var iWidth = document.documentElement.clientWidth;
+	        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';       	
+	        //1rem=75px
+		</script>
+		<script src="./libs/page-js/require.js" data-main="./libs/page-js/shoppingCar"></script>
+		<link rel="stylesheet" type="text/css" href="./libs/page-css/shoppingCar.css"/>
+	</head>
+	<body>
+		<div class="bigbox">
+			<div class="head">
+				<p class="shopping">
+					<a href="goodslist.html"><img src="./libs/img/imgIMG_0396_03.jpg"/></a>
+					<span>购物车</span>
+					<span>编辑</span>
+				</p>
+			</div>
+			
+			<div class="body">
+				<p>
+					<span>无敌价</span>
+					<span>价格无敌，手慢无</span>
+				</p>
+				<!-- <div class="Item_information">
+					<div class="choose">
+						<span class="fondo lect"></span>
+						<img src="./libs/img/14382283436625.jpg_300x300.jpg"/>
+					</div>
+					<div class="message">
+						<p>[理肤泉]理肤泉舒缓喷雾（300ml/两款包装随机发货）</p>
+						<p>300ml</p>
+						<div class="substract">
+							<p>￥66.00</p>
+							<div>
+								<span id="_substract">-</span>
+								<span id="num">1</span>
+								<span id="plus">+</span>
+							</div>
+						</div>
+					</div>
+					
+				</div> -->
+			</div>
+			<div class="footer">
+				<div class="youhui">
+					<span>订单满39.0元可参加超值换购</span>
+				</div>
+				<div class="maidan">
+					<div class="one">
+						<span class="button fondo"></span>
+						<span >全部</span>
+					</div>
+					<div class="two">
+						<div class="total">
+							<span>合计：</span>
+							<span class="money">￥66.00</span>
+						</div>
+						<div class="rental">
+							<span>总额：</span>
+							<span>￥66.00</span>
+						</div>
+					</div>
+					<div class="three">
+						<a href="jiesuan.html">去结算</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

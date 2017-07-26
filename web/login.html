@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<script type="text/javascript">		
+		//动态设置viewport的scale
+		 var iScale = 1;
+	    iScale = iScale / window.devicePixelRatio;
+	    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
+		//动态计算html的font-size
+		var iWidth = document.documentElement.clientWidth;
+        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';       	
+        //1rem=75px
+	</script>
+	<script src="./libs/page-js/require.js" data-main="./libs/page-js/login"></script>
+	<link rel="stylesheet" type="text/css" href="./libs/page-css/login.css"/>
+		
+</head>
+<body>
+	<div class="bigbox">
+		<div class="head">
+			<p>
+				<a href="index.html"></a>
+				<span>登录</span>
+			</p>
+			<img src="./libs/img/imgIMG_0395_02.jpg"/>
+		</div>
+		<div class="body">
+			<div class="phoneNumber">
+				<span></span>
+				<input type="text" placeholder="请输入手机号" id="number"/>
+			</div>
+			<div class="password">
+				<span></span>
+				<input type="password" placeholder="请输入密码" id="password"/>
+			</div>
+			<span href="" class="register">登录</span>
+			<div class="fujia">
+				<a href="register.html">快速注册</a>
+				<span>|</span>
+				<a href="">忘记密码？</a>
+			</div>
+		</div>
+		<div class="footer">
+			<p>
+				<span>
+					<img src="./libs/img/imgIMG_0395_18.jpg"/>
+					<a href="">短信验证登录</a>
+				</span>
+				<span>
+					<img src="./libs/img/imgIMG_0395_15.jpg"/>
+					<a href="">微信快捷登录</a>
+				</span>
+			</p>
+		</div>
+	</div>
+	
+</body>
+</html>
