@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人中心</title>
+		<script type="text/javascript">		
+			//动态设置viewport的scale
+			 var iScale = 1;
+		    iScale = iScale / window.devicePixelRatio;
+		    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
+			//动态计算html的font-size
+			var iWidth = document.documentElement.clientWidth;
+	        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';       	
+	        //1rem=75px
+		</script>
+		<script src="./libs/page-js/require.js" data-main="./libs/page-js/login"></script>
+		<link rel="stylesheet" type="text/css" href="./libs/css/personal.css"/>
+	</head>
+	<body>
+		<div class="bigbox">
+			<div class="head">
+				<div class="portrait">
+				</div>
+				<div class="name">
+					<span>达令_13456789099</span>
+					<span>亲密度5&nbsp;&nbsp;|&nbsp;&nbsp;达令币0</span>
+				</div>
+			</div>
+			<div class="body">
+				<div class="one">
+					<div class="shoppingMall">
+						<span></span>
+						<p>购物车</p>
+					</div>
+					<div class="shoppingMall">
+						<span></span>
+						<p>我的收藏</p>
+					</div>
+					<div class="shoppingMall">
+						<span></span>
+						<p>到货提醒</p>
+					</div>
+					<div class="shoppingMall">
+						<span></span>
+						<p>浏览记录</p>
+					</div>
+				</div>
+				<div class="two">
+					<div class="person">
+						<span>我的订单</span>
+					</div>
+					<div class="one">
+						<div class="shoppingMall">
+							<span></span>
+							<p>购物车</p>
+						</div>
+						<div class="shoppingMall">
+							<span></span>
+							<p>我的收藏</p>
+						</div>
+						<div class="shoppingMall">
+							<span></span>
+							<p>到货提醒</p>
+						</div>
+						<div class="shoppingMall">
+							<span></span>
+							<p>浏览记录</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

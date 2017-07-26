@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.bigbox .head {
+  background: #fbfafc;
+  height: auto;
+}
+
+.bigbox .head p {
+  height: auto;
+  line-height: 1.16rem;
+}
+
+.bigbox .head p a {
+  margin-left: 0.28rem;
+}
+
+.bigbox .head p span:nth-of-type(1) {
+  font-size: 0.44rem;
+  margin-left: 3.4rem;
+  vertical-align: middle;
+}
+
+.bigbox .head p span:nth-of-type(2) {
+  height: 0.05rem;
+  display: block;
+  font-size: 4px;
+  background: url(../img/imgIMG_0394_02.jpg);
+}
+
+.bigbox .footer {
+  border-top: 1px solid #e5e5e5;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bigbox .footer .maidan {
+  overflow: hidden;
+}
+
+.bigbox .footer .maidan .two {
+  float: left;
+  margin-left: 0.4rem;
+}
+
+.bigbox .footer .maidan .two .total {
+  font-size: 0.21rem;
+}
+
+.bigbox .footer .maidan .two .total span:nth-of-type(1) {
+  font-size: 0.34rem;
+  display: inline-block;
+  height: 1.33rem;
+  line-height: 1.33rem;
+}
+
+.bigbox .footer .maidan .two .total span:nth-of-type(2) {
+  font-size: 0.32rem;
+  color: #f0593f;
+}
+
+.bigbox .footer .maidan .three {
+  width: 2.93rem;
+  height: 1.33rem;
+  background: #af5bbf;
+  font-size: 0.34rem;
+  float: right;
+}
+
+.bigbox .footer .maidan .three a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 1.33rem;
+  display: inline-block;
+  width: 2.93rem;
+  height: 1.33rem;
+  text-align: center;
+}
+
+.bigbox .body {
+  height: auto;
+  font-size: 0.34rem;
+}
+
+.bigbox .body input {
+  font-size: 0.34rem;
+  border: 0;
+  padding: 0.37rem 0 0.37rem 0.29rem;
+  display: block;
+  color: #d7d7dc;
+  width: 100%;
+}
+
+.bigbox .body input:nth-of-type(2), .bigbox .body input:nth-of-type(3) {
+  padding: 0.45rem 0 0.45rem 0.29rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.bigbox .body .province {
+  font-size: 0.34rem;
+  border: 0;
+  padding: 0.37rem 0 0.37rem 0.29rem;
+  display: block;
+  color: #d7d7dc;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.bigbox .body .hint {
+  background: #fef7f5;
+  font-size: 0.26rem;
+}
+
+.bigbox .body .hint p {
+  color: #f15f46;
+  padding: 0.22rem 0 0.22rem 0.45rem;
+}

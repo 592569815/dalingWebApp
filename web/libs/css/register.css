@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.bigbox .head {
+  background: #fbfafc;
+  height: 1.16rem;
+}
+
+.bigbox .head p {
+  height: 1.16rem;
+  line-height: 1.16rem;
+}
+
+.bigbox .head p a {
+  margin-left: 0.28rem;
+}
+
+.bigbox .head p span {
+  font-size: 0.44rem;
+  margin-left: 3.73rem;
+  vertical-align: middle;
+}
+
+.bigbox .body .phoneNumber {
+  border-bottom: 1px solid #e5e5e5;
+  height: 1.2rem;
+  width: 7.8rem;
+  margin: 0.96rem auto 0;
+}
+
+.bigbox .body .phoneNumber span {
+  display: inline-block;
+  float: left;
+  background: url(../img/imgIMG_0395_07.jpg) no-repeat;
+  width: 0.33rem;
+  height: 0.45rem;
+  margin-top: 0.32rem;
+  margin-right: 0.52rem;
+}
+
+.bigbox .body .phoneNumber input {
+  display: inline-block;
+  border: 0rem;
+  margin-bottom: 0.46rem;
+  font-size: 0.32rem;
+  color: #c1c1c3;
+  vertical-align: middle;
+}
+
+.bigbox .body .auth_code {
+  border-bottom: 1px solid #e5e5e5;
+  height: 1.2rem;
+  width: 7.8rem;
+  margin: 0.96rem auto 0;
+}
+
+.bigbox .body .auth_code span:nth-of-type(1) {
+  display: inline-block;
+  float: left;
+  background: url(../img/imgIMG_0395_07.jpg) no-repeat;
+  width: 0.33rem;
+  height: 0.45rem;
+  margin-top: 0.32rem;
+  margin-right: 0.52rem;
+}
+
+.bigbox .body .auth_code span:nth-of-type(2) {
+  display: inline-block;
+  font-size: 0.33rem;
+  color: #8243a9;
+  height: 1.2rem;
+  padding-top: 0.36rem;
+  float: right;
+}
+
+.bigbox .body .auth_code input {
+  display: inline-block;
+  border: 0rem;
+  margin-bottom: 0.46rem;
+  font-size: 0.32rem;
+  color: #c1c1c3;
+  vertical-align: middle;
+  float: left;
+  margin-top: 0.36rem;
+}
+
+.bigbox .body .password {
+  border-bottom: 1px solid #e5e5e5;
+  height: 1.2rem;
+  width: 7.8rem;
+  margin: 0.96rem auto 0;
+}
+
+.bigbox .body .password span {
+  display: inline-block;
+  float: left;
+  background: url(../img/imgIMG_0395_07.jpg) no-repeat;
+  width: 0.33rem;
+  height: 0.45rem;
+  margin-top: 0.32rem;
+  margin-right: 0.52rem;
+}
+
+.bigbox .body .password input {
+  display: inline-block;
+  border: 0rem;
+  margin-bottom: 0.46rem;
+  font-size: 0.32rem;
+  color: #c1c1c3;
+  vertical-align: middle;
+}
+
+.bigbox .body .register {
+  display: block;
+  width: 7.8rem;
+  height: 1.22rem;
+  background: #d2d2d2;
+  border: 1px solid #d2d2d2;
+  border-radius: 0.66rem;
+  font-size: 0.4rem;
+  color: #fff;
+  line-height: 1.22rem;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 1.2rem;
+  text-decoration: none;
+}
+
+.bigbox .body p {
+  width: 7.8rem;
+  margin: 0.68rem auto 0;
+  font-size: 0.28rem;
+}
+
+.bigbox .body p span:nth-of-type(1) {
+  color: #c6c7c8;
+}
+
+.bigbox .body p span:nth-of-type(2) {
+  color: #a255ae;
+}
