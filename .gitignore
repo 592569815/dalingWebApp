@@ -3,6 +3,7 @@ test.txt
 
 #过滤文件夹
 /node_modules/
-/web/
+
+/web/img/
 #过滤压缩包
 *.zip
