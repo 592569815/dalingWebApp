@@ -1,0 +1,90 @@
+html,body{
+	width: 10.0rem;
+	height: 17.79rem;
+	margin: 0;
+	padding: 0;
+
+	a{text-decoration:none;}
+	ul li{list-style:none;}
+}
+.fl_header{
+	height:1.68rem;
+	width:100%;
+	border-bottom: 0.03rem solid #E5E5E5;
+	p{
+		height:100%;
+		margin: 0;
+		padding: 0;
+		text-align:center;
+		font-size: 0.75rem;
+		line-height: 1.68rem;
+	}
+}
+
+.fl_content{
+	height:14.75rem;
+	width:100%;
+
+	.fl_nav{
+		height:1.07rem;
+		width:100%;
+
+		ul{
+			height:1.07rem;
+			width:100%;
+			margin: 0;
+			padding: 0;
+			li{
+				float:left;
+				a{
+					display:block;
+					width:2.5rem;
+					font-size: 0.53rem;
+					line-height:1.07rem;
+					text-align:center;
+				}
+			}
+		}
+	}
+}
+
+.png1,.png2{
+	height: 3.44rem;
+	width: 100%;
+	img{
+		width:100%;
+
+	}
+}
+
+.fl_top,.fl_btn{
+	height: 3.55rem;
+	width: 100%;
+	ul{
+		margin: 0;
+		padding: 0;
+		margin: 0;
+		padding: 0;
+		height: 3.55rem;
+		width: 100%;
+
+		li{
+			float: left;
+			width: 2.5rem;
+			font-size: 0.35rem;
+			text-align: center;
+			line-height:1.07rem;
+
+
+		}
+	}
+}
+
+.org{
+	color: #F9BBB0;
+}
+
+.fl_footer{
+	height:1.33rem;
+	width:100%;
+}

@@ -133,6 +133,7 @@
 				title:$(this).parent().find('.goods-title').text(),
 				imgsrc:$(this).parent().find('.goods-img').data('url'),
 				desc:$(this).parent().find('.goods-desc').text(),
+				price:$(this).parent().find('.price').text(),
 				qty:1
 			}
 			goodsdatas.push(item);

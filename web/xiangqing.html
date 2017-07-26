@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="vp" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./libs/page-css/xiangqing.css">
+	
+	<script type="text/javascript">
+		// 把尺寸放大N倍（N是window.devicePixelRatio）
+		var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+		//物理像素*设备像素比=真实像素
+		document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+		// 把屏幕的倍率缩小到N分之一（N是window.devicePixelRatio）
+		var scale = 1/window.devicePixelRatio;
+		var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+		document.getElementById("vp").content = mstr;
+	</script>
+	
+	<script src="./libs/page-js/require.js" data-main="./libs/page-js/xiangqing"></script>
+</head>
+<body>
+	<div class="xq_header">
+		<span class="s1">
+			<img src="libs/img/s1.png" >
+		</span>
+		<p>
+			<b>达令详情</b>
+		</p>
+		<span class="s2">
+			<img src="libs/img/s2.png" >
+		</span>
+		<span class="s3">
+			<img src="libs/img/s3.png" >
+		</span>
+	</div>
+	<div class="bgimg">
+		<!-- <img src="img/bgimg.png" > -->
+	</div>
+	<div class="xq_main"> 
+		<!-- <div class="main_t">
+			<div class="p1">
+				<p class="title">
+					[新加皮 融化在咖啡香里] 猫头鹰牌 3合1即溶咖啡（900g）
+				</p>
+				<span><img src="img/s4.png" alt=""></span>
+			</div>
+
+			<div class="p2">
+				<h3 class="price">￥54.80  </h3>
+				<h4 class="delprice">新加坡限时售价 ￥59</h4>
+				<span></span>
+			</div>
+		</div>
+		<div class="main_b">
+			<img src="img/mainb.png" >
+		</div> -->
+	</div>
+	<div class="footer">
+		<div class="shai">
+			<p>Ta们在晒(4) 
+				
+			</p>
+			<div class="ding">
+				
+			</div>
+			<span><img src="libs/img/shuo.png" ></span>
+			<div class="shai_b">
+				<span><img src="libs/img/shai_b.png" alt=""></span>
+			</div>
+		</div>
+		<div class="shuo">
+			<div class="shuo_t">
+				<p>Ta们在说(3878) </p>
+				<span>好评度97% ></span>
+			</div>
+			<div class="shuo_b">
+				<span><img src="libs/img/shuo_b.png" alt=""></span>
+			</div>
+		</div>
+	</div>
+	<div class="xqimg">
+		<img src="libs/img/tu.png" >
+	</div>
+
+	<div class='car'>
+		<p class="s4">
+			<img src="libs/img/car.10e6a1.png" alt="">
+			<span class="goodsqty"></span>
+		</p>
+		<p class="s5">
+			加入购物车
+
+		</p>
+		<p class="s6">
+			立即购买
+		</p>
+	</div>
+	
+</body>
+
+</html>

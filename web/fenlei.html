@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="vp" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="libs/page-css/fenlei.css">
+	<link rel="stylesheet" href="libs/page-css/footer.css">
+	<script type="text/javascript">
+		// 把尺寸放大N倍（N是window.devicePixelRatio）
+		var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+		//物理像素*设备像素比=真实像素
+		document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+		// 把屏幕的倍率缩小到N分之一（N是window.devicePixelRatio）
+		var scale = 1/window.devicePixelRatio;
+		var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+		document.getElementById("vp").content = mstr;
+	</script>
+	<script src="./libs/page-js/require.js" data-main="./libs/page-js/fenlei"></script>
+
+</head>
+<body>
+	<div class="fl_header">
+		<p>分类</p>
+		<span></span>
+	</div>
+	<div class="fl_content">
+		<div class="fl_nav">
+			<ul>
+				<li><a href="#">极致美护</a></li>
+				<li><a href="#">全球零食</a></li>
+				<li><a href="#">尖货女装</a></li>
+				<li><a href="#">创意生活</a></li>
+			</ul>
+		</div>
+		<div class="png1">
+			<img src="libs/img/1.png" alt="">
+		</div>
+		<div class="fl_top">
+			<ul>
+				<li class="org">无敌价</li>
+				<li>海外直邮</li>
+				<li>美女专场</li>
+				<li>"鹿"小物</li>
+				<li>极致美护</li>
+				<li>创意生活</li>
+				<li class="org">情趣诱惑</li>
+				<li>全球美食</li>
+				<li>急速社保去</li>
+				<li>时尚配饰</li>
+			</ul>
+		</div>
+		<div class="png2">
+			<img src="libs/img/2.png" alt="">
+		</div>
+		<div class="fl_btn">
+			<ul>
+				<li>TOP榜</li>
+				<li>面膜</li>
+				<li>洁面</li>
+				<li>化妆水</li>
+				<li class="org">面霜/乳液</li>
+				<li>防晒</li>
+				<li>护肤套装</li>
+				<li class="org">隔离/底妆</li>
+				<li class="org">唇膏口红</li>
+				<li>眼妆/腮红</li>
+				<li>更多></li>
+			</ul>
+		</div>
+	</div>
+	<!-- <div class="fl_footer">
+		
+	</div> -->
+</body>
+</html>
+
+<!-- https://github.com/592569815/dalingWebApp -->

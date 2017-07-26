@@ -3,8 +3,8 @@
 test.txt
 
 #过滤文件夹
-/node_modules
-/web/libs/img
+/node_modules/
+/web/libs/img/
 #过滤压缩包
 *.zip
 
