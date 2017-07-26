@@ -1,10 +1,24 @@
 ﻿
 ﻿#过滤文件
 test.txt
-
+.gitignore
 #过滤文件夹
+<<<<<<< HEAD
 /node_modules/
 /web/libs/img/
+=======
+
+/node_modules/
+<<<<<<< HEAD
+/web/libs/img/
+=======
+
+
+
+/web/libs/img
+
+>>>>>>> aee73aed40bd2fa1ab9b53de046237de457a88b8
+>>>>>>> e1b2aa20f295bb4b560ebb33f4387b145aa1f335
 #过滤压缩包
 *.zip
 

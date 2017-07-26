@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>结算</title>
+		<script type="text/javascript">		
+			//动态设置viewport的scale
+			 var iScale = 1;
+		    iScale = iScale / window.devicePixelRatio;
+		    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
+			//动态计算html的font-size
+			var iWidth = document.documentElement.clientWidth;
+	        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';     
+	        //1rem=75px
+		</script>
+		<script src="./libs/page-js/require.js" data-main="./libs/page-js/jiesuan"></script>
+		<link rel="stylesheet" type="text/css" href="./libs/page-css/jiesuan.css"/>
+	</head>
+	<body>
+		<div class="bigbox">
+			<div class="head">
+				<p>
+					<a href="shoppingCar.html"><img src="./libs/img/imgIMG_0396_03.jpg"/></a>
+					<span>订单确认</span>
+					<span></span>
+				</p>
+			</div>
+			
+			<div class="body">
+				<input type="text" placeholder="收货人姓名"/>
+				<input type="text" placeholder="收货人手机"/>
+				<div class="province"><span>选择省市区</span><span></span></div>
+				<input type="text" placeholder="详细街道地址"/>
+				<input type="text" placeholder="收货人真实身份证号"/>
+				<div class="hint">
+					<p>应海关要求请填写身份证信息，达令会保护您的信息安全</p>
+					<img src="./libs/img/imgIMG_0394_02.jpg"/>
+				</div>
+				<div class="move">
+					<!-- <div class="zhuMessage">
+						<img src="./libs/img/14382283436625.jpg_300x300.jpg"/>
+						<div class="message">
+							<p>[理肤泉]理肤泉舒缓喷雾（300ml/两款包装随机发货）</p>
+							<p>300ml</p>
+							<div class="substract">
+								<span>无敌价</span>
+								<p>￥66.00</p>
+							</div>
+						</div>
+					</div> -->
+				</div>
+				
+				<div class="total_price">
+					<span>商品金额</span>
+					<span>¥198.00</span>
+				</div>
+				<div class="extra">
+					<div class="total_price">
+						<span>超值换购<span>(加9.9元换套装)</span></span>
+						<span>选择</span>
+					</div>
+					<div class="total_price">
+						<span>快递公司<span>(55元换套装)</span></span>
+						<span>免费</span>
+					</div>
+					<div class="total_price">
+						<span>优惠券7.18-7.21</span>
+						<span>马上领取</span>
+					</div>
+					<div class="total_price">
+						<span>礼物服务</span>
+					</div>
+					<div class="total_price">
+						<span>选择支付方式</span>
+					</div>
+					<div class="total_price">
+						<span>支付宝支付</span>
+					</div>
+					<div class="total_price">
+						<span>支付宝支付</span>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="maidan">
+					<div class="two">
+						<div class="total">
+							<span>应付金额：</span>
+							<span>￥66.00</span>
+						</div>
+					</div>
+					<div class="three">
+						<a href="">确认并付款</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

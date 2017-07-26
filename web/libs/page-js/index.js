@@ -44,7 +44,7 @@
 
 		//倒计时
 		var now = new Date();
-		var end = new Date('2017-07-25 23:59:59')
+		var end = new Date('2017-07-26 23:59:59')
 		var offset = Math.floor((end-now)/1000);  
 
 		// 计算剩余的时、分
@@ -88,7 +88,7 @@
 					<div class="goodsbox">
 						<div class="goods">
 							<a class="block">
-								<div class="goods-img" style="background-image:url(./libs/img/goods/${item.img})" data-url="${item.img}"></div>
+								<div class="goods-img" style="background-image:url(./libs/img/${item.img})" data-url="${item.img}"></div>
 								<div class="goods-title">${item.title}</div>
 								<div class="goods-desc">${item.desc}</div>
 								<div class="price">${item.price}</div>
@@ -146,7 +146,7 @@
 		//数据传输
 			var currentId = $(this).parent().next().data('id');
 			console.log(currentId)
-			window.location.herf="detail.html?"+currentId;
+			location.href = "xiangqing.html?id=" + currentId;
 		})
 	});
 });

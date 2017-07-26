@@ -72,7 +72,7 @@
 						<p class="title">
 							${item.type}-${item.title}
 						</p>
-						<span><img src="img/s4.png"/></span>
+						<span><img src="./libs/img/s4.png"/></span>
 					</div>
 
 					<div class="p2">
@@ -81,12 +81,12 @@
 					</div>
 				</div>
 				<div class="main_b">
-					<img src="img/mainb.png" >
+					<img src="./libs/img/mainb.png" >
 				</div>
 
 			`
 			var imghtml = `
-				<img src="img/${item.img}" >
+				<img src="./libs/img/${item.img}" >
 			`
 			$('.xq_main').html(html);
 
@@ -101,6 +101,10 @@
 			window.scrollY = 0;
 		})
 		
+		//点击结算跳转
+		$(".s6").click(function(){
+			location.href = "jiesuan.html";
+		})
 		
 
 		

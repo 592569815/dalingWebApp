@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*公共css*/
+body, p, ul, li, input, h3, h1, h4, i, h2, b, dl, dd, dt, img, form {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+}
+
+img {
+  border: 0;
+  display: block;
+}
+
+.search {
+  font-size: 0.37rem;
+  width: 100%;
+  height: 1.33rem;
+}
+
+.search ul li {
+  width: 20%;
+  height: 1.33rem;
+  float: left;
+  text-align: center;
+  line-height: 1.33rem;
+}
+
+.search ul li a {
+  color: #585658;
+  display: block;
+}
+
+.search ul li span {
+  display: block;
+  padding-left: 0.2rem;
+}
+
+.search li span::before, .search li span::after {
+  content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  border-right: 0.18rem solid transparent;
+}
+
+.search li:nth-of-type(4) span::before {
+  border-top: 0.2rem solid #aaa;
+  transform: rotate(45deg);
+}
+
+.search li:nth-of-type(4) span::after {
+  border-top: 0.2rem solid #aaa;
+  transform: rotate(-135deg);
+}

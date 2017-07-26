@@ -84,3 +84,46 @@ img {
 .footer-tabs a.active span {
   color: #af5bbf;
 }
+
+.gotop {
+  width: 1.07rem;
+  height: 1.07rem;
+  background: url(../img/arrow.png) no-repeat center center #9f4d95;
+  border-radius: 50%;
+  position: fixed;
+  right: 0.4rem;
+  bottom: 2.5rem;
+  z-index: 99;
+  display: none;
+}
+
+.fixednav {
+  width: 1.07rem;
+  height: 1.07rem;
+  border-radius: 50%;
+  position: fixed;
+  right: 0.4rem;
+  bottom: 4.0rem;
+  z-index: 99;
+  background: #9f4d95;
+  text-align: center;
+  line-height: 0.5rem;
+}
+
+.nav-fixed {
+  position: fixed;
+  right: 0.33rem;
+  bottom: 5.2rem;
+  font-size: 0.4rem;
+  width: 2.67rem;
+  padding: 0.13rem;
+  margin: 0.13rem;
+}
+
+.nav-fixed ul {
+  background-color: #fff;
+  bottom: 1.7rem;
+  right: 0;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.15);
+}

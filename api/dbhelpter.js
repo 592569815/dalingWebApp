@@ -6,7 +6,7 @@ var  server  = new mongodb.Server('localhost', 27017);
 var devDB = '1000phone';
 var utDB = '2000phone';
 var uatDB = '3000phone';
-var productionDB = 'chen';
+var productionDB = 'daling';
 var  db = new mongodb.Db(productionDB, server);
 
 module.exports = {
@@ -118,7 +118,7 @@ module.exports = {
             if(!error){
                 //查找对应 id 的商品；
                 db.collection(collectionName,function(err,collection){
-                    console.log(goodsId,goodsId.id)
+                   
                     collection.find({id:goodsId}).toArray(function(err,docs){
                         if(!err){
                             //得到商品信息；
@@ -145,10 +145,11 @@ module.exports = {
         })
     },
 
-    //所有商品；
+    //所有商品查询；
     getAccounts:function(collectionName, callback){
+        
         db.open(function(err,db){
-            if(!err){
+            if(!err){console.log("getAccounts方法");
                 db.collection(collectionName,function(err,collection){
                     collection.find().toArray(function(err,docs){
                         if(!err){
@@ -170,6 +171,176 @@ module.exports = {
                             console.log(err)
                         }
                     })
+                })
+            }
+        })
+    },
+
+    //商品更新；
+    updateProducts:function(collectionName, goodsUpdate, callback){
+        db.open(function(error, db){
+            if(!error){
+                //查找对应 id 的商品；
+                db.collection(collectionName,function(err,collection){
+                    console.log(goodsUpdate.id);
+                    // var id = Number(goodsUpdate.id);
+                    goodsUpdate.id = Number(goodsUpdate.id);
+                    collection.find({id:goodsUpdate.id}).toArray(function(err,docs){
+                            console.log(docs)
+                        if(!err){
+                            //得到商品信息；
+                            // console.log(docs)
+                            if(docs.length > 0){
+                            
+                                //更新内容；
+                                collection.update({'id':goodsUpdate.id},{'$set':goodsUpdate},upsert=true,multi=true);
+                                db.close();
+                                if(callback && typeof callback == "function"){
+                                    callback({status:true,message:"更新成功！",details:goodsUpdate});
+                                }
+                            }else{
+                                console.log("找不到对应 id 的商品");
+                                db.close();
+                                 if(callback && typeof callback == "function"){
+                                    callback({status:false,message:"找不到 id 为的商品",details:null});
+                                }
+                            }
+                        }else{
+                            console.log(err)
+                        }
+                    })
+                });
+            }
+        });
+    },
+
+    //商品删除；
+    deleteProducts:function(collectionName, goodsDelete, callback){
+        db.open(function(error, db){
+            if(!error){
+                //查找对应 id 的商品；
+                db.collection(collectionName,function(err,collection){
+                    console.log(goodsDelete.id);
+                    // var id = Number(goodsUpdate.id);
+                    goodsDelete.id = Number(goodsDelete.id);
+                    collection.find({id:goodsDelete.id}).toArray(function(err,docs){
+                            console.log(docs)
+                        if(!err){
+                            //得到商品信息；
+                            // console.log(docs)
+                            if(docs.length > 0){
+                            
+                                //更新内容；
+                                collection.remove({'id':goodsDelete.id});
+                                db.close();
+                                if(callback && typeof callback == "function"){
+                                    callback({status:true,message:"该商品已经删除！",details:goodsDelete});
+                                }
+                            }else{
+                                console.log("找不到对应 id 的商品");
+                                db.close();
+                                 if(callback && typeof callback == "function"){
+                                    callback({status:false,message:"找不到 id 为的商品",details:null});
+                                }
+                            }
+                        }else{
+                            console.log(err)
+                        }
+                    })
+                });
+            }
+        });
+    },
+
+    //商品懒加载；
+    getProducts:function(collectionName, num_obj, callback){
+
+        //默认显示20个商品；
+        var obj ={page:1,qty:20};
+        var targetObj = {};
+        //对象扩展；
+        Object.assign(targetObj,obj,num_obj);
+
+
+        var page = targetObj.page - 1;
+        var qty = Number(targetObj.qty);
+
+        console.log(targetObj,page,qty)
+         db.open(function(error, db){
+            if(!error){
+                //查找对应 id 的商品；
+                db.collection(collectionName,function(err,collection){
+                    var total = 0;
+
+                    collection.find().toArray(function(err,docs){
+                        if(!err){
+                            total = docs.length;
+                        }
+                    });
+                  
+                    collection.find().limit(qty).skip(page*qty).toArray(function(err,docs){
+                            console.log(docs)
+                        if(!err){
+                            //得到商品信息；
+                            // console.log(docs)
+                            if(docs.length > 0){
+                                
+                                //输出商品数量；
+                                var data = {};
+                                                            
+                                data["data"] = docs;
+                                data["total"] = total;
+
+                                console.log(data);
+                                db.close();
+                                if(callback && typeof callback == "function"){
+                                    callback({status:true,message:"商品获取成功！",details:data});
+                                }
+                            }else{
+                                console.log("商品获取失败！");
+                                db.close();
+                                 if(callback && typeof callback == "function"){
+                                    callback({status:false,message:"商品获取失败！",details:null});
+                                }
+                            }
+                        }else{
+                            console.log(err)
+                        }
+                    })
+                });
+            }
+        });
+    },
+
+    //添加商品；
+    addProducts:function(collectionName, goodsObj, callback){
+        var id = Number(goodsObj.id);
+        //打开数据库
+        db.open(function(error,db){
+            if(!error){
+                db.collection(collectionName,function(err,collection){
+                    if(!err){
+                        collection.find({id:id}).toArray(function(err,docs){
+                            //商品id存在，提示更换id；
+                            if(docs.length > 0){
+                                db.close();
+                                //回调函数；
+                                if(callback && typeof callback == "function"){
+                                    callback({status:false,message:"商品id已存在，请更换id！",data:null});
+                                };
+                            }else{
+                                collection.insert(goodsObj,{safe:true},function(err,result){
+                                    console.log("商品添加成功！");
+                                    db.close();
+                                    //回调函数；
+                                    if(callback && typeof callback == "function"){
+                                        callback({status:true,message:"商品添加成功！",data:goodsObj});
+                                    };
+                                })
+                            }
+                        })
+                        
+                    }
                 })
             }
         })
