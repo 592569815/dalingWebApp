@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据后台管理页面</title>
+	<style>
+		body,p,h1,h2,tr,th,ul,li{margin:0;padding:0;}
+
+		h1{
+			height:40px;
+			margin:5px 0;
+			line-height: 40px;
+			font-size: 18px;
+		}
+		li{
+			list-style: none;
+		}
+		.head{
+			width:1380px;
+			margin:10px auto;
+			padding:0 10px 20px 10px;
+			border:1px solid #ddd;
+		}
+		.content{
+			width:1380px;
+			margin:20px auto;
+			padding:5px 10px;
+			border:1px solid #ddd;
+			position:relative;
+		}
+		.total{
+			overflow: hidden;
+			padding:5px 10px;
+		}
+		.content_left,.goodsAccounts{
+			height:40px;
+			text-align: center;
+			line-height: 40px;
+		}
+		.content_left button{
+			margin-right:20px;
+		}
+		.fl{
+			float:left;
+		}
+		.fr{
+			float:right;
+		}
+		.goodsAdd{
+			width:1390px;
+			overflow: hidden;
+			padding-left:10px;
+			position:absolute;
+			background: #fff;
+			border:1px solid #ddd;
+			left:-1px;
+			top:50px;
+		}
+		.goodsAdd p{
+			height:40px;
+			line-height: 40px;
+			width:45%;
+			float: left;
+		}
+		.goodsAdd p input{
+			width:80%;
+			height:24px;
+			line-height: 24px;
+		}
+		.goods{
+			width:1400px;
+			margin:10px auto;
+			overflow: hidden;
+			border:1px solid #ddd;
+		}
+		.goodslist{
+			width:199px;
+			height:532px;
+			overflow: auto;
+			padding:5px 10px;
+			float:left;
+			
+		}	
+		.goods_accounts{
+			padding-left:20px;
+		}
+
+		.goods_details{
+			padding: 10px;
+			float:left;
+			overflow: hidden;
+			border-left:1px solid #ddd;
+		}
+
+		h2{
+			height:40px;
+			margin:5px 0;
+			line-height: 40px;
+			font-size: 16px;
+			
+		}
+		table{
+			table-layout: fixed;
+			word-break: break-all; 
+			word-wrap: break-word;
+			border: 1px solid #ddd;
+			border-collapse: collapse;
+		}
+		td{
+			border:1px solid #ddd;
+			text-align: center;
+			font-size: 12px; 
+		} 
+		td span {
+			display: inline-block;
+			width:40px;
+			height:20px;
+			line-height: 20px;
+			border-radius: 10px;
+
+		}
+		.edit{
+			background: #87b87f;
+		}
+		.delete{
+			background: #ffb752;
+		}
+		.update{
+			background: #6fb3e0;
+		}
+		.goods_details table tr th{
+
+			border-right:1px solid #ddd;
+		}
+		th{
+			background: #c5c5c5;
+		}
+		.active{
+			background: #c5c5c5;
+		}
+		.goods_accounts ul{
+			height:300px;
+			overflow: auto;
+		}
+		.goods_accounts ul li {
+			list-style: none;
+			height:40px;
+			border-bottom: 1px solid #ddd;
+			font-size: 14px;
+			line-height: 40px;
+			width: 80px;
+			padding-left: 10px;
+		}
+		#goods_accounts :hover{
+			cursor: pointer;
+		}
+		.editable{
+			background: red;
+		}
+		.pic{
+			margin:10px 0;
+		}
+		.submit{
+			display: block;
+			margin:0 auto;
+			width:60px;
+			height:30px;
+			line-height: 30px;
+			text-align:center;
+			margin-bottom:20px;
+		}
+		.page{
+			text-align:center;
+		}
+		.page span{
+			display: inline-block;
+			width:30px;
+			height:30px;
+			line-height: 30px;
+			text-align:center;
+			background: #ddd;
+			margin:10px 5px;
+		}
+		.page_bg{
+			background:red!important;
+		}
+		.list{
+			display: none;
+		}
+		.list li{
+		    height: 40px;
+		    border-bottom: 1px solid #ddd;
+		    font-size: 14px;
+		    line-height: 40px;
+		    width: 80px;
+		    padding-left: 10px;
+		}
+	</style>
+	<script src="./libs/jquery/jquery-3.2.1.js"></script>
+	<script>
+		jQuery(function($){
+			var page = 1;
+			var qty = 10;
+			$.post("http://localhost:1234/getproducts",{page:page,qty:qty},function(res){
+
+				console.log(res);
+
+				//显示商品数量；
+				var total = res.total;
+
+				$(".goodsAccounts span").html(total);
+
+				//创建表格；
+				var $table = $("<table/>").html(`
+					<thead>
+						<tr class = "table_title">
+							<th height = 40><label for="allChecked"><input type="checkbox" id="allChecked" />全选</label></th>
+							<th id = "goodsId">商品id</th>
+							<th id = "goodsType">商品类型</th>
+							<th id = "goodsImg">商品图片</th>
+							<th id = "goodsTitle">商品名字</th>
+							<th id = "goodsDesc">商品描述</th>
+							<th id = "goodsPrice">商品价格</th>
+							<th id = "edit">操作</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				`).appendTo($(".goods_details"));
+
+				//页面显示数量，创建页码；
+			
+				var pageNum = Math.ceil(total / res.data.length);
+
+				var $page = $("<div/>").addClass("page");
+				var _html = "";
+				for(var i = 0 ; i < pageNum ; i++){
+					
+					if(i == 0){
+						$("<span/>").addClass("page_bg").html(i+1).appendTo($page);
+					}else{
+
+						$("<span/>").html(i+1).appendTo($page);
+					}
+				};
+
+				$page.appendTo($(".goods_details"));
+				console.log($page)
+
+				//点击页码显示不同的商品
+				$(".page").on("click","span",function(){
+					var page = $(this).text();
+
+					$(this).addClass("page_bg").siblings().removeClass("page_bg");
+
+					// var qty = 20;
+					$.post("http://localhost:1234/getproducts",{page:page,qty:qty},function(data){
+						console.log(res)
+						show(data);
+					})
+				})
+
+
+				//添加商品到页面；
+				show(res);
+				function show(res){
+					//先清空tbody的内容；
+					$("tbody").html("");
+
+					res.data.map(function(item,idx){
+
+						var $tr = $("<tr/>").attr("id",item.id);
+
+						$tr.html(`
+								<td width=60 height = 40><input type="checkbox" class="goods_select" /></td>
+								<td width=60 >${item.id}</td>
+								<td width=80>${item.type}</td>
+								<td width=260>${item.img}</td>
+								<td width=150>${item.title}</td>
+								<td width=280>${item.desc}</td>
+								<td width=80>${item.price}</td>
+								<td width=160>
+									<span class="edit">编辑</span>
+									<span class="delete">删除</span>
+									<span class="update">更新</span>
+								</td>
+						`).appendTo($table);
+					});
+				}
+				goodslist();
+			});
+			
+			//刷新页面时，把所有商品写到页面；
+			function goodslist(){
+				
+				$.get("http://localhost:1234/getAccounts",function(res){
+					console.log(res);
+
+					//显示商品产地列表；
+					var goodsArr = [];
+					res.data.map(function(item){
+						goodsArr.push(item.type);
+					})
+					
+					var contury = goodsArr.filter(function(item,idx,self){
+						return self.indexOf(item) == idx;
+					});
+
+					console.log(contury);
+
+					//全部商品分类；
+
+					$ul = $("<ul/>");
+
+					var html = contury.map(function(item){
+						return `
+							<li>${item}</li>
+						`
+					});
+					$ul.html(html).appendTo($(".goods_accounts"));
+
+					//点击页面，进行筛选；
+					$(".goods_accounts").on("click","li",function(){
+						$(this).addClass("active").siblings("li").removeClass("active");
+
+						var currentType = $(this).text();
+
+						//显示筛选的内容；
+						$("tbody").html("");
+
+						var accounts = 0;
+						res.data.map(function(item){
+
+							if(item.type == currentType){
+								accounts++;
+
+								
+								var $tr = $("<tr/>").attr("id",item.id);
+
+								$tr.html(`
+									<td width=60 height = 40><input type="checkbox" class="goods_select" /></td>
+									<td width=60 >${item.id}</td>
+									<td width=80>${item.type}</td>
+									<td width=260>${item.img}</td>
+									<td width=150>${item.title}</td>
+									<td width=280>${item.desc}</td>
+									<td width=80>${item.price}</td>
+									<td width=160>
+										<span class="edit">编辑</span>
+										<span class="delete">删除</span>
+										<span class="update">更新</span>
+									</td>
+								`).appendTo($("tbody"));
+							}
+						});
+
+						//更新商品数量；
+						$(".goodsAccounts span").html(accounts);
+						console.log(accounts);
+					});
+
+					//搜索商品；
+					var search_num = 0;
+					$("#search_btn").click(function(){
+
+						//显示筛选的内容；
+						$("tbody").html("");
+						
+						var search_val = $("#goodsname").val();
+						res.data.map(function(item){
+							console.log(item.id)
+							if(item.id == search_val){
+								search_num++;
+								$("<tr/>").attr("id",item.id).html(`
+									<td width=60 height = 40><input type="checkbox" class="goods_select" /></td>
+									<td width=60 >${item.id}</td>
+									<td width=80>${item.type}</td>
+									<td width=260>${item.img}</td>
+									<td width=150>${item.title}</td>
+									<td width=280>${item.desc}</td>
+									<td width=80>${item.price}</td>
+									<td width=160>
+										<span class="edit">编辑</span>
+										<span class="delete">删除</span>
+										<span class="update">更新</span>
+									</td>
+								`).appendTo($("tbody"));
+
+								//更新商品数量；
+								$(".goodsAccounts span").html(search_num);
+								console.log(search_num++);
+							}
+						});
+					})
+				});
+			};
+
+
+			//商品列表点击显示隐藏；
+			$("h2").click(function(){
+				$(this).next().toggle();
+			});
+
+			//点击全选
+			$(".goods_details").on("click","#allChecked",function(){console.log(9999)
+				if($(this).prop("checked")){
+
+				//全选时，所有商品被选中；
+				$(".goods_select").prop("checked",true);
+
+				}else{
+					//全选取消时，所有商品被取消；
+					$(".goods_select").prop("checked",false);
+				};
+			})
+			//点击编辑时，当前商品可编辑；
+			.on("click",".edit",function(){
+
+				$(this).toggleClass("editable");
+				// .parents("tr").siblings("tr").find(".edit").toggleClass("editable");
+			}).on("click","td",function(){
+
+				//判断当前是否为可编辑状态；有class名editable为可编辑；
+				if($(this).parent().find(".editable").length > 0){
+
+					var idx = $(this).index();
+
+					if(idx > 1 && idx < 7){
+						//获取当前单元格的值；
+						var _value = $(this).text();
+						console.log(_value)
+
+						//重置单元格的值；
+						this.innerHTML = "";
+
+						//创建输入框并将单元格的值写入输入框；
+						$("<input/>").css({"width":"80%"}).val(_value).appendTo($(this)).focus().on("blur",function(e){
+							//写入数据；//移除可编辑状态；
+							$(this).parent().html($(this).val());
+
+							//隐藏移除input;
+							$(this).remove();
+						});
+					}
+				}
+			})
+			//更新商品；
+			.on("click",".update",function(){
+
+				//要更新的商品信息；
+				
+				var ele = $(this);
+				var update_obj = find(ele);
+
+				//判断当前是否被编辑过；
+				var edited = $(this).parent().children().first();
+				
+				if(edited.hasClass("editable")){
+					
+					$.post("http://localhost:1234/updateProducts",update_obj,function(res){
+						console.log(res);
+					});
+				};
+
+				edited.removeClass("editable");				
+
+				
+			})
+			//删除商品；
+			.on("click",".delete",function(){
+
+				//删除页面元素；
+				$(this).parents("tr").remove();
+				var ele = $(this);
+				var update_obj = find(ele);
+				$.post("http://localhost:1234/deleteProducts",update_obj,function(res){
+					console.log(res);
+				});
+			});
+
+			function find(ele){
+				var goodsId = ele.parents("tr").attr("id");
+				var goodsType = ele.parents("tr").children().eq(2).text();
+				var goodsImg = ele.parents("tr").children().eq(3).text();
+				var goodsName = ele.parents("tr").children().eq(4).text();
+				var goodsDesc = ele.parents("tr").children().eq(5).text();
+				var goodsPrice = ele.parents("tr").children().eq(6).text();
+
+				var update_obj = {};
+				update_obj["id"] = goodsId;
+				update_obj["Type"] = goodsType;
+				update_obj["img"] = goodsImg;
+				update_obj["title"] = goodsName;
+				update_obj["desc"] = goodsDesc;
+				update_obj["price"] = goodsPrice;
+				console.log(update_obj,goodsType)
+				return update_obj;
+			}
+			//点击添加商品；
+			$("#add").click(function(){
+				$(this).hide();
+				$("#cancle").show();
+				$(".goodsAdd").css({"display":"block"});
+			});
+
+			//点击取消添加商品；
+			$("#cancle").click(function(){
+				$(this).hide();
+				$("#add").show();
+				$(".goodsAdd").css({"display":"none"});
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div class="headbg">
+		<div class="head">
+			<div class="header">
+				<h1>商品管理</h1>
+				<div class>
+					<label for="goodsname">商品编码：<input type="text" id="goodsname" name="goodsname" class="goodsname"></label>
+					
+					<button id="search_btn">查询</button>
+					<div class="goodsAccounts fr">
+						<p>一共：&nbsp;<span></span>&nbsp;件商品</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="contentbg">
+		<div class="content">
+			<div class="total">
+				<div class="content_left fl">
+					<button id="add">+添加商品</button>
+					<button id="cancle" style="display: none">取消添加</button>
+				
+				</div>	
+				
+			</div>
+			<div class="goodsAdd" style="display: none">
+				<form action="http://localhost:1234/addProducts" method="post" enctype="multipart/form-data">
+					<p><label for="add_goodsId">商品编码：<input type="text" id="add_goodsId" name="id"></label></p>
+					<p><label for="add_goodsType">商品类型：<input type="text" id="add_goodsType" name="type"></label></p>
+					<p><label for="add_goodsTitle">商品标题：<input type="text" id="add_goodsTitle" name="title"></label></p>
+					<p><label for="add_goodsDesc">商品描述：<input type="text" id="add_goodsDesc" name="desc"></label></p>
+					<p><label for="add_goodsPrice">商品价格：<input type="text" id="add_goodsPrice" name="price"></label></p>
+					<div class="upload" style="clear: both;">	
+						
+					</div>
+					<input type="file" name="pic" class="pic"/><br/> 
+					
+					<input type="submit" value="提交" class="submit"/> 
+				</form>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="goods">
+		<div class="goodslist">
+			<div class="goods_title">
+				<h2>首页管理</h2>
+				<ul class="list">
+					<li>登录</li>
+					<li>个人信息</li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="goods_title" >
+				<h2 id="goods_accounts">产品管理</h2>
+				<div class="goods_accounts">
+					
+				</div>
+			</div>
+			<div class="goods_title">
+				<h2>数据库管理</h2>
+				<ul class="list">
+					<li>商品管理</li>
+					<li>用户管理</li>
+					<li>会员管理</li>
+				</ul>
+			</div>
+			<div class="goods_title">
+				<h2>设置</h2>
+				<ul class="list">
+					<li>登录</li>
+					<li>更新版本</li>
+				</ul>
+			</div>
+		</div>
+		<div class="goods_details">
+			
+		</div>
+	</div>
+</body>
+</html>

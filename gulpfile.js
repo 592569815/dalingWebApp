@@ -1,3 +1,4 @@
+
 var gulp = require("gulp");
 var sass = require("gulp-sass");
 
@@ -35,3 +36,4 @@ gulp.task("mydaling",function(){
 	//监听一类文件，可以用*代替；一个文件夹可以用**代替；
 	gulp.watch("./web/libs/page-scss/*.scss",["daling"]);
 })
+

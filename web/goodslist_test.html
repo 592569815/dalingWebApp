@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="./libs/common/common.js"></script>
+		<script src="./libs/jquery/jquery-3.2.1.js"></script>
+		<link rel="stylesheet" href="./libs/page-css/goodslist.css">
+	</head>
+	<body>
+		<div class="head">
+			<div class="search_input">
+				<form action="">
+					<input type="text" class="g_search" placeholder="搜索商品">
+				</form>
+			</div>
+		</div>
+
+		<!-- <form action="./login" method="post">
+			<p><label for="username">用户名：<input type="text" name="username" id="username" class="username"></label></p>
+			<p><label for="password">密码：<input type="password" name="password" id="password" class="password"></label></p>
+			<button type="submit">提交</button>
+		</form>
+		<h2>注册页面</h2>
+		<form action="./register" method="post">
+			<p><label for="username">用户名：<input type="text" name="username" id="username" class="username"></label></p>
+			<p><label for="password">密码：<input type="password" name="password" id="password" class="password"></label></p>
+			<button type="submit">提交</button>
+		</form> -->
+
+		<button id="login">懒加载</button>
+		<button id="register">注册</button>
+		<button id="goods">单个商品</button>
+		<button id="goodsAll">所有商品</button>
+		<script>
+			$("#login").click(function(){
+				$.post("http://localhost:1234/getProducts",{page:1},
+					function(res){
+						console.log(res)
+					}
+				)
+			})
+			$("#register").click(function(){
+				$.post("http://localhost:1234/register",{username:"1111",password:123},
+					function(res){
+						console.log(res)
+					}
+				)
+			});
+			$("#goods").click(function(){
+				var id = 10;
+				$.get("http://localhost:1234/getAccount?id="+ id,function(res){
+					console.log(res);
+				} );
+			})
+			$("#goodsAll").click(function(){
+				var id = 10;
+				$.get("http://localhost:1234/getAccounts",function(res){
+					console.log(res);
+				} );
+			})
+		</script>
+	</body>
+</html>

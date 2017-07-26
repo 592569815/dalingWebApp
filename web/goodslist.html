@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表页</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="./libs/page-css/goodslist.css">
+	<script src="./libs/common/common.js"></script>
+	<script src="./libs/jquery/jquery-3.2.1.js"></script>
+	<script src="./libs/page-js/goodslist.js"></script>
+</head>
+<body>
+	<div class="head">
+			<div class="search_input">
+				<div class="search" >
+					<input type="text" class="g_search" placeholder="搜索商品">
+				</div>
+				<div class="get_goods">
+					
+					<div class="_search">
+						<input type="text" class="search_goods" placeholder="搜索商品">
+					</div>
+					<div class="cancle">取消</div>
+				</div>
+				
+			</div>
+	</div>
+	<div class="g_nav">
+		<ul class="g_nav_list">
+			<li><a href="#" class="g_active">综合</a></li>
+			<li><a href-"#">销量</a></li>
+			<li><a href-"#">新品</a></li>
+			<li class="g_price">
+				<a href="#">价格</a>
+				<div>
+					<span class="priceUp"></span>
+					<span class = "priceDown"></span>
+				</div>
+				
+			</li>
+			<li class="g_sort">
+				<a href="#">分类</a>
+				<span></span>
+			</li>
+		</ul>
+		<div class="g_goods_more"></div>
+	</div>
+	<!-- 点击显示列表 -->
+	<div class="g_goods_sort">
+		<div class="g_sort_nav">	
+			<ul>
+				<li>推荐分类</li>
+				<li>极致美护</li>
+				<li>全球零食</li>
+				<li>尖货女装</li>
+				<li>创意生活</li>
+				<li>时尚配饰</li>
+				<li>品牌精选</li>
+			</ul>	
+		</div>
+		<div class="g_sort_nav">
+			
+		</div>
+	</div>
+	<!-- 商品 -->
+
+	<div class="g_content">
+		<div class="g_hot">
+			<p>热门搜索</p>
+			<div class="g_hot_goods">
+				<span>面膜</span>
+				<span>化妆水</span>
+				<span>太阳伞</span>
+				<span>洁面</span>
+				<span>资生堂</span>
+				<span>防晒</span>
+				<span>香水</span>
+				<span>花果茶</span>
+				<span>面膜</span>
+				<span>化妆水</span>
+				<span>太阳伞</span>
+				<span>洁面</span>
+				<span>资生堂</span>
+				<span>防晒</span>
+				<span>香水</span>
+				<span>花果茶</span>
+			</div>
+		</div>
+		<div class="g_goodslist">
+		</div>
+		<div class="holdon" style="display:none;">
+			。。。加载中。。。
+		</div>
+	</div>
+
+	<!-- 悬浮返回顶部； -->
+	<div class="fixed_menu">
+		<div class="car_fixed"></div>
+		<div class="back_top"></div>
+	</div>
+
+</body>
+</html>
