@@ -20,6 +20,10 @@ jQuery(function($){
 		$ul.appendTo($(".g_goodslist"));
 	});
 
+	$(".g_goodslist").on("click","img",function(){
+		console.log(9999)
+	})
+
 	//点击搜索；
 	$(".search").click(function(){
 		$(this).hide().siblings(".get_goods").show();
@@ -32,6 +36,24 @@ jQuery(function($){
 		//隐藏导航；
 		$(".g_nav").hide();
 	});
+
+	//搜索商品；
+	var timer;
+	$(".search_goods").on("input",function(){
+		//清除定时器；
+		clearTimeout(timer);
+
+		var _value = $(this).val();
+		console.log(_value);
+
+		timer = setTimeout(function(){
+
+			$.post("http://localhost:1234/queryProducts",{keyWord:_value},function(res){
+				console.log("模糊查询",res)
+			})
+		},500)
+
+	})
 
 	//点击取消搜索；
 	$(".cancle").click(function(){

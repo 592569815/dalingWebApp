@@ -344,5 +344,27 @@ module.exports = {
                 })
             }
         })
+    },
+
+    //商品模糊查询；
+    queryProducts:function(collectionName, keyWord, callback){
+        db.open(function(err,db){
+            if(!err){
+                db.collection(collectionName,function(err,collection){
+
+                    if(!err){
+
+                        // db.collection.find( { field: /acme.*corp/i } );
+
+                        db.collection.find( { field: { $regex: keyWord, $options: 'i' } } ).toArray(function(err,docs){
+                console.log(66666666,docs)
+                            if(callback && typeof callback == "function"){
+                                callback({status:true,message:"找到符合条件的商品",data:docs})
+                            }
+                        })
+                    }
+                })
+            }
+        })
     }
 }

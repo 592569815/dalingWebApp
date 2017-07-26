@@ -29,13 +29,21 @@
 			<button type="submit">提交</button>
 		</form> -->
 
-		<button id="login">懒加载</button>
+		<button id="lazy">懒加载</button>
+		<button id="login">登录</button>
 		<button id="register">注册</button>
 		<button id="goods">单个商品</button>
 		<button id="goodsAll">所有商品</button>
 		<script>
-			$("#login").click(function(){
+			$("#lazy").click(function(){
 				$.post("http://localhost:1234/getProducts",{page:1},
+					function(res){
+						console.log(res)
+					}
+				)
+			})
+			$("#login").click(function(){
+				$.post("http://localhost:1234/login",{username:15011111111,password:1111111111},
 					function(res){
 						console.log(res)
 					}
