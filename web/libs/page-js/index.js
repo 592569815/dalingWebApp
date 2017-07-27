@@ -1,12 +1,13 @@
 ;require(['config'],function(){
-	require(['jquery','footer'],function($){
+	require(['jquery'],function($){
 
 		//载入页尾
-		$('<div/>').addClass('foot').load('./footer.html',function(){
+		$('<div/>').addClass('footer').load('./footer.html',function(){
 			
 			$(this).appendTo('body');
+			$('.tabs-home').addClass('active');
 		});
-		
+
 		//导航栏
 		var actnav = [
 		{imgsrc:'1500633324525.jpg'},
@@ -25,6 +26,7 @@
 			`
 		})
 		$('.ul').html(actnavHtml);
+
 		//广告
 		var actimg = [
 		{imgsrc:'15006270771124.jpg'},
@@ -44,7 +46,7 @@
 
 		//倒计时
 		var now = new Date();
-		var end = new Date('2017-07-26 23:59:59')
+		var end = new Date('2017-08-30 23:59:59')
 		var offset = Math.floor((end-now)/1000);  
 
 		// 计算剩余的时、分
@@ -80,7 +82,7 @@
 
 		
 		//请求数据
-	$.post('http://10.3.134.237:1234/getProducts',{page:1,qty:15},function(res){
+	$.post(global.baseurl + 'getProducts',{page:1,qty:15},function(res){
 		console.log(res);
 		var goodsHtml = res.data.map(function(item,idx){
 			return `
@@ -148,5 +150,79 @@
 			console.log(currentId)
 			location.href = "xiangqing.html?id=" + currentId;
 		})
+	//点击返回顶部；
+	$(".back_top").click(function(){
+		$("body").animate({scrollTop:0});
+	})	
+
+	/*横向滚动*/
+	$('.tabs').on('touchmove',function(e){
+		e.preventDefault();
+	})
+
+	// 滚动更多，懒加载；
+	var pageNum = 1;
+	$(window).on('scroll',function(){
+		var scrollTop = parseInt($(window).scrollTop());
+		var winHeight = parseInt($(window).height());
+		var scrollHeight = parseInt($('html').outerHeight());
+
+
+		//返回顶部；
+		if(scrollTop >400){
+			$(".back_top").show();
+		}else{
+			$(".back_top").hide();
+
+		}
+
+		// 如何判断滚动到最底部
+		if(scrollTop >= scrollHeight - winHeight - 400){
+			$(".holdon").show(2000);
+			pageNum++;
+			var lazy =lazyLoad({page:pageNum});
+			console.log(pageNum)
+
+		}
+
+		//懒加载函数；
+		function lazyLoad(data){
+			$.post(global.baseurl + "getProducts",data,function(res){
+				//返回的数组为空时，提示加载完毕；
+				console.log(res.data.length)
+				if(res.data.length <= 0){
+					$(".holdon").html("没有更多商品了哦！");
+				}
+				$(".holdon").hide();
+
+				res.data.map(function(item){
+					$("<div/>").addClass('goods-one').html(`
+						<div class="goodsbox">
+						<div class="goods">
+							<a class="block">
+								<div class="goods-img" style="background-image:url(./libs/img/${item.img})" data-url="${item.img}"></div>
+								<div class="goods-title">${item.title}</div>
+								<div class="goods-desc">${item.desc}</div>
+								<div class="price">${item.price}</div>
+							</a>
+							<div class="joincar" data-id="${item.id}">
+								<div class="car-desc">
+									<p class="car-num">1655人</p>
+									<p>加入购物车</p>
+								</div>
+								<div class="icon-car">
+									<span class="car"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					`).appendTo($(".goods-list"));
+					return true;
+				});
+			})
+		}
+	});
+
+
 	});
 });

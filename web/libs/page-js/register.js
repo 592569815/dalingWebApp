@@ -32,7 +32,7 @@ require(['config'],()=>{
 			}
 			console.log(_auth,_number)*/
 			
-				$.post("http://10.3.134.237:1234/register",{username:_number,password:_password},
+				$.post(global.baseurl+'register',{username:_number,password:_password},
 					function(res){
 						console.log(res.message)
 						if(res.message!= '注册成功!'){

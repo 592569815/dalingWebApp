@@ -1,11 +1,11 @@
 require(['config'],function(){
 	require(['jquery',"common"],function($){
 
-		//请求发送数据；
-		$.post("http://10.3.134.237:1234/getProducts",function(res){
+		//请求发送数据；global.baseurl + "getProducts",
+		$.post(global.baseurl + "getProducts",function(res){
 			console.log(res)
 			createGoods(res)
-		
+
 		});
 
 		//生成商品函数；
@@ -107,7 +107,7 @@ require(['config'],function(){
 
 			timer = setTimeout(function(){
 
-				$.post("http://localhost:1234/queryProducts",{name:"type",keyWord:_value},function(res){
+				$.post(global.baseurl + "queryProducts",{name:"type",keyWord:_value},function(res){
 					console.log(res)
 
 					//热门搜索隐藏；
@@ -232,7 +232,7 @@ require(['config'],function(){
 		//综合显示商品；
 		$(".comp").click(function(){
 			//请求发送数据；
-			$.post("http://10.3.134.237:1234/getProducts",function(res){
+			$.post(global.baseurl + "getProducts",function(res){
 				console.log(res);
 				createGoods(res);
 			});
@@ -276,6 +276,14 @@ require(['config'],function(){
 				$(".holdon").show();
 				if(num == pageNum + 1){
 					pageNum++;
+
+		//懒加载函数；
+		function lazyLoad(data){
+			$.post(global.baseurl + "getProducts",data,function(res){
+				//返回的数组为空时，提示加载完毕；
+				console.log(res.data.length)
+				if(res.data.length <= 0){
+					$(".holdon").html("没有更多商品了哦！");
 				}
 				pageNum++;
 				var lazy = lazyLoad({page:pageNum});
@@ -284,7 +292,7 @@ require(['config'],function(){
 
 			//懒加载函数；
 			function lazyLoad(data){
-				$.post("http://10.3.134.237:1234/getProducts",data,function(res){
+				$.post(global.baseurl + "getProducts",data,function(res){
 					//返回的数组为空时，提示加载完毕；
 					//console.log(res.data.length)
 					if(!res.data){

@@ -32,7 +32,7 @@ img {
   z-index: 999;
   width: 100%;
   background: #fff;
-  border-top: 0.01rem solid #ddd;
+  border-top: 5px solid #ddd;
 }
 
 .footer-tabs a {
