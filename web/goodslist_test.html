@@ -31,6 +31,7 @@
 
 		<button id="lazy">懒加载</button>
 		<button id="login">登录</button>
+		<button id="query">模糊</button>
 		<button id="register">注册</button>
 		<button id="goods">单个商品</button>
 		<button id="goodsAll">所有商品</button>
@@ -44,6 +45,14 @@
 			})
 			$("#login").click(function(){
 				$.post("http://localhost:1234/login",{username:15011111111,password:1111111111},
+					function(res){
+						console.log(res)
+					}
+				)
+			})
+			$("#query").click(function(){
+
+				$.post("http://localhost:1234/queryProducts",{name:"type",keyWord:"台湾"},
 					function(res){
 						console.log(res)
 					}

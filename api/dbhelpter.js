@@ -270,9 +270,11 @@ module.exports = {
             if(!error){
                 //查找对应 id 的商品；
                 db.collection(collectionName,function(err,collection){
+                    if(err) return;
                     var total = 0;
 
                     collection.find().toArray(function(err,docs){
+                        if(err) return 
                         if(!err){
                             total = docs.length;
                         }
@@ -292,24 +294,30 @@ module.exports = {
                                 data["total"] = total;
 
                                 console.log(data);
-                                db.close();
+                               
                                 if(callback && typeof callback == "function"){
+                                     // db.close();
                                     callback({status:true,message:"商品获取成功！",details:data});
+                                    return;
                                 }
                             }else{
                                 console.log("商品获取失败！");
-                                db.close();
+                                // db.close();
                                  if(callback && typeof callback == "function"){
                                     callback({status:false,message:"商品获取失败！",details:null});
+                                    return;
                                 }
                             }
                         }else{
+                            db.close();
                             console.log(err)
                         }
                     })
                 });
             }
+            db.close();
         });
+
     },
 
     //添加商品；
@@ -347,7 +355,7 @@ module.exports = {
     },
 
     //商品模糊查询；
-    queryProducts:function(collectionName, keyWord, callback){
+    queryProducts:function(collectionName, data, callback){
         db.open(function(err,db){
             if(!err){
                 db.collection(collectionName,function(err,collection){
@@ -355,12 +363,45 @@ module.exports = {
                     if(!err){
 
                         // db.collection.find( { field: /acme.*corp/i } );
+                        // db.test_info.find({"tname": {$regex: '测试', $options:'i'}}) 
+                        var name = data.name;
+                        var keyWord = new RegExp(data.keyWord,"i");
+                        console.log(data.name)
 
-                        db.collection.find( { field: { $regex: keyWord, $options: 'i' } } ).toArray(function(err,docs){
-                console.log(66666666,docs)
-                            if(callback && typeof callback == "function"){
-                                callback({status:true,message:"找到符合条件的商品",data:docs})
+                        collection.find({[name]:{$regex:keyWord}}).toArray(function(err,docs){
+                            console.log(66666666,docs)
+                            if(docs){
+                                if(docs.length > 0){
+                                    if(callback && typeof callback == "function"){
+                                        callback({status:true,message:"找到符合条件的商品",data:docs})
+                                    }
+                                }else{
+                                    if(callback && typeof callback == "function"){
+                                        callback({status:false,message:"没有找到符合条件的商品",data:null})
+                                    }
+                                }
+
+                            }else{
+                                if(callback && typeof callback == "function"){
+                                    callback({status:false,message:"没有找到符合条件的商品",data:null})
+                                }
                             }
+                        })
+                    }
+                })
+            }
+            db.close();
+        })
+    },
+
+    //价格排序；
+    sortPrice:function(collectionName,data,callback){
+        db.open(function(err,db){
+            if(!err){
+                db.collection(collectionName,function(err,collection){
+                    if(!err){
+                        collection.find().sort({"price":[data]}).toArray(function(err,docs){
+
                         })
                     }
                 })

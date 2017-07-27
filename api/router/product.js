@@ -37,6 +37,8 @@ exports.register = function(app){
             if(res.status){
 
                 response.send(res.details);
+            }else{
+                response.send("err");
             }
         });
        
@@ -93,13 +95,26 @@ exports.register = function(app){
     //商品模糊查询；
     app.post("/queryProducts",urlencodedParser,function(request,response){
 
-        var keyWord = request.body.keyWord;
-        console.log(keyWord)
-        db.queryProducts("products",keyWord,function(res){
+        //{name:type,keyWord:国货}
+console.log(request.body)
+        db.queryProducts("products",request.body,function(res){
             if(res.status){
 
                 response.send(res);
+            }else{
+                response.send(res);
             }
         })
-    })     
+    }) ;
+
+    //价格排序；
+    app.post("/sortPrice",urlencodedParser,function(request,response){
+        var data = request.body.status;
+
+        db.sortPrice("products",data,function(res){
+            if(res.status){
+                response.send(res);
+            }
+        })
+    })    
 }

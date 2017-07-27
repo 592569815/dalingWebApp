@@ -33,6 +33,10 @@ li {
   list-style: none;
 }
 
+body {
+  font-family: arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+
 a {
   text-decoration: none;
   color: #000;
@@ -67,7 +71,7 @@ a {
   line-height: 0.72rem;
   text-align: center;
   font-size: 0.336rem;
-  padding: 0 0.68rem;
+  padding-left: 0.68rem;
   border: none;
   outline: none;
   background: url(../img/search.png) no-repeat 3.56rem center;
@@ -102,7 +106,7 @@ a {
   outline: none;
 }
 
-.head .search_input .get_goods .cancle {
+.head .search_input .get_goods .cancle, .head .search_input .get_goods .g_search {
   float: right;
   font-size: 0.336rem;
 }
@@ -114,6 +118,7 @@ a {
 .g_nav .g_nav_list {
   width: 100%;
   overflow: hidden;
+  border-bottom: 0.01rem solid #ddd;
 }
 
 .g_nav .g_nav_list .g_active {
@@ -154,6 +159,26 @@ a {
   border-top: 0.144rem solid #aaa;
 }
 
+.g_nav .g_nav_list .g_price div ._priceUp {
+  display: block;
+  margin-bottom: 0.07rem;
+  width: 0;
+  height: 0;
+  border-left: 0.144rem solid transparent;
+  border-right: 0.144rem solid transparent;
+  border-bottom: 0.144rem solid red;
+}
+
+.g_nav .g_nav_list .g_price div ._priceDown {
+  display: block;
+  margin-top: 0.07rem;
+  width: 0;
+  height: 0;
+  border-left: 0.144rem solid transparent;
+  border-right: 0.144rem solid transparent;
+  border-top: 0.144rem solid red;
+}
+
 .g_nav .g_nav_list .g_sort span {
   display: inline-block;
   width: 0;
@@ -171,25 +196,81 @@ a {
 
 .g_goods_sort {
   display: none;
-  height: 100%;
-}
-
-.g_goods_sort .g_sort_nav ul {
-  width: 2.6rem;
-  background: #f6f5f7;
-  height: 100%;
-}
-
-.g_goods_sort .g_sort_nav ul li {
+  position: fixed;
+  top: 1.08rem;
+  bottom: 2.5rem;
   width: 100%;
-  height: 0.1 0.07rem;
+  background: #f6f5f7;
+  border-top: 0.01rem solid #ddd;
+}
+
+.g_goods_sort .g_sort_nav {
+  overflow: hidden;
+  width: 30%;
+  float: left;
+}
+
+.g_goods_sort .g_sort_nav .g_nav2 {
+  height: 100%;
+  width: 100%;
+}
+
+.g_goods_sort .g_sort_nav .g_nav2 li {
+  height: 1.07rem;
   line-height: 1.07rem;
   font-size: 0.33rem;
   display: block;
   position: relative;
   color: #333;
+  border-bottom: 1px solid #ddd;
   text-align: center;
   color: #000;
+}
+
+.g_goods_sort .g_sort_nav .g_nav2 .active_bg {
+  background: #af5bbf;
+}
+
+.g_goods_sort .g_sub_nav {
+  float: left;
+  background: #fff;
+  width: 70%;
+  height: 100%;
+  overflow: auto;
+}
+
+.g_goods_sort .g_sub_nav h2 {
+  height: 1.07rem;
+  line-height: 1.07rem;
+  font-size: 0.36rem;
+  padding-left: 0.5rem;
+}
+
+.g_goods_sort .g_sub_nav ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-top: 1px solid #ddd;
+}
+
+.g_goods_sort .g_sub_nav ul li {
+  font-size: 0.33rem;
+  height: 0.1 0.07rem;
+  line-height: 1.07rem;
+  width: 50%;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+  text-align: center;
+  color: #000;
+}
+
+.g_goods_sort .g_bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .g_content {
@@ -198,18 +279,19 @@ a {
   background: #fff;
 }
 
-.g_content .g_hot {
+.g_content .g_hot .g_hot_t {
   display: none;
   padding: 0.4rem;
 }
 
-.g_content .g_hot p {
+.g_content .g_hot .g_hot_t s
+p {
   font-size: 0.36rem;
   line-height: 1.2rem;
   color: #858385;
 }
 
-.g_content .g_hot .g_hot_goods span {
+.g_content .g_hot .g_hot_t .g_hot_goods span {
   display: inline-block;
   padding: 0.24rem 0.28rem;
   margin: 0 0.24rem 0.24rem 0;
@@ -218,6 +300,47 @@ a {
   height: 0.4rem;
   line-height: 0.4rem;
   background: #ddd;
+}
+
+.g_content .g_hot .g_hot_s .no_goods {
+  height: 2rem;
+  width: 100%;
+  font-size: 0.4rem;
+  line-height: 2rem;
+}
+
+.g_content .g_hot .g_hot_s div {
+  overflow: hidden;
+  padding: 0.27rem;
+  border-bottom: 0.01rem solid #ddd;
+}
+
+.g_content .g_hot .g_hot_s div img {
+  width: 30%;
+  height: 2.0rem;
+  display: block;
+  float: left;
+}
+
+.g_content .g_hot .g_hot_s div p {
+  width: 70%;
+  height: 2.0rem;
+  float: left;
+}
+
+.g_content .g_hot .g_hot_s div p span {
+  display: block;
+  width: 100%;
+  height: 50%;
+  font-size: 0.4rem;
+  line-height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.g_content .g_hot .g_hot_s div p .g_title {
+  color: #aaa;
 }
 
 .g_content .g_goodslist {
@@ -240,13 +363,16 @@ a {
 }
 
 .g_content .g_goodslist .g_goods li .g_goodsImg {
-  display: block;
   text-align: center;
+}
+
+.g_content .g_goodslist .g_goods li .g_goodsImg img {
+  display: inline-block;
 }
 
 .g_content .g_goodslist .g_goods li .g_goodsTitle {
   color: #252525;
-  font-size: 0.32rem;
+  font-size: 0.34rem;
   line-height: 100%;
   padding: 0.208rem 0 0.12rem 0;
   white-space: nowrap;
@@ -256,11 +382,12 @@ a {
 }
 
 .g_content .g_goodslist .g_goods li .g_goodsDesc {
-  padding: 0.2rem 0.2rem;
-  font-size: 0.288rem;
+  padding: 0.2rem;
+  font-size: 0.32rem;
   height: 0.8rem;
   line-height: 0.5rem;
   overflow: hidden;
+  color: #a0a0a0;
 }
 
 .g_content .g_goodslist .g_goods li .g_goodsPrice {
@@ -311,9 +438,62 @@ a {
   height: 1.04rem;
   border-radius: 1.04rem;
   background: purple;
-  background: url(../img/car_small.png) no-repeat;
+  background: url(../img/nav_menu.png) no-repeat;
   background-size: contain;
   margin-bottom: 0.2rem;
+  position: relative;
+}
+
+.fixed_menu .car_fixed .open_menu {
+  background: #fff;
+  position: absolute;
+  bottom: 1.26rem;
+  width: 3.2rem;
+  display: none;
+  right: 0;
+  box-shadow: 0 0 0.24rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.16rem;
+  margin: 0;
+  padding: 0;
+}
+
+.fixed_menu .car_fixed .open_menu li {
+  box-sizing: border-box;
+}
+
+.fixed_menu .car_fixed .open_menu li a {
+  padding-left: 1rem;
+  display: block;
+  width: 2.2rem;
+  height: 0.96rem;
+  line-height: 0.96rem;
+  color: #000;
+  font-size: 0.33rem;
+}
+
+.fixed_menu .car_fixed .open_menu li .nav_menu_index {
+  background: url(../img/nav_menu_index.png) no-repeat 0.2rem center;
+  background-size: 0.6rem;
+}
+
+.fixed_menu .car_fixed .open_menu li .nav_menu_category {
+  background: url(../img/nav_menu_category.png) no-repeat 0.2rem center;
+  background-size: 0.6rem;
+}
+
+.fixed_menu .car_fixed .open_menu li .nav_menu_profile {
+  background: url(../img/nav_menu_profile.png) no-repeat 0.2rem center;
+  background-size: 0.6rem;
+}
+
+.fixed_menu .car_fixed .open_menu li .nav_menu_car {
+  background: url(../img/nav_menu_car.png) no-repeat 0.2rem center;
+  background-size: 0.6rem;
+}
+
+.fixed_menu .car_fixed .open_menu li .nav_menu_scan {
+  background: url(../img/nav_menu_scan.png) no-repeat 0.2rem center;
+  background-size: 0.6rem;
 }
 
 .fixed_menu .back_top {
