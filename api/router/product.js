@@ -88,5 +88,18 @@ exports.register = function(app){
                 response.send({status: true, message: res.message,details:res.details})
             }
         })
-    });       
+    });  
+
+    //商品模糊查询；
+    app.post("/queryProducts",urlencodedParser,function(request,response){
+
+        var keyWord = request.body.keyWord;
+        console.log(keyWord)
+        db.queryProducts("products",keyWord,function(res){
+            if(res.status){
+
+                response.send(res);
+            }
+        })
+    })     
 }
