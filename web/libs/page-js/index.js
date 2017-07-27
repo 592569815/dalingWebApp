@@ -59,12 +59,12 @@
 		$('.time').text(time);
 		
 		//扩展菜单
-		$('.tab-none').on('touchstart',function(){
+		$('.tab-none').on('touchend',function(){
 			$('.index-tab').addClass('show');
 			$('.tab-none').css({display:'none'});
 			return false;
 		})
-		$('body').on('touchstart',function(e){
+		$('body').on('touchend',function(e){
 			if(e.target != $('.tabs')[0]){
 				$('.index-tab').removeClass('show');
 				$('.tab-none').css({display:'block'});
@@ -121,7 +121,7 @@
 		var $ul = $('<ul/>').addClass("g_goods")
 		res.data.map(function(item){
 			$("<li/>").attr("data-id",item.id).html(`
-				<div class="goods-img" data-url = "${item.img}" style="background:url(./libs/img/${item.img})" /></div>
+				<div class="goods-img" data-url = "${item.img}" style="background:url(./libs/img/${item.img}) no-repeat center" /></div>
 				<div class="goods-title">${item.title}</div>
 				<div class="goods-desc">${item.desc}</div>
 				<div class="g_goodsPrice">
@@ -141,7 +141,7 @@
 	}
 	
 	//加入购物车，传数据给购物车
-	$(document).on('touchstart','.join-car',function(){	
+	$(document).on('touchend','.join-car',function(){	
 		$('.success').stop(true).fadeIn().delay(2000).fadeOut();
 		//数据传输
 		var currentId = $(this).data('id');
@@ -165,7 +165,7 @@
 	})
 	
 	//传给详情页的Id
-		$(document).on('touchstart','.goods-img',function(){	
+		$(document).on('touchend','.goods-img',function(){	
 		//数据传输
 			var currentId = $(this).parent().data('id');
 			console.log(currentId)

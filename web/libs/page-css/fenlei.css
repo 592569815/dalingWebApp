@@ -1,3 +1,46 @@
+@charset "UTF-8";
+/*公共css*/
+body, p, ul, li, input, h3, h1, h4, i, h2, dl, dd, dt, img, form {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "微软雅黑","宋体";
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+}
+
+img {
+  border: 0;
+  display: block;
+}
+
+.clearfloat {
+  zoom: 1;
+}
+
+.clearfloat::after {
+  content: '';
+  visibility: hidden;
+  overflow: hidden;
+  display: block;
+  clear: both;
+  height: 0;
+}
+
 html, body {
   width: 10.0rem;
   height: 17.79rem;
@@ -14,7 +57,7 @@ html ul li, body ul li {
 }
 
 .fl_header {
-  height: 1.68rem;
+  height: 1.2rem;
   width: 100%;
   border-bottom: 0.03rem solid #E5E5E5;
 }
@@ -23,9 +66,12 @@ html ul li, body ul li {
   height: 100%;
   margin: 0;
   padding: 0;
+  color: #fff;
+  background: #af5bbf;
+  font-weight: bolder;
   text-align: center;
-  font-size: 0.75rem;
-  line-height: 1.68rem;
+  font-size: 0.55rem;
+  line-height: 1.2rem;
 }
 
 .fl_content {
@@ -95,4 +141,62 @@ html ul li, body ul li {
 .fl_footer {
   height: 1.33rem;
   width: 100%;
+}
+
+/* 滚动菜单 */
+.index-tab {
+  height: 1.2rem;
+  font-size: 0.45rem;
+  line-height: 1.2rem;
+  overflow: auto;
+  position: relative;
+  border-bottom: 5px solid #e5e5e5;
+}
+
+.index-tab a {
+  margin: 0 0.27rem;
+  color: #af5bbf;
+  display: block;
+  float: left;
+}
+
+.index-tab .tab-none {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  width: 1.04rem;
+  height: 1.04rem;
+  background-color: #fff;
+  background-image: url(../img/arrow_down.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-position: center;
+}
+
+.index-tab .tabs {
+  width: 26.5rem;
+  background: #fff;
+  height: 100%;
+}
+
+/* 滚动菜单固定 */
+.index-tab.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+/* 显示 */
+.index-tab.show {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.3);
+  height: auto;
+  z-index: 999;
 }
