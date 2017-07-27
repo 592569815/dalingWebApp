@@ -1,7 +1,7 @@
 jQuery(function($){
 
 	//请求发送数据；
-	$.post("http://10.3.134.237:1234/getProducts",function(res){
+	$.post(global.baseurl + "getProducts",function(res){
 		console.log(res)
 
 		//创建ul;
@@ -160,7 +160,7 @@ jQuery(function($){
 
 		//懒加载函数；
 		function lazyLoad(data){
-			$.post("http://10.3.134.237:1234/getProducts",data,function(res){
+			$.post(global.baseurl + "getProducts",data,function(res){
 				//返回的数组为空时，提示加载完毕；
 				console.log(res.data.length)
 				if(res.data.length <= 0){

@@ -7,7 +7,7 @@
 		var goodqty;
 		// console.log(guid);
 		$.ajax({
-			url:'http://10.3.134.237:1234/getAccount',
+			url:global.baseurl+'getAccount',
 			// http://10.3.134.237:1234/getAccount?id=9
 			dataType:'json',
 			data:{
