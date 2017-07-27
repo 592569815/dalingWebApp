@@ -78,24 +78,32 @@
 			}else{
 				$('.index-tab').removeClass('fixed');
 			}
+
+			//返回顶部；
+			if(scrollTop >400){
+				$(".back_top").show();
+			}else{
+				$(".back_top").hide();
+
+			}
 		}	
 
 		
-		//请求数据
-	$.post(global.baseurl + 'getProducts',{page:1,qty:15},function(res){
+	//请求数据
+	$.post(global.baseurl + 'getProducts',{page:1,qty:10},function(res){
 		console.log(res);
 		var goodsHtml = res.data.map(function(item,idx){
 			return `
 				<div class="goods-one">
 					<div class="goodsbox">
 						<div class="goods">
-							<a class="block">
+							<a class="block" data-id="${item.id}" >
 								<div class="goods-img" style="background-image:url(./libs/img/${item.img})" data-url="${item.img}"></div>
 								<div class="goods-title">${item.title}</div>
 								<div class="goods-desc">${item.desc}</div>
 								<div class="price">${item.price}</div>
 							</a>
-							<div class="joincar" data-id="${item.id}">
+							<div class="joincar join-car" data-id="${item.id}">
 								<div class="car-desc">
 									<p class="car-num">1655人</p>
 									<p>加入购物车</p>
@@ -110,6 +118,19 @@
 			`
 		}).join('');
 		$('.goods-list')[0].innerHTML += goodsHtml;
+		var $ul = $('<ul/>').addClass("g_goods")
+		res.data.map(function(item){
+			$("<li/>").attr("data-id",item.id).html(`
+				<div class="goods-img" data-url = "${item.img}" style="background:url(./libs/img/${item.img})" /></div>
+				<div class="goods-title">${item.title}</div>
+				<div class="goods-desc">${item.desc}</div>
+				<div class="g_goodsPrice">
+					<span class="price">${item.price}</span>
+				</div>
+				<div class="g_addCar join-car" data-id="${item.id}"></div>
+			`).appendTo($ul);
+		});
+		$ul.appendTo('.goods-double')
 	})
 	//先获取localStorage
 	var goodsdatas = localStorage.goodsdatas;
@@ -120,10 +141,10 @@
 	}
 	
 	//加入购物车，传数据给购物车
-	$(document).on('touchstart','.joincar',function(){	
+	$(document).on('touchstart','.join-car',function(){	
 		$('.success').stop(true).fadeIn().delay(2000).fadeOut();
 		//数据传输
-		var currentId = $(this).data('id')
+		var currentId = $(this).data('id');
 		var res = goodsdatas.filter(function(item){
 			return item.id === currentId;
 		})	
@@ -146,7 +167,7 @@
 	//传给详情页的Id
 		$(document).on('touchstart','.goods-img',function(){	
 		//数据传输
-			var currentId = $(this).parent().next().data('id');
+			var currentId = $(this).parent().data('id');
 			console.log(currentId)
 			location.href = "xiangqing.html?id=" + currentId;
 		})
@@ -155,74 +176,8 @@
 		$("body").animate({scrollTop:0});
 	})	
 
-	/*横向滚动*/
-	$('.tabs').on('touchmove',function(e){
-		e.preventDefault();
-	})
-
-	// 滚动更多，懒加载；
-	var pageNum = 1;
-	$(window).on('scroll',function(){
-		var scrollTop = parseInt($(window).scrollTop());
-		var winHeight = parseInt($(window).height());
-		var scrollHeight = parseInt($('html').outerHeight());
-
-
-		//返回顶部；
-		if(scrollTop >400){
-			$(".back_top").show();
-		}else{
-			$(".back_top").hide();
-
-		}
-
-		// 如何判断滚动到最底部
-		if(scrollTop >= scrollHeight - winHeight - 400){
-			$(".holdon").show(2000);
-			pageNum++;
-			var lazy =lazyLoad({page:pageNum});
-			console.log(pageNum)
-
-		}
-
-		//懒加载函数；
-		function lazyLoad(data){
-			$.post(global.baseurl + "getProducts",data,function(res){
-				//返回的数组为空时，提示加载完毕；
-				console.log(res.data.length)
-				if(res.data.length <= 0){
-					$(".holdon").html("没有更多商品了哦！");
-				}
-				$(".holdon").hide();
-
-				res.data.map(function(item){
-					$("<div/>").addClass('goods-one').html(`
-						<div class="goodsbox">
-						<div class="goods">
-							<a class="block">
-								<div class="goods-img" style="background-image:url(./libs/img/${item.img})" data-url="${item.img}"></div>
-								<div class="goods-title">${item.title}</div>
-								<div class="goods-desc">${item.desc}</div>
-								<div class="price">${item.price}</div>
-							</a>
-							<div class="joincar" data-id="${item.id}">
-								<div class="car-desc">
-									<p class="car-num">1655人</p>
-									<p>加入购物车</p>
-								</div>
-								<div class="icon-car">
-									<span class="car"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-					`).appendTo($(".goods-list"));
-					return true;
-				});
-			})
-		}
-	});
-
+	
+	
 
 	});
 });
