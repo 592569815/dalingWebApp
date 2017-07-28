@@ -76,6 +76,7 @@ body {
   display: inline-block;
   width: 0.48rem;
   height: 0.48rem;
+  margin-left: 0.4rem;
 }
 
 .bigbox .footer .maidan .one .fondo {
@@ -184,6 +185,7 @@ body {
   display: inline-block;
   width: 0.48rem;
   height: 0.48rem;
+  background-size: cover;
 }
 
 .bigbox .body .Item_information .choose .lect {
@@ -192,6 +194,7 @@ body {
   height: 0.48rem;
   border: 1px solid #9E9C9E;
   border-radius: 50%;
+  margin-bottom: 0.93rem;
 }
 
 .bigbox .body .Item_information .choose img {

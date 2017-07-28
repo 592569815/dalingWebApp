@@ -50,7 +50,9 @@ body{
             overflow: hidden;
             .one{
                 float:left;
-                .button{display: inline-block;width:0.48rem;height:0.48rem;}
+                .button{
+                    display: inline-block;width:0.48rem;height:0.48rem;margin-left:0.4rem;
+                }
                 .fondo{
                     background:url(../img/imgIMG_0392_03.jpg)no-repeat;display:inline-block;width:0.48rem;height:0.48rem;
                 }
@@ -133,9 +135,10 @@ body{
             .choose{
                 vertical-align: middle;
                 .fondo{
-                    background:url(../img/imgIMG_0392_03.jpg)no-repeat;display:inline-block;width:0.48rem;height:0.48rem;
+                    background:url(../img/imgIMG_0392_03.jpg) no-repeat;display:inline-block;width:0.48rem;height:0.48rem;background-size:cover;
                 }
-                .lect{display: inline-block;width:0.48rem;height:0.48rem;border:1px solid #9E9C9E;border-radius:50%;}
+                .lect{display: inline-block;width:0.48rem;height:0.48rem;border:1px solid #9E9C9E;border-radius:50%;margin-bottom:0.93rem;
+                }
                 img{height:2.34rem;width:2.34rem;}
             }
             .message{

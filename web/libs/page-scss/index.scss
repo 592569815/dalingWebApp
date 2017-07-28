@@ -2,21 +2,24 @@
 @import 'common';
 //头部
 header{
-	width:100%;height:1.2rem;text-align:center;font-size:0.45rem;line-height:1.2rem;position:relative;background:#af5bbf;color:#fff;
+	width:100%;height:1.2rem;text-align:center;font-size:0.55rem;line-height:1.2rem;position:relative;background:#af5bbf;color:#fff;
 	span{
 		position:absolute;width:0.67rem;height:0.67rem;right:0.33rem;top:0.27rem;background-image:url(../img/index-search.png);
 	}
+	.index-title{
+		font-weight: bolder;
+	}
 }
 .index-tab{
-	width:100%;height:1.04rem;font-size:0.35rem;line-height:1.04rem;overflow:hidden;position:relative;border-bottom:5px solid #e5e5e5;
+	height:1.2rem;font-size:0.45rem;line-height:1.2rem;overflow:auto;position:relative;border-bottom:5px solid #e5e5e5;
 	a{
-		margin:0 0.27rem;color:$acolor;
+		margin:0 0.27rem;color:$mainbg; display:block;float:left;
 	}
 	.tab-none{
 		position:absolute;right:0;top:0;z-index:999;width:1.04rem;height:1.04rem;background-color:$bgcolor;background-image:url(../img/arrow_down.png);background-repeat:no-repeat;display:inline-block;background-position:center;
 	}
 	.tabs{
-		width:100%;background:$bgcolor;
+		width:26.5rem;background:$bgcolor;height:100%;
 	}
 	
 }
@@ -85,7 +88,7 @@ header{
 		}
 	}
 	.h10{
-		height:0.8rem;padding:0;line-height:0.8rem;
+		height:1rem;padding:0;line-height:1rem;padding-bottom:0.27rem;
 	}
 }
 .time-icon{
@@ -133,15 +136,11 @@ header{
 			.price{
 				color:#f0593f;font-size:0.4rem;line-height:1.33rem;
 			}
-			.price::before{
-				content:'￥';
-			}
+			
 		}
 	}
 }
-.goods-list{
-	padding-bottom:1.33rem;
-}
+
 //成功加入购物车
 .join-success{
 	position:fixed;top:50%;z-index:999;text-align:center;color:$bgcolor;width:100%;
@@ -169,4 +168,133 @@ header{
 		color:#ccc;
 		height:0.8rem;
 		line-height: 0.8rem;
+}
+.goods-double{
+	background:#af5bbf;
+}
+
+.g_goods{
+	width:100%;
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:space-between;
+	li{
+		position:relative;
+		background: #fff;
+		width:49%;
+		margin-bottom:0.2rem;
+		.goods-img{
+			display: block;
+			text-align: center;
+			background-size:cover;
+			height:4.0rem;
+		}
+		.goods-title{
+		    color: #252525;
+		    font-size: 0.32rem;
+		    line-height: 100%;
+		    padding: 0.208rem 0 0.12rem 0;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		    padding:0 0.2rem;
+		}
+		.goods-desc{
+			padding:0.2rem 0.2rem;
+			font-size: 0.288rem;
+		    height: 0.8rem;
+		    line-height: 0.5rem;
+		    overflow: hidden;
+		}
+		.g_goodsPrice{
+			padding:0 0.2rem 0.2rem 0.2rem;
+			font-size: 0.416rem;
+		    color: #ff4a30;
+		    line-height: 100%;
+		    overflow: hidden;
+
+		    span{
+		    	display:inline-block;
+
+		    }
+		    .price{
+		    	width:1rem;
+		    	height:1rem;
+		    	line-height: 1rem;
+		    	text-align:center;
+		    }
+		   
+		}
+		.g_addCar{
+			position:absolute;
+			bottom:0.4rem;
+			right:0.5rem;
+	    	width:0.7rem;
+	    	height:0.7rem;
+	    	border: 0.01rem solid #ddd; 
+	    	background: url(../img/car.10e6a1.png) no-repeat;
+	    	background-size: 0.7rem 0.7rem;
+			margin-top: 0.13rem;
+		}
+	}
+}
+.bottom{
+	height:4.0rem;text-align:center;line-height:1.33rem;background:#efefef;font-size:0.53rem;
+}
+.price::before{
+	content:'￥';
+}
+
+/* 热门搜索 */
+.g_hot{
+	display: none;
+	padding:0.4rem;
+	p{
+	    font-size: 0.36rem;
+		  	line-height: 1.2rem;
+		color: #858385;
+	}
+	.g_hot_goods span{
+		display:inline-block;
+		padding: 0.24rem 0.28rem;
+			margin: 0 0.24rem 0.24rem 0;
+		font-size: 0.36rem;
+		text-align: center;
+		height:0.4rem;
+		line-height: 0.4rem;
+		background: #ddd;
+		
+	}
+}
+
+/* 搜索栏 */
+.get_goods{
+	display: none;
+	overflow:hidden;
+	width:100%;
+	._search{
+		float:left;
+		border:none;
+		height:0.72rem;
+		margin-top:0.18rem;
+		border-radius: 0.72rem;
+		padding: 0 0.68rem;
+		width:75%;
+		background: #fff url(../img/search.png) no-repeat 0.2rem center;
+		background-size: 0.36rem 0.368rem;
+		input{
+			display:block;
+			width:100%;
+			height:0.72rem;
+			line-height: 0.72rem;
+			font-size: 0.336rem;
+			border:none;
+			outline: none;
+		}
+	}
+	.cancle{
+		float:right;
+		font-size: 0.336rem;
+	}
 }
