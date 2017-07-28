@@ -309,7 +309,7 @@ module.exports = {
                                 }
                             }
                         }else{
-                            db.close();
+                            // db.close();
                             console.log(err)
                         }
                     })
@@ -395,17 +395,56 @@ module.exports = {
     },
 
     //价格排序；
-    sortPrice:function(collectionName,data,callback){
-        db.open(function(err,db){
-            if(!err){
-                db.collection(collectionName,function(err,collection){
-                    if(!err){
-                        collection.find().sort({"price":[data]}).toArray(function(err,docs){
+    sortPrice:function(collectionName, sortPrice, callback){
 
-                        })
-                    }
-                })
-            }
-        })
+        //默认显示20个商品；
+        var obj ={page:1,qty:20};
+        var targetObj = {};
+        //对象扩展；
+        Object.assign(targetObj,obj,sortPrice);
+
+
+        var page = targetObj.page - 1;
+        var qty = Number(targetObj.qty);
+        var up_down = Number(sortPrice.status);
+        var name = sortPrice.options;
+
+        db.open(function(error, db){
+        
+            if(!error){
+                //查找对应 id 的商品；
+                db.collection(collectionName,function(err,collection){
+                    // if(err) return;
+                    var total = 0;
+                   
+                    collection.find().sort({[name]:up_down}).limit(qty).skip(page*qty).toArray(function(err,docs){
+                        if(!err){
+                            //得到商品信息；
+                            if(docs.length > 0){
+                                
+                                //输出商品数量；
+                                var data = {};
+                                                            
+                                data["data"] = docs;
+
+                                if(callback && typeof callback == "function"){
+                                    callback({status:true,message:"商品获取成功！",details:data});
+                                    return;
+                                }
+                            }else{
+                                console.log("商品获取失败！");
+                                 if(callback && typeof callback == "function"){
+                                    callback({status:false,message:"商品获取失败！",details:null});
+                                    return;
+                                }
+                            }
+                        }else{
+                            console.log(err)
+                        }
+                    });
+                    db.close();
+                });
+            }  
+        });
     }
 }

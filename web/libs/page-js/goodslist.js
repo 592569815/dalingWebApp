@@ -1,5 +1,5 @@
 require(['config'],function(){
-	require(['jquery',"common"],function($){
+	require(['jquery'],function($){
 
 		//请求发送数据；global.baseurl + "getProducts",
 		$.post(global.baseurl + "getProducts",function(res){
@@ -14,6 +14,12 @@ require(['config'],function(){
 			//创建ul;
 			var $ul = $("<ul/>").addClass("g_goods");
 			res.data.map(function(item){
+				if(item.sales / 10000 >= 1){
+					var sales = (item.sales/10000).toFixed(1) + "万";
+				}else{
+					var sales = item.sales;
+				};
+
 				$("<li/>").attr("data-id",item.id).html(`
 					<div class="g_goodsImg"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></div>
 					<div class="g_goodsTitle">${item.title}</div>
@@ -22,6 +28,7 @@ require(['config'],function(){
 						<span class="g_price">￥&nbsp;&nbsp;${item.price}</span>
 						<span class="g_addCar"></span>
 					</div>
+					<div class="g_sales">已卖出&nbsp;<span>${sales}</span>&nbsp;件</div>
 				`).appendTo($ul);
 			});
 			$ul.appendTo($(".g_goodslist"));
@@ -90,6 +97,8 @@ require(['config'],function(){
 			$(".g_hot_t").show();
 			//隐藏商品列表
 			$(".g_goodslist").hide();
+			//隐藏悬浮菜单；
+			$(".fixed_menu").hide();
 			//输入框获得焦点；
 			$(".search_goods").focus();
 			//隐藏导航；
@@ -98,7 +107,7 @@ require(['config'],function(){
 
 		//搜索商品；
 		var timer;
-		$(".search_goods").on("input",function(){
+		$(".search_goods").bind("input propertychange",function(){
 			//清除定时器；
 			clearTimeout(timer);
 
@@ -152,16 +161,23 @@ require(['config'],function(){
 
 					//点击搜索，找到全部符合条件的商品
 					$(".g_search").click(function(){
+
+						$(this).hide();
 						//隐藏搜索页面；
-						// $(".get_goods").hide();
+						
 						$(".g_hot").hide();
 
 						//显示商品列表
 						$(".g_goodslist").show();
 						$(".search").show();
+						//显示取消按钮
+						$(".cancle").show();
 						
 						//显示导航；
 						$(".g_nav").show();
+
+						//显示悬浮菜单；
+						$(".fixed_menu").show();
 
 					})
 				})
@@ -179,6 +195,9 @@ require(['config'],function(){
 		$(".cancle").click(function(){
 			$(this).parents(".get_goods").hide();
 			$(".search").show();
+			//显示悬浮菜单；
+			$(".fixed_menu").show();
+
 			$(".g_hot_t").hide();
 			$(".g_goodslist").show();
 			//隐藏导航；
@@ -190,28 +209,22 @@ require(['config'],function(){
 			$(this).children("a").addClass("g_active");
 			$(this).siblings("li").children("a").removeClass("g_active");
 
-			//进行价格高低排序；
-			if($(this).hasClass("g_price")){
-				var num;
-
-				if($(".priceUp").hasClass("_priceUp")){
-					$(".priceUp").removeClass("_priceUp");
-					$(".priceDown").addClass("_priceDown");
-					num = -1;
-				}else{
-					$(".priceUp").addClass("_priceUp");
-					$(".priceDown").removeClass("_priceDown");
-					num = 1;
-				};
-	console.log(num)
-				// $.post("http://localhost:1234/sortPrice",{status:up_down}),function(res){
-				// 	console.log(res);
-				// }
-			};
-
 			$(".g_goods_sort").hide();
 			//隐藏商品列表；
 			$(".g_goodslist").show();
+
+			//点击其他时，取消价格高亮排序；
+			if(!$(this).hasClass("g_price")){
+				//取消价格排序高亮
+				$(".priceUp").removeClass("_priceUp");
+				$(".priceDown").removeClass("_priceDown");
+			}
+			//点击其他时，取消价格高亮排序；
+			if(!$(this).hasClass("g_sales_accounts")){
+				//取消价格排序高亮
+				$(".salesUp").removeClass("_salesUp");
+				$(".salesDown").removeClass("_salesDown");
+			}
 				
 			//隐藏搜索；
 			$(".head").show();
@@ -231,12 +244,73 @@ require(['config'],function(){
 
 		//综合显示商品；
 		$(".comp").click(function(){
+			
+
 			//请求发送数据；
 			$.post(global.baseurl + "getProducts",function(res){
 				console.log(res);
+				//调用生成商品函数 
 				createGoods(res);
 			});
 		})
+
+		//进行销量高低排序；
+		$(".g_sales_accounts").click(function(){
+			var num;
+
+			if($(".salesUp").hasClass("_salesUp")){
+				$(".salesUp").removeClass("_salesUp");
+				$(".salesDown").addClass("_salesDown");
+				num = -1;
+			}else{
+				$(".salesUp").addClass("_salesUp");
+				$(".salesDown").removeClass("_salesDown");
+				num = 1;
+			};
+			console.log(num);
+
+			$.post(global.baseurl + "sortPrice",{options:"sales",status:num},function(res){
+				console.log(res);
+				//调用生成商品函数 
+				createGoods(res);
+				
+			});
+		});
+
+		//显示新品；
+		$(".g_newGoods").click(function(){
+			$.post(global.baseurl + "sortPrice",{options:"date",status:-1},function(res){
+				console.log(res);
+				//调用生成商品函数 
+				createGoods(res);
+				
+			});
+		})
+
+		//进行价格高低排序；
+		$(".g_sortPrice").click(function(){
+			var num;
+
+			if($(".priceUp").hasClass("_priceUp")){
+				$(".priceUp").removeClass("_priceUp");
+				$(".priceDown").addClass("_priceDown");
+				num = -1;
+			}else{
+				$(".priceUp").addClass("_priceUp");
+				$(".priceDown").removeClass("_priceDown");
+				num = 1;
+			};
+			console.log(num);
+
+			$.post(global.baseurl + "sortPrice",{options:"price",status:num},function(res){
+				console.log(res);
+				//调用生成商品函数 
+				createGoods(res);
+				
+			});
+		});
+
+
 
 		//点击返回顶部；
 		$(".back_top").click(function(){
@@ -244,10 +318,10 @@ require(['config'],function(){
 		})
 
 		// 滚动更多,懒加载；
-		var pageNum = 0;
-		var num = 0;
+		var pageNum = 1;
+		var num = 1;
 		$(window).on('scroll',function(){
-			num++;
+			
 			var scrollTop = parseInt($(window).scrollTop());
 			var winHeight = parseInt($(window).height());
 			var scrollHeight = parseInt($('html').outerHeight());
@@ -272,29 +346,71 @@ require(['config'],function(){
 
 			// 如何判断滚动到最底部
 			if(scrollTop >= scrollHeight - winHeight - 400){
+				num++;
 				console.log(9999999);
 				$(".holdon").show();
 				if(num == pageNum + 1){
 					pageNum++;
-
-		//懒加载函数；
-		function lazyLoad(data){
-			$.post(global.baseurl + "getProducts",data,function(res){
-				//返回的数组为空时，提示加载完毕；
-				console.log(res.data.length)
-				if(res.data.length <= 0){
-					$(".holdon").html("没有更多商品了哦！");
+					var lazy = lazyLoad({page:pageNum});
 				}
-				pageNum++;
-				var lazy = lazyLoad({page:pageNum});
 
-			}
+			};
 
 			//懒加载函数；
 			function lazyLoad(data){
-				$.post(global.baseurl + "getProducts",data,function(res){
-					//返回的数组为空时，提示加载完毕；
-					//console.log(res.data.length)
+
+				//判断是否存在价格排序；
+				if($(".priceUp").hasClass("_priceUp")){
+					//价格升序；
+					data["status"] = 1;
+					data["options"] = price;
+					// {options:"price",status:num}
+					console.log(data)
+					$.post(global.baseurl + "sortPrice",data,function(res){
+						addGoods(res);
+					});
+				}else if($(".priceDown").hasClass("_priceDown")){
+					//价格降序；
+					data["status"] = -1;
+					data["options"] = price;
+
+					console.log(data)
+
+					$.post(global.baseurl + "sortPrice",data,function(res){
+						addGoods(res);
+					});
+				}else if($(".g_sales_accounts").hasClass("_salesUp")){
+					//销量升序；
+					data["status"] = 1;
+					data["options"] = sales;
+					// {options:"price",status:num}
+					console.log(data)
+					$.post(global.baseurl + "sortPrice",data,function(res){
+						addGoods(res);
+					});
+				}else if($(".g_sales_accounts").hasClass("_salesDown")){
+					//销量降序；
+					data["status"] = -1;
+					data["options"] = sales;
+
+					console.log(data)
+
+					$.post(global.baseurl + "sortPrice",data,function(res){
+						addGoods(res);
+					});
+				}else{
+
+					$.post(global.baseurl + "getProducts",data,function(res){
+						addGoods(res);
+
+					});
+				};
+				//返回的数组为空时，提示加载完毕；
+				//console.log(res.data.length)
+
+				//商品懒加载追加商品函数；
+				function addGoods(res){
+
 					if(!res.data){
 						console.log(666666)
 						return false;
@@ -303,6 +419,11 @@ require(['config'],function(){
 					$(".holdon").hide();
 
 					res.data.map(function(item){
+						if(item.sales / 10000 >= 1){
+							var sales = (item.sales/10000).toFixed(1) + "万";
+						}else{
+							var sales = item.sales;
+						}
 						$("<li/>").html(`
 							<div class="g_goodsImg"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></div>
 							<div class="g_goodsTitle">${item.title}</div>
@@ -311,10 +432,12 @@ require(['config'],function(){
 								<span class="g_price">￥&nbsp;&nbsp;${item.price}</span>
 								<span class="g_addCar"></span>
 							</div>
+							<div class="g_sales">已卖出&nbsp;${sales}&nbsp;件</div>
+
 						`).appendTo($(".g_goods"));
 						return true;
 					});
-				})
+				}
 			}
 		});
 
@@ -383,8 +506,6 @@ require(['config'],function(){
 			var idx = $(this).index();
 			$(this).addClass("active_bg").siblings("li").removeClass("active_bg");
 			$(".g_sub_nav").children().eq(idx).show().siblings().hide();
-
-
-		})
+		});
 	});
 });

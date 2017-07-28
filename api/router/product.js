@@ -96,7 +96,6 @@ exports.register = function(app){
     app.post("/queryProducts",urlencodedParser,function(request,response){
 
         //{name:type,keyWord:国货}
-console.log(request.body)
         db.queryProducts("products",request.body,function(res){
             if(res.status){
 
@@ -109,11 +108,10 @@ console.log(request.body)
 
     //价格排序；
     app.post("/sortPrice",urlencodedParser,function(request,response){
-        var data = request.body.status;
 
-        db.sortPrice("products",data,function(res){
+        db.sortPrice("products",request.body,function(res){
             if(res.status){
-                response.send(res);
+                response.send(res.details);
             }
         })
     })    

@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<title>商品列表页</title>
 	<link rel="stylesheet" href="./libs/page-css/goodslist.css">
+	<script src="./libs/page-js/require.js" data-main="./libs/page-js/goodslist"></script>
 	<script src="./libs/common/common.js"></script>
-	<script src="./libs/jquery/jquery-3.2.1.js"></script>
-	<script src="./libs/page-js/goodslist.js"></script>
+	
 </head>
 <body>
 	<div class="head">
@@ -28,9 +28,15 @@
 	<div class="g_nav">
 		<ul class="g_nav_list">
 			<li><a href="#" class="g_active comp">综合</a></li>
-			<li><a href="#">销量</a></li>
-			<li><a href="#">新品</a></li>
-			<li class="g_price">
+			<li class="g_sales_accounts">
+				<a href="#" >销量</a>
+				<div>
+					<span class="salesUp"></span>
+					<span class = "salesDown"></span>
+				</div>
+			</li>
+			<li class="g_newGoods"><a href="#">新品</a></li>
+			<li class="g_price g_sortPrice">
 				<a href="#">价格</a>
 				<div>
 					<span class="priceUp"></span>

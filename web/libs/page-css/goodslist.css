@@ -134,7 +134,16 @@ a {
   line-height: 1.07rem;
 }
 
+.g_nav .g_nav_list .g_price a {
+  float: left;
+  margin-left: 20%;
+}
+
 .g_nav .g_nav_list .g_price div {
+  float: left;
+  height: 100%;
+  margin-top: 15%;
+  margin-left: 0.13rem;
   display: inline-block;
   padding-top: 0.07rem;
 }
@@ -179,6 +188,60 @@ a {
   border-top: 0.144rem solid red;
 }
 
+.g_nav .g_nav_list .g_sales_accounts a {
+  float: left;
+  margin-left: 20%;
+}
+
+.g_nav .g_nav_list .g_sales_accounts div {
+  float: left;
+  height: 100%;
+  margin-top: 15%;
+  margin-left: 0.13rem;
+  display: inline-block;
+  padding-top: 0.07rem;
+}
+
+.g_nav .g_nav_list .g_sales_accounts div .salesUp {
+  display: block;
+  margin-bottom: 0.07rem;
+  width: 0;
+  height: 0;
+  border-left: 0.144rem solid transparent;
+  border-right: 0.144rem solid transparent;
+  border-bottom: 0.144rem solid #aaa;
+}
+
+.g_nav .g_nav_list .g_sales_accounts div .salesDown {
+  display: block;
+  margin-top: 0.07rem;
+  width: 0;
+  height: 0;
+  border-left: 0.144rem solid transparent;
+  border-right: 0.144rem solid transparent;
+  border-top: 0.144rem solid #aaa;
+}
+
+.g_nav .g_nav_list .g_sales_accounts div ._salesUp {
+  display: block;
+  margin-bottom: 0.07rem;
+  width: 0;
+  height: 0;
+  border-left: 0.144rem solid transparent;
+  border-right: 0.144rem solid transparent;
+  border-bottom: 0.144rem solid red;
+}
+
+.g_nav .g_nav_list .g_sales_accounts div ._salesDown {
+  display: block;
+  margin-top: 0.07rem;
+  width: 0;
+  height: 0;
+  border-left: 0.144rem solid transparent;
+  border-right: 0.144rem solid transparent;
+  border-top: 0.144rem solid red;
+}
+
 .g_nav .g_nav_list .g_sort span {
   display: inline-block;
   width: 0;
@@ -205,7 +268,7 @@ a {
 }
 
 .g_goods_sort .g_sort_nav {
-  overflow: hidden;
+  overflow: auto;
   width: 30%;
   float: left;
 }
@@ -293,7 +356,7 @@ p {
 
 .g_content .g_hot .g_hot_t .g_hot_goods span {
   display: inline-block;
-  padding: 0.24rem 0.28rem;
+  padding: 0.2rem 0.2rem;
   margin: 0 0.24rem 0.24rem 0;
   font-size: 0.36rem;
   text-align: center;
@@ -404,19 +467,33 @@ p {
 
 .g_content .g_goodslist .g_goods li .g_goodsPrice .g_price {
   float: left;
-  width: 1rem;
-  height: 1rem;
-  line-height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
   text-align: center;
 }
 
 .g_content .g_goodslist .g_goods li .g_goodsPrice .g_addCar {
   float: right;
-  width: 1rem;
-  height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
   border: 0.01rem solid #ddd;
   background: url(../img/car_icon.png) no-repeat;
-  background-size: 1rem 1rem;
+  background-size: 0.8rem;
+}
+
+.g_content .g_goodslist .g_goods li .g_sales {
+  font-size: 0.32rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  padding-left: 0.2rem;
+  overflow: hidden;
+  color: #252525;
+  background: #f9f9f9;
+}
+
+.g_content .g_goodslist .g_goods li .g_sales span {
+  color: red;
 }
 
 .g_content .holdon {

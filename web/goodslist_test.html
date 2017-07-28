@@ -37,9 +37,12 @@
 		<button id="goodsAll">所有商品</button>
 		<script>
 			$("#lazy").click(function(){
-				$.post("http://localhost:1234/getProducts",{page:1},
+				$.post("http://localhost:1234/sortPrice",{"status":1},
 					function(res){
 						console.log(res)
+						res.data.map(function(item){
+							console.log(item.price)
+						})
 					}
 				)
 			})
