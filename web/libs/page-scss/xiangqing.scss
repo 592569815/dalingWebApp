@@ -9,7 +9,9 @@ html,body{
 	ul li{list-style:none;}
 	position: relative;
 }
-
+.price::before{
+	content:'￥';
+}
 .xq_header{
 	height:1.68rem;
 	width:100%;

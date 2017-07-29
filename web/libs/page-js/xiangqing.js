@@ -38,6 +38,7 @@
 					goodsdatas = [];
 				}
 
+
 				$s5.on('click',function(){
 					
 					var currentId = resres.id;
@@ -90,7 +91,7 @@
 					</div>
 
 					<div class="p2">
-						<h3 class="price">￥${item.price}</h3>
+						<h3 class="price">${item.price}</h3>
 						<h4 class="delprice">${item.type}限时售价 ￥${item.oldPrice}</h4>
 					</div>
 				</div>

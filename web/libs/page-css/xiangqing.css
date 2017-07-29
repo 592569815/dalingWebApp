@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body {
   width: 100%;
   height: 20rem;
@@ -13,6 +14,10 @@ html a, body a {
 
 html ul li, body ul li {
   list-style: none;
+}
+
+.price::before {
+  content: '￥';
 }
 
 .xq_header {
