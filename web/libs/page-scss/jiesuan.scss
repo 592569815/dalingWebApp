@@ -1,5 +1,12 @@
+
 *{margin:0;padding:0;}
 body{background:#fbfafc;}
+.price::before,.money::before,.g_total::before{
+    content:'￥';
+}
+.qty::after{
+    content:'件';
+}
 .bigbox{
     .head{
         background:#fbfafc;
@@ -59,6 +66,7 @@ body{background:#fbfafc;}
     .body{
         height:auto;
         font-size:0.34rem;
+        margin-bottom:1.35rem;
         input{font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#d7d7dc;width:9.71rem;}
         input:nth-of-type(2),input:nth-of-type(3){padding:0.45rem 0 0.45rem 0.29rem;border-bottom:1px solid #e5e5e5;}
         .province{font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#d7d7dc;border-bottom:1px solid #e5e5e5;background:#fff;}
@@ -142,6 +150,30 @@ body{background:#fbfafc;}
             .total_price:nth-of-type(5){
                 background:#fbfafc;
                 color: #858385;
+            }
+        }
+    }
+}
+.paystyle{
+    p{
+        font-size:0.4rem;line-height:1.2rem;text-indent:0.3rem;
+    }
+    ul{
+        li{
+            border-bottom: 1px solid #ebebeb;background: #fff;display: flex;align-items: center;padding:0.41rem 0.66rem 0.41rem 0.33rem;
+            .lect{display: inline-block;width:0.48rem;height:0.48rem;border:1px solid #9E9C9E;border-radius:50%;margin-right:0.4rem;
+            }
+            .fondo{
+                background:url(../img/imgIMG_0392_03.jpg) no-repeat;display:inline-block;width:0.48rem;height:0.48rem;background-size:cover;
+            }
+            .icon-zhifubao{
+                background:url(../img/appalipay.png) no-repeat;background-size:cover;width:0.67rem;height:0.67rem;margin-right:0.4rem;
+            }
+            .icon-weixin{
+                background:url(../img/weixin.png) no-repeat center; background-size:cover;width:0.8rem;height:0.8rem;margin-right:0.4rem;
+            }
+            .baidu{
+                background:url(../img/baidupay.png) no-repeat center; background-size:cover;width:0.67rem;height:0.67rem;margin-right:0.4rem;
             }
         }
     }

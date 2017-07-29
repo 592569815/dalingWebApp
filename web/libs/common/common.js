@@ -1,7 +1,7 @@
 /*公共js*/
 //baseurl
 var global = global || {};
-global.baseurl = 'http://10.3.134.234:1234/';
+global.baseurl = 'http://localhost:1234/';
 
 //动态设置viewport的scale
 var iScale = 1;
@@ -31,6 +31,72 @@ function goback(parent,left,top,type){
 }
 //使用案例 	goback(b,7,8)
 
+//封装加载动画
+function load(has){
+	var res;
+	if(has == 'yao'){
+		res = 'rgba(0,0,0,0.3)';
+	}else{
+		res = 'rgba(0,0,0,0)';
+	}
 
+
+	var div = $('<div/>').addClass('load');
+
+	var img = $("<img/>").attr({src:'./libs/img/loading1.gif'})
+	.css({display:'inline-block',width:'0.4rem'})
+	.appendTo(div);
+
+
+	div.css({
+		position:'fixed',background:res,
+		width:'100%',
+		height:'100%',
+		top:0,
+
+		fontSize:0,
+		textAlign:'center',
+		paddingTop:(innerHeight- img.outerHeight())/2,
+
+	});
+
+	div.appendTo($('body'));
+
+}
+
+//移除加载动画
+function removeload(){
+	$('.load').remove();
+}
+
+//浏览历史
+function uhistory(text){
+	//商品浏览历史 获取/设置容器
+	var userhistory =  localStorage.userhistory;
+
+	if(userhistory){
+
+		userhistory = JSON.parse(userhistory);
+
+	}else{
+		userhistory = [];
+	}
+
+
+	//判读是否存在相同历史
+	var has = 0;
+	userhistory.forEach(function(item,idx){
+		if(item.user == text){
+			has=1;
+		}
+	});
+
+	//历史不存在，内容不为空，写入更新
+	if(has==0 && text!=''){
+		userhistory.push({user:text});
+		localStorage.userhistory = JSON.stringify(userhistory);
+	}
+
+}
 
 

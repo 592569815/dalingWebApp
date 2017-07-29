@@ -2,7 +2,7 @@
 @import 'common';
 //头部
 header{
-	width:100%;height:1.2rem;text-align:center;font-size:0.55rem;line-height:1.2rem;position:relative;background:#af5bbf;color:#fff;
+	width:100%;height:1.2rem;text-align:center;font-size:0.45rem;line-height:1.2rem;position:relative;background:#af5bbf;color:#fff;
 	span{
 		position:absolute;width:0.67rem;height:0.67rem;right:0.33rem;top:0.27rem;background-image:url(../img/index-search.png);
 	}
@@ -11,7 +11,7 @@ header{
 	}
 }
 .index-tab{
-	height:1.2rem;font-size:0.45rem;line-height:1.2rem;overflow:auto;position:relative;border-bottom:5px solid #e5e5e5;
+	height:1.0rem;font-size:0.35rem;line-height:1.0rem;overflow:auto;position:relative;border-bottom:5px solid #e5e5e5;
 	a{
 		margin:0 0.27rem;color:$mainbg; display:block;float:left;
 	}
@@ -19,7 +19,7 @@ header{
 		position:absolute;right:0;top:0;z-index:999;width:1.04rem;height:1.04rem;background-color:$bgcolor;background-image:url(../img/arrow_down.png);background-repeat:no-repeat;display:inline-block;background-position:center;
 	}
 	.tabs{
-		width:26.5rem;background:$bgcolor;height:100%;
+		width:21.5rem;background:$bgcolor;height:100%;
 	}
 	
 }
@@ -104,13 +104,13 @@ header{
 .goods-one{
 	margin-top:0.13rem;
 	.goodsbox{
-		padding: 0.27rem;background-color:$bgcolor;
+		padding: 0.1rem;background-color:$bgcolor;
 		.goods{
-			margin-bottom:0.27rem;position:relative;
+			margin-bottom:0.1rem;position:relative;
 		}
 		//加入购物车
 		.joincar{
-			position:absolute;bottom:0;right:0;font-size:0.32rem;background:$bgcolor;height:1.0rem;width:3rem;text-align:center;border:1px solid #a4a4a4;border-radius:0.07rem;line-height:0.5rem;display:flex;justify-content:space-around;align-items:center;
+			position:absolute;bottom:0.1rem;right:0.2rem;font-size:0.32rem;background:$bgcolor;height:1.0rem;width:3rem;text-align:center;border:1px solid #a4a4a4;border-radius:0.07rem;line-height:0.5rem;display:flex;justify-content:space-around;align-items:center;
 			.icon-car{
 				width:0.67rem;height:0.67rem;
 				.car{
@@ -120,17 +120,18 @@ header{
 		}
 		.block{
 			display:block;
+			padding:0 0.2rem;
 			//图片
 			.goods-img{
-				height:7.0rem;background-size:cover;margin-bottom:0.13rem;position:relative;width:100%;background-position:center center;background-repeat:no-repeat;border:1px solid #ddd;box-shadow: 0 0 0.27rem #d5d2d2;
+				height:7.0rem;background-size:contain;margin-bottom:0.13rem;position:relative;width:100%;background-position:center center;background-repeat:no-repeat;border:1px solid #ddd;box-shadow: 0 0 0.27rem #d5d2d2;
 			}
 			//标题
 			.goods-title{
-				font-size: 0.4rem;line-height:1.07rem;color:$acolor;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+				font-size: 0.4rem;line-height:1rem;color:$acolor;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
 			}
 			//描述
 			.goods-desc{
-				color:#9f9f9f;font-size:0.27rem;line-height:2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+				color:#9f9f9f;font-size:0.35rem;line-height:0.53rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
 			}
 			//价格
 			.price{
@@ -145,7 +146,7 @@ header{
 .join-success{
 	position:fixed;top:50%;z-index:999;text-align:center;color:$bgcolor;width:100%;
 	.join-success-box{
-		max-width: 6.0rem;font-size:0.5rem;padding:0.45rem;border-radius:0.3rem;background:rgba(0,0,0,0.3);margin:auto;
+		max-width: 4.0rem;font-size:0.5rem;padding:0.45rem;border-radius:0.3rem;background:rgba(0,0,0,0.3);margin:auto;
 		.success-icon{
 			background-image:url(../img/current.png);background-repeat:no-repeat;background-position:center;background-size:0.67rem;width:0.8rem;height:0.8rem;margin: 0.27rem auto; border:1px solid #fff;border-radius:50%;background-color:#fff;
 		}
@@ -192,9 +193,8 @@ header{
 		}
 		.goods-title{
 		    color: #252525;
-		    font-size: 0.32rem;
+		    font-size: 0.35rem;
 		    line-height: 100%;
-		    padding: 0.208rem 0 0.12rem 0;
 		    white-space: nowrap;
 		    text-overflow: ellipsis;
 		    overflow: hidden;
@@ -202,10 +202,19 @@ header{
 		}
 		.goods-desc{
 			padding:0.2rem 0.2rem;
-			font-size: 0.288rem;
+			font-size: 0.35rem;
 		    height: 0.8rem;
 		    line-height: 0.5rem;
+		    white-space: nowrap;
 		    overflow: hidden;
+		    text-overflow:ellipsis;
+		}
+		.car-num{
+			padding:0 0.2rem;
+			font-size: 0.33rem;
+			span{
+				color:$mainbg;
+			}
 		}
 		.g_goodsPrice{
 			padding:0 0.2rem 0.2rem 0.2rem;

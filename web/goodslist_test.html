@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<script src="./libs/common/common.js"></script>
+		<!-- <script src="./libs/common/common.js"></script> -->
 		<script src="./libs/jquery/jquery-3.2.1.js"></script>
 		<link rel="stylesheet" href="./libs/page-css/goodslist.css">
 	</head>
@@ -17,17 +17,15 @@
 			</div>
 		</div>
 
-		<!-- <form action="./login" method="post">
+		<!-- <form action="/updateProducts" method="post" id="saveReportForm  onsubmit="return saveReport();"> -->
+		<!-- <form action="/updateProducts" enctype="multipart/form-data" method="post" target="message"> -->
+		<form id= "uploadForm">
 			<p><label for="username">用户名：<input type="text" name="username" id="username" class="username"></label></p>
 			<p><label for="password">密码：<input type="password" name="password" id="password" class="password"></label></p>
-			<button type="submit">提交</button>
+			<p><label for="file">密码：<input type="file" name="file" id="file" class="file"></label></p>
+			<button  onclick="doUpload()">提交</button>
 		</form>
-		<h2>注册页面</h2>
-		<form action="./register" method="post">
-			<p><label for="username">用户名：<input type="text" name="username" id="username" class="username"></label></p>
-			<p><label for="password">密码：<input type="password" name="password" id="password" class="password"></label></p>
-			<button type="submit">提交</button>
-		</form> -->
+		
 
 		<button id="lazy">懒加载</button>
 		<button id="login">登录</button>
@@ -36,6 +34,52 @@
 		<button id="goods">单个商品</button>
 		<button id="goodsAll">所有商品</button>
 		<script>
+		function doUpload() {  console.log(9999)
+			$("input").map(function(item){
+
+				if($(this).val() == ""){
+				return false;
+				}
+				console.log($(this));
+			})
+		     // var formData = new FormData($( "#uploadForm" )[0]);  
+		     // $.ajax({  
+		     //      url: 'http://localhost:1234/addProducts' ,  
+		     //      type: 'POST',  
+		     //      data: formData,  
+		     //      async: false,  
+		     //      cache: false,  
+		     //      contentType: false,  
+		     //      processData: false,  
+		     //      success: function (returndata) {  
+		     //          alert(returndata);
+		     //      },  
+		     //      error: function (returndata) {  
+		     //          alert(returndata); 
+		     //      }  
+		     // });
+		     // return false;  
+		}  
+			// function saveReport() { 
+			// 	// jquery 表单提交 
+			// 	$("#showDataForm").ajaxSubmit(function(message) { 
+			// 	// 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
+			// 	console.log(message)
+
+			// 	}); 
+			// 	return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转 
+
+			// } 
+
+			// function uploadSuccess(data){
+			// 	console.log(data);
+			// 	alert(data)
+			// 	return false;
+			// }
+
+
+
+
 			$("#lazy").click(function(){
 				$.post("http://localhost:1234/sortPrice",{"status":1},
 					function(res){

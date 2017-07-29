@@ -270,18 +270,18 @@ module.exports = {
             if(!error){
                 //查找对应 id 的商品；
                 db.collection(collectionName,function(err,collection){
-                    if(err) return;
+                    // if(err) return;
                     var total = 0;
 
                     collection.find().toArray(function(err,docs){
-                        if(err) return 
+                        // if(err) return 
                         if(!err){
                             total = docs.length;
                         }
                     });
                   
                     collection.find().limit(qty).skip(page*qty).toArray(function(err,docs){
-                            console.log(docs)
+                            // console.log(docs)
                         if(!err){
                             //得到商品信息；
                             // console.log(docs)
@@ -293,10 +293,10 @@ module.exports = {
                                 data["data"] = docs;
                                 data["total"] = total;
 
-                                console.log(data);
+                                // console.log(data);
                                
                                 if(callback && typeof callback == "function"){
-                                     // db.close();
+                                     db.close();
                                     callback({status:true,message:"商品获取成功！",details:data});
                                     return;
                                 }
@@ -308,14 +308,16 @@ module.exports = {
                                     return;
                                 }
                             }
+                            // db.close();
                         }else{
                             // db.close();
-                            console.log(err)
-                        }
-                    })
+                            console.log(err);
+                        };
+                      
+                    });
                 });
             }
-            db.close();
+            
         });
 
     },
@@ -323,6 +325,9 @@ module.exports = {
     //添加商品；
     addProducts:function(collectionName, goodsObj, callback){
         var id = Number(goodsObj.id);
+        var price = Number(goodsObj.price);
+        goodsObj.id = id;
+        goodsObj.price = price;
         //打开数据库
         db.open(function(error,db){
             if(!error){
