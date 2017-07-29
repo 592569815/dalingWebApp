@@ -148,6 +148,7 @@
 		var res = goodsdatas.filter(function(item){
 			return item.id === currentId;
 		})	
+		console.log(res);
 		if(res.length>0){
 			res[0].qty++;
 		}else{
