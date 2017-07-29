@@ -8,7 +8,7 @@ body, p, ul, li, input, h3, h1, h4, i, h2, dl, dd, dt, img, form {
 }
 
 body {
-  font-family: "微软雅黑","宋体";
+  font-family: "arial","微软雅黑","宋体";
 }
 
 li {
@@ -45,7 +45,7 @@ header {
   width: 100%;
   height: 1.2rem;
   text-align: center;
-  font-size: 0.55rem;
+  font-size: 0.45rem;
   line-height: 1.2rem;
   position: relative;
   background: #af5bbf;
@@ -66,9 +66,9 @@ header .index-title {
 }
 
 .index-tab {
-  height: 1.2rem;
-  font-size: 0.45rem;
-  line-height: 1.2rem;
+  height: 1.0rem;
+  font-size: 0.35rem;
+  line-height: 1.0rem;
   overflow: auto;
   position: relative;
   border-bottom: 5px solid #e5e5e5;
@@ -96,7 +96,7 @@ header .index-title {
 }
 
 .index-tab .tabs {
-  width: 26.5rem;
+  width: 21.5rem;
   background: #fff;
   height: 100%;
 }
@@ -244,19 +244,19 @@ header .index-title {
 }
 
 .goods-one .goodsbox {
-  padding: 0.27rem;
+  padding: 0.1rem;
   background-color: #fff;
 }
 
 .goods-one .goodsbox .goods {
-  margin-bottom: 0.27rem;
+  margin-bottom: 0.1rem;
   position: relative;
 }
 
 .goods-one .goodsbox .joincar {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 0.1rem;
+  right: 0.2rem;
   font-size: 0.32rem;
   background: #fff;
   height: 1.0rem;
@@ -289,11 +289,12 @@ header .index-title {
 
 .goods-one .goodsbox .block {
   display: block;
+  padding: 0 0.2rem;
 }
 
 .goods-one .goodsbox .block .goods-img {
   height: 7.0rem;
-  background-size: cover;
+  background-size: contain;
   margin-bottom: 0.13rem;
   position: relative;
   width: 100%;
@@ -305,7 +306,7 @@ header .index-title {
 
 .goods-one .goodsbox .block .goods-title {
   font-size: 0.4rem;
-  line-height: 1.07rem;
+  line-height: 1rem;
   color: #585658;
   overflow: hidden;
   white-space: nowrap;
@@ -314,8 +315,8 @@ header .index-title {
 
 .goods-one .goodsbox .block .goods-desc {
   color: #9f9f9f;
-  font-size: 0.27rem;
-  line-height: 2;
+  font-size: 0.35rem;
+  line-height: 0.53rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -337,7 +338,7 @@ header .index-title {
 }
 
 .join-success .join-success-box {
-  max-width: 6.0rem;
+  max-width: 4.0rem;
   font-size: 0.5rem;
   padding: 0.45rem;
   border-radius: 0.3rem;
@@ -405,9 +406,8 @@ header .index-title {
 
 .g_goods li .goods-title {
   color: #252525;
-  font-size: 0.32rem;
+  font-size: 0.35rem;
   line-height: 100%;
-  padding: 0.208rem 0 0.12rem 0;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -416,10 +416,21 @@ header .index-title {
 
 .g_goods li .goods-desc {
   padding: 0.2rem 0.2rem;
-  font-size: 0.288rem;
+  font-size: 0.35rem;
   height: 0.8rem;
   line-height: 0.5rem;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.g_goods li .car-num {
+  padding: 0 0.2rem;
+  font-size: 0.33rem;
+}
+
+.g_goods li .car-num span {
+  color: #af5bbf;
 }
 
 .g_goods li .g_goodsPrice {

@@ -6,8 +6,10 @@
 	paths:{ 
 		jquery:'../jquery/jquery-3.1.1',
 		common:'../common/common',
+		pcasunzip:'../jQuery3jld/pcasunzip',
 	}, 
 	shim:{ //
 		common:['jquery'],
+		pcasunzip:['jquery'],
 	}
 });

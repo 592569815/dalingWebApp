@@ -6,6 +6,7 @@
 		<script type="text/javascript" src="./libs/common/common.js"></script>
 		<script src="./libs/page-js/require.js" data-main="./libs/page-js/shoppingCar"></script>
 		<link rel="stylesheet" type="text/css" href="./libs/page-css/shoppingCar.css"/>
+		<link rel="stylesheet" type="text/css" href="./libs/page-css/footer.css"/>
 	</head>
 	<body>
 		<div class="bigbox">
@@ -13,15 +14,20 @@
 				<p class="shopping">
 					<a href="goodslist.html"><img src="./libs/img/imgIMG_0396_03.jpg"/></a>
 					<span>购物车</span>
-					<span>编辑</span>
+					<span class="edit">编辑</span>
+					<span class="complete" style="display: none">完成</span>
 				</p>
 			</div>
-			
+			<div class="car-empty" style="display: none">
+				<span></span>
+				<p>购物车没有东西哦，快去挑选吧~</p>
+				<a href="index.html">逛逛首页</a>
+			</div>
 			<div class="body">
-				<p>
+				<!-- <p>
 					<span>无敌价</span>
 					<span>价格无敌，手慢无</span>
-				</p>
+				</p> -->
 				<!-- <div class="Item_information">
 					<div class="choose">
 						<span class="fondo lect"></span>
@@ -43,29 +49,41 @@
 				</div> -->
 			</div>
 			<div class="footer">
-				<div class="youhui">
-					<span>订单满39.0元可参加超值换购</span>
-				</div>
 				<div class="maidan">
 					<div class="one">
 						<span class="button fondo"></span>
-						<span >全部</span>
+						<span >全选</span>
 					</div>
 					<div class="two">
 						<div class="total">
 							<span>合计：</span>
-							<span class="money">￥66.00</span>
+							<span class="money">0.0</span>
 						</div>
 						<div class="rental">
 							<span>总额：</span>
-							<span>￥66.00</span>
+							<span class="g_total">0.0</span>
 						</div>
 					</div>
 					<div class="three">
 						<a href="jiesuan.html">去结算</a>
 					</div>
 				</div>
+				<div class="remove" style="display: none">
+					<div class="one">
+						<span class="button fondo"></span>
+						<span >全选</span>
+					</div>
+					<a class="removeGood">删除</a>
+					<a class="collect">移入收藏夹</a>
+					
+				</div>
 			</div>
+		</div>
+		<div class="currentRemove" style="display: none">
+			<ul>
+				<li>确认要全部删除吗</li>
+				<li><span class="cancel">取消</span><span class="verify">确认</span></li>
+			</ul>
 		</div>
 	</body>
 </html>

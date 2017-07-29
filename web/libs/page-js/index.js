@@ -105,7 +105,7 @@
 							</a>
 							<div class="joincar join-car" data-id="${item.id}">
 								<div class="car-desc">
-									<p class="car-num">1655人</p>
+									<p class="car-num">${item.sales}人</p>
 									<p>加入购物车</p>
 								</div>
 								<div class="icon-car">
@@ -124,6 +124,7 @@
 				<div class="goods-img" data-url = "${item.img}" style="background:url(./libs/img/${item.img}) no-repeat center" /></div>
 				<div class="goods-title">${item.title}</div>
 				<div class="goods-desc">${item.desc}</div>
+				<div class="car-num"><span>${item.sales}</span>人加入购物车</div>
 				<div class="g_goodsPrice">
 					<span class="price">${item.price}</span>
 				</div>
@@ -176,7 +177,6 @@
 		$("body").animate({scrollTop:0});
 	})	
 
-	
 	
 
 	});
