@@ -37,6 +37,8 @@ exports.register = function(app){
             if(res.status){
 
                 response.send(res.details);
+            }else{
+                response.send("err");
             }
         });
        
@@ -45,17 +47,18 @@ exports.register = function(app){
     //添加商品；
     //单位件上传   
     //注意上传界面中的 <input type="file" name="avatar"/>中的name必须是下面代码中指定的名称  
-    app.post('/addProducts',  upload.fields([{name:'pic',maxCount:10}]), function (request, response, next) {
+    app.post('/addProducts',  upload.fields([{name:'img',maxCount:10}]), function (request, response, next) {
 
         //添加商品参数；  
         var add_goods =  request.body;
+        console.log(request.files)
 
-        //获取图片名称；
-        add_goods["img"] = request.files.pic[0].filename;
-         
         console.log(add_goods)
+        //获取图片名称；
+        add_goods["img"] = request.files.img[0].filename;
+         
             
-         //请求数据库
+         // 请求数据库
         db.addProducts("products",add_goods,function(res){
             if(res.status){
 
@@ -93,13 +96,24 @@ exports.register = function(app){
     //商品模糊查询；
     app.post("/queryProducts",urlencodedParser,function(request,response){
 
-        var keyWord = request.body.keyWord;
-        console.log(keyWord)
-        db.queryProducts("products",keyWord,function(res){
+        //{name:type,keyWord:国货}
+        db.queryProducts("products",request.body,function(res){
             if(res.status){
 
                 response.send(res);
+            }else{
+                response.send(res);
             }
         })
-    })     
+    }) ;
+
+    //价格排序；
+    app.post("/sortPrice",urlencodedParser,function(request,response){
+
+        db.sortPrice("products",request.body,function(res){
+            if(res.status){
+                response.send(res.details);
+            }
+        })
+    })    
 }
