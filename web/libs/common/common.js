@@ -1,7 +1,7 @@
 /*公共js*/
 //baseurl
 var global = global || {};
-global.baseurl = 'http://localhost:1234/';
+global.baseurl = 'http://10.3.134.234:1234/';
 
 //动态设置viewport的scale
 var iScale = 1;

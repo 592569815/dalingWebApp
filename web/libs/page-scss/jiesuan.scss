@@ -69,7 +69,12 @@ body{background:#fbfafc;}
         margin-bottom:1.35rem;
         input{font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#d7d7dc;width:9.71rem;}
         input:nth-of-type(2),input:nth-of-type(3){padding:0.45rem 0 0.45rem 0.29rem;border-bottom:1px solid #e5e5e5;}
-        .province{font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#d7d7dc;border-bottom:1px solid #e5e5e5;background:#fff;}
+        .province{
+            font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#d7d7dc;border-bottom:1px solid #e5e5e5;background:#fff;
+            select{
+                height:0.7rem;font-size:0.35rem;
+            }
+        }
         .hint{
             background:#fef7f5;
             font-size:0.26rem;
@@ -178,3 +183,5 @@ body{background:#fbfafc;}
         }
     }
 }
+
+

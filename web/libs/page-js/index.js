@@ -90,7 +90,7 @@
 
 		
 	//请求数据
-	$.post(global.baseurl + 'getProducts',{page:1,qty:10},function(res){
+	$.post(global.baseurl + 'getProducts',{page:2,qty:10},function(res){
 		console.log(res);
 		var goodsHtml = res.data.map(function(item,idx){
 			return `

@@ -6,10 +6,12 @@
 	paths:{ 
 		jquery:'../jquery/jquery-3.1.1',
 		common:'../common/common',
-		pcasunzip:'../jQuery3jld/pcasunzip',
+		distpicker:'../jQueryDistpicker/src/distpicker',
+		data:'../jQueryDistpicker/src/distpicker.data',
 	}, 
 	shim:{ //
 		common:['jquery'],
-		pcasunzip:['jquery'],
+		distpicker:['jquery'],
+		
 	}
 });

@@ -1,5 +1,5 @@
 require(['config'],()=>{
-	require(['jquery','pcasunzip'],($)=>{
+	require(['jquery','distpicker','data'],($)=>{
 		
 		//先获取localStorage
 		var goodsdatas = localStorage.goodsdatas;

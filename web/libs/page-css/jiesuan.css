@@ -124,6 +124,11 @@ body {
   background: #fff;
 }
 
+.bigbox .body .province select {
+  height: 0.7rem;
+  font-size: 0.35rem;
+}
+
 .bigbox .body .hint {
   background: #fef7f5;
   font-size: 0.26rem;
