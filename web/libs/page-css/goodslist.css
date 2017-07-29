@@ -350,7 +350,8 @@ a {
   bottom: 0;
   width: 100%;
   height: 2.5rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: url(../img/happy_shopping.jpg) repeat;
+  background-size: 100% 100%;
 }
 
 .g_content {
@@ -364,8 +365,7 @@ a {
   padding: 0.4rem;
 }
 
-.g_content .g_hot .g_hot_t s
-p {
+.g_content .g_hot .g_hot_t p {
   font-size: 0.36rem;
   line-height: 1.2rem;
   color: #858385;
@@ -488,6 +488,10 @@ p {
   height: 0.8rem;
   line-height: 0.8rem;
   text-align: center;
+}
+
+.g_content .g_goodslist .g_goods li .g_goodsPrice .g_price:before {
+  content: "￥";
 }
 
 .g_content .g_goodslist .g_goods li .g_goodsPrice .g_addCar {
@@ -627,4 +631,15 @@ p {
   border: 1px solid #fff;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.g_loading {
+  display: none;
+  position: fixed;
+  width: 1.33rem;
+  height: 1.33rem;
+  top: 45%;
+  left: 43%;
+  background: url(../img/g_loading.gif) no-repeat center center;
+  z-index: 999;
 }

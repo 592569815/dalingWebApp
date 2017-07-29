@@ -273,7 +273,8 @@ $maincolor:#efefef;
 		bottom:0;
 		width:100%;
 		height:2.5rem;
-		background:rgba(0,0,0,0.5) ;
+		background:url(../img/happy_shopping.jpg) repeat;
+		background-size:100% 100%;
 	}
 }
 .g_content{
@@ -285,7 +286,7 @@ $maincolor:#efefef;
 		.g_hot_t{
 			display: none;
 			padding:0.4rem;
-			s
+			
 			p{
 			    font-size: 0.36rem;
 	  		  	line-height: 1.2rem;
@@ -386,6 +387,9 @@ $maincolor:#efefef;
 				    	height:0.8rem;
 				    	line-height: 0.8rem;
 				    	text-align:center;
+				    }
+				    .g_price:before{
+				    	content:"￥";
 				    }
 				    .g_addCar{
 				    	float: right;
@@ -493,4 +497,14 @@ $maincolor:#efefef;
 			background-image:url(../img/current.png);background-repeat:no-repeat;background-position:center;background-size:0.67rem;width:0.8rem;height:0.8rem;margin: 0.27rem auto; border:1px solid #fff;border-radius:50%;background-color:#fff;
 		}
 	}
+}
+.g_loading{
+	display: none;
+	position: fixed;
+	width:1.33rem;
+	height:1.33rem;
+	top:45%;
+	left:43%;
+	background:url(../img/g_loading.gif) no-repeat center center;
+	z-index: 999;
 }

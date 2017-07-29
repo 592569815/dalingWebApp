@@ -1,8 +1,10 @@
 require(['config'],function(){
 	require(['jquery'],function($){
+		$("#g_search").load("./public_search.html");
 
 		//请求发送数据；global.baseurl + "getProducts",
 		$.post(global.baseurl + "getProducts",function(res){
+
 			console.log(res)
 			createGoods(res)
 
@@ -14,8 +16,11 @@ require(['config'],function(){
 			//创建ul;
 			var $ul = $("<ul/>").addClass("g_goods");
 			res.data.map(function(item){
+				var price = item.price.toFixed(1);
 				if(item.sales / 10000 >= 1){
 					var sales = (item.sales/10000).toFixed(1) + "万";
+				}else if(!item.sales){
+					var sales = 0;
 				}else{
 					var sales = item.sales;
 				};
@@ -25,7 +30,7 @@ require(['config'],function(){
 					<div class="g_goodsTitle">${item.title}</div>
 					<div class="g_goodsDesc">${item.desc}</div>
 					<div class="g_goodsPrice">
-						<span class="g_price">￥&nbsp;&nbsp;${item.price}</span>
+						<span class="g_price">${price}</span>
 						<span class="g_addCar"></span>
 					</div>
 					<div class="g_sales">已卖出&nbsp;<span>${sales}</span>&nbsp;件</div>
@@ -89,120 +94,141 @@ require(['config'],function(){
 
 		})
 		
+		//代码延迟操作；
+		$(document).ready(function(){
+			//点击搜索；
+			$(".search").click(function(){console.log(99999999)
+				$(this).hide().siblings(".get_goods").show();
+				//显示热门搜索
+				$(".g_hot_t").show();
+				//隐藏商品列表
+				$(".g_goodslist").hide();
+				//隐藏悬浮菜单；
+				$(".fixed_menu").hide();
+				//输入框获得焦点；
+				$(".search_goods").focus();
+				//隐藏导航；
+				$(".g_nav").hide();
+			});
 
-		//点击搜索；
-		$(".search").click(function(){
-			$(this).hide().siblings(".get_goods").show();
-			//显示热门搜索
-			$(".g_hot_t").show();
-			//隐藏商品列表
-			$(".g_goodslist").hide();
-			//隐藏悬浮菜单；
-			$(".fixed_menu").hide();
-			//输入框获得焦点；
-			$(".search_goods").focus();
-			//隐藏导航；
-			$(".g_nav").hide();
-		});
+			//搜索商品；
+			var timer;
+			$(".search_goods").on("input propertychange",function(){
+				//清除定时器；
+				clearTimeout(timer);
 
-		//搜索商品；
-		var timer;
-		$(".search_goods").bind("input propertychange",function(){
-			//清除定时器；
-			clearTimeout(timer);
+				var _value = $(this).val();
+				console.log(_value);
+				search_goods(_value);
 
-			var _value = $(this).val();
-			console.log(_value);
+			});
 
-			timer = setTimeout(function(){
+			//模糊搜索商品函数；
+			function search_goods(_value){
+				timer = setTimeout(function(){
 
-				$.post(global.baseurl + "queryProducts",{name:"type",keyWord:_value},function(res){
-					console.log(res)
+					$.post(global.baseurl + "queryProducts",{name:"desc",keyWord:_value},function(res){
+						console.log(res)
 
-					//热门搜索隐藏；
-					$(".g_hot_t").hide();
+						//热门搜索隐藏；
+						$(".g_hot_t").hide();
 
-					$(".g_hot_s").show();
+						$(".g_hot_s").show();
 
 
-					//找到数据时；
-					if(res.status){
+						//找到数据时；
+						if(res.status){
 
-						//搜索按钮出现；
-						$(".g_search").show();
+							//搜索按钮出现；
+							$(".g_search").show();
 
-						//取消按钮隐藏；
-						$(".cancle").hide();
-						$(".no_goods").hide();
-						$(".g_hot").show();
+							//取消按钮隐藏；
+							$(".cancle").hide();
+							$(".no_goods").hide();
+							$(".g_hot").show();
 
-						var html = res.data.map(function(item){
-							return `
-								<div data-id = "${item.id}">
-									<img src="./libs/img/${item.img}" alt="" />
-									<p>
-										<span class="g_title">${item.title}</span>
-										<span>${item.desc}</span>
-									</p>
-								</div>
-							`
-						});
+							var html = res.data.map(function(item){
+								return `
+									<div data-id = "${item.id}">
+										<img src="./libs/img/${item.img}" alt="" />
+										<p>
+											<span class="g_title">${item.title}</span>
+											<span>${item.desc}</span>
+										</p>
+									</div>
+								`
+							});
 
-						$(".g_hot_s").html(html);
+							$(".g_hot_s").html(html);
 
-						//调用生成商品函数 ；
-						createGoods(res);
+							//调用生成商品函数 ；
+							createGoods(res);
 
-					}else{
-						//没有数据时；
-						// $(".g_hot_s").html("");
-						$(".no_goods").show().html("没有找到相应的商品！");
-					}
+						}else{
+							//没有数据时；
+							// $(".g_hot_s").html("");
+							$(".no_goods").show().html("没有找到相应的商品！");
+						}
 
-					//点击搜索，找到全部符合条件的商品
-					$(".g_search").click(function(){
+						//点击搜索，找到全部符合条件的商品
+						$(".g_search").click(function(){
 
-						$(this).hide();
-						//隐藏搜索页面；
-						
-						$(".g_hot").hide();
+							$(this).hide();
+							//隐藏搜索页面；
+							
+							$(".g_hot").hide();
 
-						//显示商品列表
-						$(".g_goodslist").show();
-						$(".search").show();
-						//显示取消按钮
-						$(".cancle").show();
-						
-						//显示导航；
-						$(".g_nav").show();
+							//显示商品列表
+							$(".g_goodslist").show();
+							$(".search").show();
+							//显示取消按钮
+							$(".cancle").show();
+							
+							//显示导航；
+							$(".g_nav").show();
 
-						//显示悬浮菜单；
-						$(".fixed_menu").show();
+							//显示悬浮菜单；
+							$(".fixed_menu").show();
 
+						})
 					})
-				})
-			},500)
+				},500)
+
+			}
+
+			//点击搜索到的商品跳转到商品详情页；
+			$(".g_hot_s").on("click","div",function(){
+				var id = $(this).data("id");
+				location.href = "xiangqing.html?id=" + id;
+			});
+
+
+			//点击取消搜索；
+			$(".cancle").click(function(){
+				$(this).parents(".get_goods").hide();
+				$(".search").show();
+				//显示悬浮菜单；
+				$(".fixed_menu").show();
+
+				$(".g_hot_t").hide();
+				$(".g_goodslist").show();
+				//隐藏导航；
+				$(".g_nav").show();
+			});
+
+			//热门搜索；
+			var hot_arr = ["方便面","曲奇","酥脆花生米","威化饼干","咖啡","拉面","芦荟茶","面包干","超辣","韩国","饮料","奶油","中粮集团"];
+			hot_arr.map(function(item){
+				$("<span/>").html(item).appendTo($(".g_hot_goods"));
+			});
+
+			//点击热门搜索；
+			$(".g_hot_goods").on("click","span",function(){
+				var _value = $(this).text();
+				search_goods(_value);
+			})
 		});
 
-		//点击搜索到的商品跳转到商品详情页；
-		$(".g_hot_s").on("click","div",function(){
-			var id = $(this).data("id");
-			location.href = "xiangqing.html?id=" + id;
-		});
-
-
-		//点击取消搜索；
-		$(".cancle").click(function(){
-			$(this).parents(".get_goods").hide();
-			$(".search").show();
-			//显示悬浮菜单；
-			$(".fixed_menu").show();
-
-			$(".g_hot_t").hide();
-			$(".g_goodslist").show();
-			//隐藏导航；
-			$(".g_nav").show();
-		});
 
 		// 点击导航切换；
 		$(".g_nav").on("click","li",function(e){
@@ -230,6 +256,7 @@ require(['config'],function(){
 			$(".head").show();
 
 			if($(this).hasClass("g_sort")){
+				console.log(8888)
 				$(".g_goods_sort").show();
 
 				//隐藏商品列表；
@@ -358,6 +385,8 @@ require(['config'],function(){
 
 			//懒加载函数；
 			function lazyLoad(data){
+				//显示加载动画；
+				$(".g_loading").show();
 
 				//判断是否存在价格排序；
 				if($(".priceUp").hasClass("_priceUp")){
@@ -411,6 +440,12 @@ require(['config'],function(){
 				//商品懒加载追加商品函数；
 				function addGoods(res){
 
+					//隐藏加载动画；
+					setTimeout(function(){
+
+						$(".g_loading").hide();
+					},500)
+
 					if(!res.data){
 						console.log(666666)
 						return false;
@@ -419,6 +454,7 @@ require(['config'],function(){
 					$(".holdon").hide();
 
 					res.data.map(function(item){
+						var price = item.price.toFixed(1);
 						if(item.sales / 10000 >= 1){
 							var sales = (item.sales/10000).toFixed(1) + "万";
 						}else{
@@ -429,7 +465,7 @@ require(['config'],function(){
 							<div class="g_goodsTitle">${item.title}</div>
 							<div class="g_goodsDesc">${item.desc}</div>
 							<div class="g_goodsPrice">
-								<span class="g_price">￥&nbsp;&nbsp;${item.price}</span>
+								<span class="g_price">${price}</span>
 								<span class="g_addCar"></span>
 							</div>
 							<div class="g_sales">已卖出&nbsp;${sales}&nbsp;件</div>
@@ -507,5 +543,11 @@ require(['config'],function(){
 			$(this).addClass("active_bg").siblings("li").removeClass("active_bg");
 			$(".g_sub_nav").children().eq(idx).show().siblings().hide();
 		});
+		$(".g_sub_nav").on("click","li",function(){
+			location.href = "goodslist.html";
+		})
+
+		
+
 	});
 });

@@ -161,7 +161,7 @@
 			margin:10px 0;
 		}
 		.submit{
-			display: block;
+			/*display: block;*/
 			margin:0 auto;
 			width:60px;
 			height:30px;
@@ -199,9 +199,10 @@
 	<script src="./libs/jquery/jquery-3.2.1.js"></script>
 	<script>
 		jQuery(function($){
+			var baseUrl = "http://localhost:1234/";
 			var page = 1;
 			var qty = 10;
-			$.post("http://localhost:1234/getproducts",{page:page,qty:qty},function(res){
+			$.post(baseUrl + "getproducts",{page:page,qty:qty},function(res){
 
 				console.log(res);
 
@@ -253,7 +254,7 @@
 					$(this).addClass("page_bg").siblings().removeClass("page_bg");
 
 					// var qty = 20;
-					$.post("http://localhost:1234/getproducts",{page:page,qty:qty},function(data){
+					$.post(baseUrl + "getproducts",{page:page,qty:qty},function(data){
 						console.log(res)
 						show(data);
 					})
@@ -292,7 +293,7 @@
 			//刷新页面时，把所有商品写到页面；
 			function goodslist(){
 				
-				$.get("http://localhost:1234/getAccounts",function(res){
+				$.get(baseUrl + "getAccounts",function(res){
 					console.log(res);
 
 					//显示商品产地列表；
@@ -320,6 +321,10 @@
 
 					//点击页面，进行筛选；
 					$(".goods_accounts").on("click","li",function(){
+
+						//隐藏页码；
+						$(".page").hide();
+
 						$(this).addClass("active").siblings("li").removeClass("active");
 
 						var currentType = $(this).text();
@@ -456,7 +461,7 @@
 				
 				if(edited.hasClass("editable")){
 					
-					$.post("http://localhost:1234/updateProducts",update_obj,function(res){
+					$.post(baseUrl + "updateProducts",update_obj,function(res){
 						console.log(res);
 					});
 				};
@@ -472,7 +477,7 @@
 				$(this).parents("tr").remove();
 				var ele = $(this);
 				var update_obj = find(ele);
-				$.post("http://localhost:1234/deleteProducts",update_obj,function(res){
+				$.post(baseUrl + "deleteProducts",update_obj,function(res){
 					console.log(res);
 				});
 			});
@@ -509,6 +514,37 @@
 				$(".goodsAdd").css({"display":"none"});
 			});
 
+			//添加商品；
+			$(".submit").click(function(){ 
+				//输入内容为空时，提示输入！
+				for(var item of $(".g_details")){
+					if($(item).val() == ""){
+						alert($(item).parent().text() + "不能为空！");
+						return false;
+					}
+				}
+
+				var formData = new FormData($( "#uploadForm" )[0]);  
+				$.ajax({  
+					url: baseUrl + "addProducts" ,  
+					type: 'POST',  
+					data: formData,  
+					async: false,  
+					cache: false,  
+					contentType: false,  
+					processData: false,  
+					success: function (res) { 
+						console.log(res)
+						if(res.status){
+							alert("添加成功！");
+							$("#uploadForm input").val("");
+						}
+					  
+					} 
+				});
+				return false;  
+			});
+
 		});
 	</script>
 </head>
@@ -540,18 +576,19 @@
 				
 			</div>
 			<div class="goodsAdd" style="display: none">
-				<form action="http://localhost:1234/addProducts" method="post" enctype="multipart/form-data">
-					<p><label for="add_goodsId">商品编码：<input type="text" id="add_goodsId" name="id"></label></p>
-					<p><label for="add_goodsType">商品类型：<input type="text" id="add_goodsType" name="type"></label></p>
-					<p><label for="add_goodsTitle">商品标题：<input type="text" id="add_goodsTitle" name="title"></label></p>
-					<p><label for="add_goodsDesc">商品描述：<input type="text" id="add_goodsDesc" name="desc"></label></p>
-					<p><label for="add_goodsPrice">商品价格：<input type="text" id="add_goodsPrice" name="price"></label></p>
+				<!-- <form action=baseUrl + "addProducts" method="post" enctype="multipart/form-data"> -->
+				<form id= "uploadForm">
+					<p><label for="add_goodsId">商品编码：<input type="number" id="add_goodsId"  class="g_details" name="id"></label></p>
+					<p><label for="add_goodsType">商品类型：<input type="text" id="add_goodsType" class="g_details"  name="type"></label></p>
+					<p><label for="add_goodsTitle">商品标题：<input type="text" id="add_goodsTitle" class="g_details"  name="title"></label></p>
+					<p><label for="add_goodsDesc">商品描述：<input type="text" id="add_goodsDesc" class="g_details"  name="desc"></label></p>
+					<p><label for="add_goodsPrice">商品价格：<input type="number" id="add_goodsPrice" class="g_details"  name="price"></label></p>
 					<div class="upload" style="clear: both;">	
 						
 					</div>
-					<input type="file" name="pic" class="pic"/><br/> 
+					<p><label for="pic">选择图片：<input type="file" name="img" id = "pic" class="pic g_details" /></label></p>
 					
-					<input type="submit" value="提交" class="submit"/> 
+					<button  class="submit">提交</button>
 				</form>
 				
 			</div>
