@@ -18,26 +18,35 @@ body {
   height: 1.66rem;
   background: url(../img/14382283436625.jpg_300x300.jpg) no-repeat;
   background-position: -0.5rem -0.4rem;
-  border: 1px solid #D2D2D2;
+  border: 0.08rem solid #e7b5fc;
   border-radius: 50%;
   float: left;
   margin: 0.74rem 0.48rem 0 0.42rem;
 }
 
 .bigbox .head .name {
-  margin-top: 0.85rem;
+  margin-top: 0.95rem;
   font-size: 0.37rem;
   float: left;
 }
 
 .bigbox .head .name span {
   display: block;
-  color: #fff;
+  color: #F2DEDE;
 }
 
 .bigbox .head .name span:nth-of-type(2) {
   font-size: 0.3rem;
-  margin-top: 0.3rem;
+  margin-top: 0.1rem;
+  color: #e9c8e3;
+}
+
+.bigbox .head b {
+  font-size: 0.62rem;
+  color: #e9c8e3;
+  margin-left: 3rem;
+  float: left;
+  margin-top: 1.5rem;
 }
 
 .bigbox .body {
@@ -54,26 +63,41 @@ body {
 }
 
 .bigbox .body .one .shoppingMall {
+  width: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 0.34rem;
+  color: #878787;
 }
 
 .bigbox .body .one .shoppingMall span {
   display: block;
   height: 0.64rem;
-  background: url(../img/20170724160441_06.jpg) no-repeat 0.06rem;
   margin: 0 auto;
+  font-size: 0.65rem;
+  color: #acd668;
+}
+
+.bigbox .body .one .shoppingMall p {
+  margin-top: 0.2rem;
+}
+
+.bigbox .body .one .shoppingMall:nth-of-type(1) p {
+  margin-left: 0.3rem;
 }
 
 .bigbox .body .one .shoppingMall:nth-of-type(2) span {
-  background: url(../img/20170724160441_12.jpg) no-repeat 0.32rem;
+  color: #ec93b1;
+  font-size: 0.6rem;
 }
 
 .bigbox .body .one .shoppingMall:nth-of-type(3) span {
-  background: url(../img/20170724160441_09.jpg) no-repeat 0.32rem;
+  color: #89c4fe;
 }
 
 .bigbox .body .one .shoppingMall:nth-of-type(4) span {
-  background: url(../img/20170724160441_03.jpg) no-repeat 0.32rem;
+  color: #f2c486;
+  font-size: 0.7rem;
 }
 
 .bigbox .body .two {
@@ -83,27 +107,134 @@ body {
   border-top: 1px solid #e5e5e7;
 }
 
-.bigbox .body .two span {
-  display: inline-block;
-  background: url(../img/20170724160441_19.jpg) no-repeat;
-  font-size: 0.37rem;
-  text-indent: 0.69rem;
-  height: 0.6rem;
-  margin: 0.3rem 0.32rem;
-}
-
 .bigbox .body .two .person {
   border-bottom: 1px solid #e5e5e7;
 }
 
+.bigbox .body .two .person span {
+  display: inline-block;
+  font-size: 0.6rem;
+  margin: 0.3rem 0 0.3rem 0.32rem;
+}
+
+.bigbox .body .two .person span:nth-of-type(2) {
+  font-size: 0.4rem;
+  margin: 0;
+}
+
+.bigbox .body .two .person span:nth-of-type(3) {
+  text-decoration: none;
+  font-size: 0.33rem;
+  color: #8b8b8b;
+  margin-left: 4.9rem;
+}
+
+.bigbox .body .two .person span:nth-of-type(3) b {
+  font-size: 0.35rem;
+}
+
+.bigbox .body .two .one .shoppingMall span {
+  color: #878787;
+}
+
+.bigbox .body .two .one .shoppingMall:nth-of-type(1) p {
+  margin-left: 0.3rem;
+}
+
+.bigbox .body .two .one .shoppingMall:nth-of-type(1) span {
+  font-size: 0.7rem;
+}
+
+.bigbox .body .two .one .shoppingMall:nth-of-type(2) p {
+  margin-left: 0.25rem;
+}
+
 .bigbox .body .two .one .shoppingMall:nth-of-type(2) span {
-  background: url(../img/20170724160441_12.jpg) no-repeat 0.32rem;
+  font-size: 0.7rem;
 }
 
-.bigbox .body .two .one .shoppingMall:nth-of-type(3) span {
-  background: url(../img/20170724160441_09.jpg) no-repeat 0.32rem;
+.bigbox .body .two .one .shoppingMall:nth-of-type(3) p {
+  margin-left: 0.25rem;
 }
 
-.bigbox .body .two .one .shoppingMall:nth-of-type(4) span {
-  background: url(../img/20170724160441_03.jpg) no-repeat 0.32rem;
+.bigbox .body .two .one .shoppingMall:nth-of-type(4) p {
+  margin-left: 0.35rem;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall, .bigbox .body .two:nth-of-type(5) .one .shoppingMall {
+  width: 3.32rem;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall div, .bigbox .body .two:nth-of-type(5) .one .shoppingMall div {
+  width: 2rem;
+  margin: 0 auto;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall div span, .bigbox .body .two:nth-of-type(5) .one .shoppingMall div span {
+  color: black;
+  font-size: 0.4rem;
+  height: auto;
+  text-align: center;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall div p, .bigbox .body .two:nth-of-type(5) .one .shoppingMall div p {
+  margin-top: 0;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall:nth-of-type(1) p, .bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(1) p {
+  margin-left: 0.15rem;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall:nth-of-type(2) p, .bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(2) p {
+  margin-left: 0.35rem;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall:nth-of-type(3) div, .bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(3) div {
+  width: 1.4rem;
+}
+
+.bigbox .body .two:nth-of-type(3) .one .shoppingMall:nth-of-type(3) div p, .bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(3) div p {
+  margin-left: 0.15rem;
+}
+
+.bigbox .body .two:nth-of-type(4) .one .shoppingMall {
+  width: 3.32rem;
+}
+
+.bigbox .body .two:nth-of-type(4) .one .shoppingMall div {
+  width: 2rem;
+  margin: 0 auto;
+}
+
+.bigbox .body .two:nth-of-type(4) .one .shoppingMall div span {
+  height: auto;
+  text-align: center;
+}
+
+.bigbox .body .two:nth-of-type(4) .one .shoppingMall div p {
+  margin-top: 0;
+}
+
+.bigbox .body .two:nth-of-type(4) .one .shoppingMall:nth-of-type(2) p {
+  margin-left: 0.15rem;
+}
+
+.bigbox .body .two:nth-of-type(4) .one .shoppingMall:nth-of-type(1) div {
+  width: 1.4rem;
+}
+
+.bigbox .body .two:nth-of-type(4) .one .shoppingMall:nth-of-type(1) div p {
+  margin-left: 0.35rem;
+}
+
+.bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(3) div {
+  width: 4rem;
+}
+
+.bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(3) div p {
+  margin-left: 1rem;
+}
+
+.bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(1) div p {
+  margin-left: 0.3rem;
 }

@@ -3,19 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>登录</title>
-	<script type="text/javascript">		
-		//动态设置viewport的scale
-		 var iScale = 1;
-	    iScale = iScale / window.devicePixelRatio;
-	    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
-		//动态计算html的font-size
-		var iWidth = document.documentElement.clientWidth;
-        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';       	
-        //1rem=75px
-	</script>
+	<script type="text/javascript" src="./libs/common/common.js"></script>
 	<script src="./libs/page-js/require.js" data-main="./libs/page-js/login"></script>
 	<link rel="stylesheet" type="text/css" href="./libs/page-css/login.css"/>
-		
+	<link rel="stylesheet" href="../incont/iconfont.css" />	
 </head>
 <body>
 	<div class="bigbox">
@@ -28,33 +19,38 @@
 		</div>
 		<div class="body">
 			<div class="phoneNumber">
-				<span></span>
+				<label for="number" class="iconfont icon-shouji"></label>
 				<input type="text" placeholder="请输入手机号" id="number"/>
 			</div>
 			<div class="password">
-				<span></span>
+				<label for="password" class="iconfont icon-suotou-moren"></label>
 				<input type="password" placeholder="请输入密码" id="password"/>
 			</div>
 			<span href="" class="register">登录</span>
 			<div class="fujia">
-				<a href="register.html">快速注册</a>
+				<a href="register.html" class="logg">快速注册</a>
 				<span>|</span>
-				<a href="">忘记密码？</a>
+				<span class='log'>忘记密码？</span>
 			</div>
 		</div>
 		<div class="footer">
 			<p>
 				<span>
-					<img src="./libs/img/imgIMG_0395_18.jpg"/>
-					<a href="">短信验证登录</a>
+					<span class="iconfont icon-duihua"></span>
+					<span class='node'>短信验证登录</span>
 				</span>
 				<span>
-					<img src="./libs/img/imgIMG_0395_15.jpg"/>
-					<a href="">微信快捷登录</a>
+					<span class="iconfont icon-liaotian"></span>
+					<span class="wechat">微信快捷登录</span>
 				</span>
 			</p>
 		</div>
 	</div>
-	
+	<div class="join-success success" style="display: none">
+        <div class="join-success-box">
+          <div class="success-icon"></div>
+          <p class="loginMes"></p>
+        </div>
+    </div>
 </body>
 </html>

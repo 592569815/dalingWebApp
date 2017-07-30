@@ -3,18 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>个人中心</title>
-		<script type="text/javascript">		
-			//动态设置viewport的scale
-			 var iScale = 1;
-		    iScale = iScale / window.devicePixelRatio;
-		    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
-			//动态计算html的font-size
-			var iWidth = document.documentElement.clientWidth;
-	        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';       	
-	        //1rem=75px
-		</script>
-		<script src="./libs/page-js/require.js" data-main="./libs/page-js/login"></script>
+		<script type="text/javascript" src="./libs/common/common.js"></script>
+		<script src="./libs/page-js/require.js" data-main="./libs/page-js/personal"></script>
 		<link rel="stylesheet" type="text/css" href="./libs/page-css/personal.css"/>
+		<link rel="stylesheet" href="../incont/iconfont.css" />
 	</head>
 	<body>
 		<div class="bigbox">
@@ -23,140 +15,132 @@
 				</div>
 				<div class="name">
 					<span>达令_13456789099</span>
-					<span>亲密度5&nbsp;&nbsp;|&nbsp;&nbsp;达令币0</span>
+					<span>亲密度&nbsp;5&nbsp;&nbsp;|&nbsp;&nbsp;达令币&nbsp;0</span>
+					
 				</div>
+				<b class="iconfont icon-more"></b>
 			</div>
 			<div class="body">
 				<div class="one">
 					<div class="shoppingMall">
-						<span></span>
+						<span class="iconfont icon-gouwuche"></span>
 						<p>购物车</p>
 					</div>
 					<div class="shoppingMall">
-						<span></span>
+						<span class="iconfont icon-11"></span>
 						<p>我的收藏</p>
 					</div>
 					<div class="shoppingMall">
-						<span></span>
+						<span class="iconfont icon-tixing"></span>
 						<p>到货提醒</p>
 					</div>
 					<div class="shoppingMall">
-						<span></span>
+						<span class="iconfont icon-zuji-copy"></span>
 						<p>浏览记录</p>
 					</div>
 				</div>
 				<div class="two">
 					<div class="person">
+						<span class="iconfont icon-dingdan"></span>
 						<span>我的订单</span>
+						<span class="ding">全部订单 <b class="iconfont icon-more"></b></span>
 					</div>
 					<div class="one">
 						<div class="shoppingMall">
-							<span></span>
-							<p>购物车</p>
+							<span class="iconfont icon-icon-test"></span>
+							<p>待付款</p>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>我的收藏</p>
+							<span class="iconfont icon-daishouhuo"></span>
+							<p>待收货</p>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>到货提醒</p>
+							<span class="iconfont icon-review"></span>
+							<p>待评价</p>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>浏览记录</p>
+							<span class="iconfont icon-tuihuo"></span>
+							<p>退货</p>
 						</div>
 					</div>
 				</div>
 				<div class="two">
 					<div class="person">
-						<span>我的订单</span>
+						<span class="iconfont icon-qianbao"></span>
+						<span>我的钱包</span>
+						<span>激活礼品卡 <b class="iconfont icon-more"></b></span>
 					</div>
 					<div class="one">
 						<div class="shoppingMall">
-							<span></span>
-							<p>购物车</p>
+							<div>
+								<span>0</span>
+								<p>领取优惠券</p>
+							</div>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>我的收藏</p>
+							<div>
+								<span>0.00</span>
+								<p>余额(￥)</p>	
+							</div>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>到货提醒</p>
-						</div>
-						<div class="shoppingMall">
-							<span></span>
-							<p>浏览记录</p>
+							<div>
+								<span>0</span>
+								<p>待评价</p>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="two">
 					<div class="person">
-						<span>我的订单</span>
+						<span class="iconfont icon-vip"></span>
+						<span>会员中心</span>
+						<span>我的权益 <b class="iconfont icon-more"></b></span>
 					</div>
 					<div class="one">
 						<div class="shoppingMall">
-							<span></span>
-							<p>购物车</p>
+							<div>
+								<span class="iconfont icon-qiandao"></span>
+								<p>签到</p>
+							</div>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>我的收藏</p>
+							<div>
+								<span class="iconfont icon-shangchengicon15"></span>
+								<p>兑换优惠券</p>	
+							</div>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>到货提醒</p>
-						</div>
-						<div class="shoppingMall">
-							<span></span>
-							<p>浏览记录</p>
+							<div>
+								<span class="iconfont icon-nianzhongfanlihuiyuanzhuanxiangjia"></span>
+								<p>会员专享价</p>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="two">
 					<div class="person">
-						<span>我的订单</span>
+						<span class="iconfont icon-qianbao"></span>
+						<span>我的达令帮</span>
 					</div>
 					<div class="one">
 						<div class="shoppingMall">
-							<span></span>
-							<p>购物车</p>
+							<div>
+								<span>0</span>
+								<p>我的晒图</p>
+							</div>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>我的收藏</p>
+							<div>
+								<span>0.00</span>
+								<p>我的关注</p>	
+							</div>
 						</div>
 						<div class="shoppingMall">
-							<span></span>
-							<p>到货提醒</p>
-						</div>
-						<div class="shoppingMall">
-							<span></span>
-							<p>浏览记录</p>
-						</div>
-					</div>
-				</div>
-				<div class="two">
-					<div class="person">
-						<span>我的订单</span>
-					</div>
-					<div class="one">
-						<div class="shoppingMall">
-							<span></span>
-							<p>购物车</p>
-						</div>
-						<div class="shoppingMall">
-							<span></span>
-							<p>我的收藏</p>
-						</div>
-						<div class="shoppingMall">
-							<span></span>
-							<p>到货提醒</p>
-						</div>
-						<div class="shoppingMall">
-							<span></span>
-							<p>浏览记录</p>
+							<div>
+								<span>0</span>
+								<p>我的粉丝</p>
+							</div>
 						</div>
 					</div>
 				</div>

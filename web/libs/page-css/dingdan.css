@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fbfafc;
+}
+
+.bigbox .head {
+  background: #fbfafc;
+  height: 1.16rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.bigbox .head p {
+  height: 1.16rem;
+  line-height: 1.16rem;
+}
+
+.bigbox .head p a {
+  margin-left: 0.5rem;
+}
+
+.bigbox .head p a img {
+  height: 0.42rem;
+  margin-bottom: 0.1rem;
+}
+
+.bigbox .head p span {
+  font-size: 0.5rem;
+  margin-left: 3rem;
+  vertical-align: middle;
+  margin-bottom: 0.1rem;
+  display: inline-block;
+}
+
+.bigbox .header {
+  background: #fff;
+  height: 1.05rem;
+  font-size: 0.4rem;
+  color: #b1b1b1;
+  line-height: 1.05rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.bigbox .header .one {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bigbox .header .one p:nth-of-type(1) {
+  color: #af5bbf;
+}
+
+.bigbox .background {
+  width: 3.56rem;
+  margin: 5rem auto 0;
+  color: #d4d4d4;
+}
+
+.bigbox .background div {
+  font-size: 1.5rem;
+  margin: 0 auto;
+  width: 1.5rem;
+}
+
+.bigbox .background p {
+  font-size: 0.37rem;
+}
+
+.bigbox .move .zhuMessage {
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.bigbox .move .zhuMessage img {
+  margin-top: 0.26rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: inline-block;
+  border: 1px solid #cfcccd;
+}
+
+.bigbox .move .zhuMessage .message {
+  width: 5.81rem;
+  border: 0;
+  padding-top: 0.25rem;
+}
+
+.bigbox .move .zhuMessage .message p {
+  border: 0;
+  font-size: 0.34rem;
+}
+
+.bigbox .move .zhuMessage .message p:nth-of-type(2) {
+  color: #b4b4b4;
+  height: auto;
+}
+
+.bigbox .move .zhuMessage .message .substract {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+}
+
+.bigbox .move .zhuMessage .message .substract p {
+  font-size: 0.29rem;
+  color: #f0593f;
+  line-height: 0.8rem;
+}
+
+.bigbox .move .zhuMessage .message .substract span {
+  display: inline-block;
+  background: #f0593f;
+  color: #fff;
+  width: 1.14rem;
+  height: 0.45rem;
+  font-size: 0.28rem;
+  text-align: center;
+  float: left;
+  margin-top: 0.13rem;
+  border: 1px solid #f0593f;
+  border-radius: 0.06rem;
+  line-height: 0.45rem;
+}

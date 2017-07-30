@@ -1,5 +1,9 @@
+$bgcolor:#fff;//白色背景颜色
 *{margin:0;padding:0;}
-input{height:0.6rem;vertical-align:middle;}
+input{
+    height:0.6rem;vertical-align:middle;width:6rem;outline-color: #fff;
+}
+input::-webkit-input-placeholder{color:#c0c1c2;}
 .bigbox{
     .head{
         p{
@@ -13,37 +17,41 @@ input{height:0.6rem;vertical-align:middle;}
                 
             }
             span{
-                font-size:0.42rem;
+                font-size:0.60rem;
                 display: inline-block;
-                padding-left:3.93rem;
+                padding-left:3.50rem;
                 color:#fff;
             }
         }
         img{width:100%;height:3.56rem;display: block;}
     }
     .body{
+        padding-top:0.93rem;
         .phoneNumber{
-            border-bottom:1px solid #e5e5e5;span{display:inline-block;width:0.29rem;height:0.45rem;background:url(../img/imgIMG_0395_07.jpg)no-repeat;}
-            height:1.2rem;width:7.8rem;
+            border-bottom:1px solid #e5e5e5;
+            padding-bottom: 0.2rem;      label{display:inline-block;width:0.6rem;height:0.45rem;font-size:0.53rem;color:#c0c1c2;}
+            width:7.8rem;
             margin:0 auto;
-            input{display: inline-block;border:0rem;font-size:0.32rem;color:#c0c1c2;}
+            input{display: inline-block;border:0rem;font-size:0.38rem;color:black;margin-top:0.2rem;}
         }
         .password{
-            border-bottom:1px solid #e5e5e5;span{display:inline-block;width:0.34rem;height:0.45rem;background:url(../img/imgIMG_0395_11.jpg)no-repeat;}
-            height:1.2rem;width:7.8rem;
+            border-bottom:1px solid #e5e5e5;
+            padding-bottom: 0.2rem;
+            label{display:inline-block;width:0.6rem;height:0.45rem;font-size:0.53rem;color:#c0c1c2;}
+            width:7.8rem;
             margin:0 auto;
-            input{display: inline-block;border:0rem;font-size:0.32rem;color:#c0c1c2;}
+            input{display: inline-block;border:0rem;font-size:0.38rem;color:black;margin-top:0.25rem;}
         }
-        .register{display:block;width:7.8rem;height:1.22rem;background:#d2d2d2;border:1px solid #d2d2d2;border-radius:0.66rem;font-size:0.4rem;color:#fff;line-height:1.22rem;text-align:center;margin:0 auto;margin-top:1.2rem;text-decoration: none;}
+        .register{display:block;width:7.8rem;height:1.22rem;background:#d2d2d2;border:1px solid #d2d2d2;border-radius:0.66rem;font-size:0.6rem;color:#fff;line-height:1.22rem;text-align:center;margin:0 auto;margin-top:1.2rem;text-decoration: none;}
         .fujia{
             font-size:0.3rem;color:#979597;
             width:7.8rem;margin:0 auto;
             padding-top:0.94rem;
-            a{text-decoration:none;font-size:0.3rem;color:#979597;}
-            a:nth-of-type(1){
+            a,.log{text-decoration:none;font-size:0.35rem;color:#979597;display: inline-block;}
+            a{
                 margin-left:1.98rem;
             }
-            span{color:#e5e5e5;padding:0 0.28rem;}
+            span:nth-of-type(1){color:#e5e5e5;padding:0 0.5rem;}
         }
     }
     .footer{
@@ -52,15 +60,27 @@ input{height:0.6rem;vertical-align:middle;}
             margin:0 auto;
             display: flex;
             justify-content: space-between;
-            margin-top:4.17rem;
+            margin-top:3.8rem;
+            font-size: 0.32rem;
             span{
-               a{
-                    text-decoration:none;
-                    font-size: 0.32rem;
+                span:nth-of-type(1){margin-right:0.13rem;font-size:0.48rem;color:#d847ff;margin-top:0.2rem;}
+                span:nth-of-type(2){
+                    font-size: 0.35rem;
                     color:#9e9c9e;
                 } 
             }
-            
+            span:nth-of-type(2){
+                span:nth-of-type(1){color:limegreen;}
+            }
+        }
+    }
+}
+.join-success{
+    position:fixed;top:50%;z-index:999;text-align:center;color:$bgcolor;width:100%;
+    .join-success-box{
+        max-width: 6.0rem;font-size:0.5rem;padding:0.45rem;border-radius:0.3rem;background:rgba(0,0,0,0.3);margin:auto;
+        .success-icon{
+            background-image:url(../img/current.png);background-repeat:no-repeat;background-position:center;background-size:0.67rem;width:0.8rem;height:0.8rem;margin: 0.27rem auto; border:1px solid #fff;border-radius:50%;background-color:#fff;
         }
     }
 }
