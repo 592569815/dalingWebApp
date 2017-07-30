@@ -1,12 +1,6 @@
 ;require(['config'],function(){
-	require(['jquery','footer'],function($){
+	require(['jquery','load'],function($){
 
-		//载入页尾
-		$('<div/>').addClass('foot').load('./footer.html',function(){
-			
-			$(this).appendTo('body');
-		});
-		
 		//导航栏
 		var actnav = [
 		{imgsrc:'1500633324525.jpg'},
@@ -25,6 +19,7 @@
 			`
 		})
 		$('.ul').html(actnavHtml);
+
 		//广告
 		var actimg = [
 		{imgsrc:'15006270771124.jpg'},
@@ -44,7 +39,7 @@
 
 		//倒计时
 		var now = new Date();
-		var end = new Date('2017-07-26 23:59:59')
+		var end = new Date('2017-08-30 23:59:59')
 		var offset = Math.floor((end-now)/1000);  
 
 		// 计算剩余的时、分
@@ -57,12 +52,12 @@
 		$('.time').text(time);
 		
 		//扩展菜单
-		$('.tab-none').on('touchstart',function(){
+		$('.tab-none').on('touchend',function(){
 			$('.index-tab').addClass('show');
 			$('.tab-none').css({display:'none'});
 			return false;
 		})
-		$('body').on('touchstart',function(e){
+		$('body').on('touchend',function(e){
 			if(e.target != $('.tabs')[0]){
 				$('.index-tab').removeClass('show');
 				$('.tab-none').css({display:'block'});
@@ -76,26 +71,34 @@
 			}else{
 				$('.index-tab').removeClass('fixed');
 			}
+
+			//返回顶部；
+			if(scrollTop >400){
+				$(".back_top").show();
+			}else{
+				$(".back_top").hide();
+
+			}
 		}	
 
 		
-		//请求数据
-	$.post('http://10.3.134.237:1234/getProducts',{page:1,qty:15},function(res){
+	//请求数据
+	$.post(global.baseurl + 'getProducts',{page:2,qty:10},function(res){
 		console.log(res);
 		var goodsHtml = res.data.map(function(item,idx){
 			return `
 				<div class="goods-one">
 					<div class="goodsbox">
 						<div class="goods">
-							<a class="block">
+							<a class="block" data-id="${item.id}" >
 								<div class="goods-img" style="background-image:url(./libs/img/${item.img})" data-url="${item.img}"></div>
 								<div class="goods-title">${item.title}</div>
 								<div class="goods-desc">${item.desc}</div>
 								<div class="price">${item.price}</div>
 							</a>
-							<div class="joincar" data-id="${item.id}">
+							<div class="joincar join-car" data-id="${item.id}">
 								<div class="car-desc">
-									<p class="car-num">1655人</p>
+									<p class="car-num">${item.sales}人</p>
 									<p>加入购物车</p>
 								</div>
 								<div class="icon-car">
@@ -108,6 +111,20 @@
 			`
 		}).join('');
 		$('.goods-list')[0].innerHTML += goodsHtml;
+		var $ul = $('<ul/>').addClass("g_goods")
+		res.data.map(function(item){
+			$("<li/>").attr("data-id",item.id).html(`
+				<div class="goods-img" data-url = "${item.img}" style="background:url(./libs/img/${item.img}) no-repeat center" /></div>
+				<div class="goods-title">${item.title}</div>
+				<div class="goods-desc">${item.desc}</div>
+				<div class="car-num"><span>${item.sales}</span>人加入购物车</div>
+				<div class="g_goodsPrice">
+					<span class="price">${item.price}</span>
+				</div>
+				<div class="g_addCar join-car" data-id="${item.id}"></div>
+			`).appendTo($ul);
+		});
+		$ul.appendTo('.goods-double')
 	})
 	//先获取localStorage
 	var goodsdatas = localStorage.goodsdatas;
@@ -117,11 +134,22 @@
 		goodsdatas = [];
 	}
 	
+	//封装获取本地存储的商品数量
+	function getNum(){
+		var num = 0;
+		goodsdatas.forEach(function(item){
+			num += item.qty;
+		});
+		return num;
+	}
+
+	$('.cart-num').html(getNum());
+	
 	//加入购物车，传数据给购物车
-	$(document).on('touchstart','.joincar',function(){	
-		$('.success').stop(true).fadeIn().delay(2000).fadeOut();
+	$(document).on('touchend','.join-car',function(){	
+		$('.success').stop(true).fadeIn().delay(1500).fadeOut();
 		//数据传输
-		var currentId = $(this).data('id')
+		var currentId = $(this).data('id');
 		var res = goodsdatas.filter(function(item){
 			return item.id === currentId;
 		})	
@@ -139,14 +167,22 @@
 			goodsdatas.push(item);
 		}
 		localStorage.goodsdatas = JSON.stringify(goodsdatas);
+		$('.cart-num').html(getNum());
 	})
 	
 	//传给详情页的Id
-		$(document).on('touchstart','.goods-img',function(){	
+		$(document).on('touchend','.goods-img',function(){	
 		//数据传输
-			var currentId = $(this).parent().next().data('id');
+			var currentId = $(this).parent().data('id');
 			console.log(currentId)
 			location.href = "xiangqing.html?id=" + currentId;
 		})
+	//点击返回顶部；
+	$(".back_top").click(function(){
+		$("body").animate({scrollTop:0});
+	})	
+
+	
+
 	});
 });

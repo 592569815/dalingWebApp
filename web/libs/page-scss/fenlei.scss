@@ -1,3 +1,4 @@
+@import 'common';
 html,body{
 	width: 10.0rem;
 	height: 17.79rem;
@@ -8,21 +9,24 @@ html,body{
 	ul li{list-style:none;}
 }
 .fl_header{
-	height:1.68rem;
+	height:1.2rem;
 	width:100%;
 	border-bottom: 0.03rem solid #E5E5E5;
 	p{
 		height:100%;
 		margin: 0;
 		padding: 0;
+		color:#fff;
+		background:$mainbg;
+		font-weight: bolder;
 		text-align:center;
-		font-size: 0.75rem;
-		line-height: 1.68rem;
+		font-size: 0.55rem;
+		line-height: 1.2rem;
 	}
 }
 
 .fl_content{
-	height:14.75rem;
+	height:16.75rem;
 	width:100%;
 
 	.fl_nav{
@@ -75,16 +79,50 @@ html,body{
 			text-align: center;
 			line-height:1.07rem;
 
+			a{
+				color: #3F3E41;
 
+				.active{
+					color: #FACAC1;
+				}
+			}
+				
 		}
+			
 	}
 }
 
-.org{
-	color: #F9BBB0;
-}
+
 
 .fl_footer{
 	height:1.33rem;
 	width:100%;
+}
+
+.box{
+	height:1.33rem;
+	width:100%;
+}
+
+/* 滚动菜单 */
+.index-tab{
+	height:1rem;font-size:0.35rem;line-height:1rem;overflow:auto;position:relative;border-bottom:5px solid #e5e5e5;
+	a{
+		margin:0 0.27rem;color:$mainbg; display:block;float:left;
+	}
+	.tab-none{
+		position:absolute;right:0;top:0;z-index:999;width:1.04rem;height:1.04rem;background-color:$bgcolor;background-image:url(../img/arrow_down.png);background-repeat:no-repeat;display:inline-block;background-position:center;
+	}
+	.tabs{
+		width:21.5rem;background:$bgcolor;height:100%;
+	}
+	
+}
+/* 滚动菜单固定 */
+.index-tab.fixed{
+	position:fixed;top:0;left:0;right:0;z-index:9999;
+}
+/* 显示 */
+.index-tab.show{
+	position:fixed;top:0;bottom:0;left:0;right:0;background:rgba(255,255,255,0.3);height:auto;z-index:999;
 }

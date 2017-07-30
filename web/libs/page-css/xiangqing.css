@@ -1,6 +1,7 @@
+@charset "UTF-8";
 html, body {
-  width: 10.0rem;
-  height: 17.79rem;
+  width: 100%;
+  height: 20rem;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -13,6 +14,10 @@ html a, body a {
 
 html ul li, body ul li {
   list-style: none;
+}
+
+.price::before {
+  content: '￥';
 }
 
 .xq_header {
@@ -28,6 +33,12 @@ html ul li, body ul li {
   font-size: 0.45rem;
   text-align: center;
   margin-left: 1.07rem;
+}
+
+.xq_header p b {
+  line-height: 2rem;
+  padding-left: 0.9rem;
+  color: #AF5BBF;
 }
 
 .xq_header .s1 {
@@ -64,18 +75,11 @@ html ul li, body ul li {
 }
 
 .bgimg {
-  height: 6rem;
-  width: 100%;
-  text-align: center;
-}
-
-.bgimg img {
-  width: 6.0rem;
-  height: 6.0rem;
+  padding-left: 2.8rem;
 }
 
 .xq_main {
-  height: 6.0rem;
+  height: 4.5 0rem;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -89,6 +93,8 @@ html ul li, body ul li {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  border-bottom: 3px solid #F6F5F7;
+  border-top: 3px solid #F6F5F7;
 }
 
 .xq_main .main_t .p1 {
@@ -105,19 +111,22 @@ html ul li, body ul li {
   margin: 0;
   padding: 0;
   font-size: 0.37rem;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #F6F5F7;
   float: left;
+  padding-left: 0.15rem;
 }
 
-.xq_main .main_t .p1 span {
+.xq_main .main_t .p1 .zan {
   display: block;
-  width: 1.55rem;
-  height: 1.01rem;
+  width: 1rem;
+  height: 1rem;
   float: left;
+  font-size: 0.30rem;
+  padding-left: 0.2rem;
 }
 
-.xq_main .main_t .p1 span img {
-  width: 100%;
+.xq_main .main_t .p1 .zan img {
+  width: 60%;
 }
 
 .xq_main .main_t .p2 {
@@ -143,18 +152,39 @@ html ul li, body ul li {
 }
 
 .xq_main .main_t .p2 h4 {
-  width: 3.01rem;
   font-size: 0.27rem;
   text-decoration: line-through;
 }
 
 .xq_main .main_b {
   width: 100%;
-  height: 3.55rem;
+  height: 2.2rem;
 }
 
-.xq_main .main_b img {
+.xq_main .main_b .p1 {
   width: 100%;
+  font-size: 0.4rem;
+  line-height: 1.1rem;
+  margin: 0;
+  padding-left: 0.2rem;
+  position: absolute;
+  border-bottom: 2px solid #F6F5F7;
+}
+
+.xq_main .main_b .p1 img {
+  position: relative;
+  top: 0.1rem;
+  left: 0;
+}
+
+.xq_main .main_b .p2 {
+  position: relative;
+  font-size: 0.4rem;
+  line-height: 1.1rem;
+  margin: 0;
+  padding-left: 0.2rem;
+  top: 1.1rem;
+  left: 0;
 }
 
 .main_pl {
@@ -171,7 +201,7 @@ html ul li, body ul li {
 .shai {
   width: 100%;
   height: 4.72rem;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #F6F5F7;
   overflow: hidden;
 }
 
@@ -180,28 +210,39 @@ html ul li, body ul li {
   margin: 0;
   padding: 0;
   font-size: 0.4rem;
+  padding-left: 0.15rem;
 }
 
-.shai .ding {
-  width: 1.07rem;
-  height: 1.07rem;
-  font-size: 0.4rem;
-  position: fixed;
-  right: 0.35rem;
-  bottom: 2.27rem;
-  border-radius: 50%;
-  z-index: 1000;
-  background: #888;
-  display: none;
-}
-
-.shai span {
-  display: block;
-  height: 0.93rem;
-}
-
-.shai span img {
+.shai .shai_b {
+  height: 3rem;
   width: 100%;
+}
+
+.shai .shai_b span {
+  display: block;
+  width: 6rem;
+  height: 1rem;
+  float: left;
+  padding-left: 0.2rem;
+}
+
+.shai .shai_b span img {
+  width: 100%;
+  height: 100%;
+}
+
+.shai .shai_b .ptow {
+  width: 3.5rem;
+  height: 1rem;
+  line-height: 1.1rem;
+  float: right;
+  text-align: center;
+  padding: 0;
+}
+
+.shai .shai_b .psh {
+  width: 100%;
+  height: 2rem;
 }
 
 .shuo {
@@ -220,6 +261,7 @@ html ul li, body ul li {
   padding: 0;
   font-size: 0.4rem;
   float: left;
+  padding-left: 0.15rem;
 }
 
 .shuo span {
@@ -234,25 +276,107 @@ html ul li, body ul li {
 .shuo .shuo_b {
   height: 2.0rem;
   width: 100%;
+  padding-left: 0.3rem;
 }
 
-.shuo .shuo_b span {
+.shuo .shuo_b img {
+  display: block;
+  float: left;
+  width: 4.64rem;
+  height: 0.95rem;
+}
+
+.shuo .shuo_b p {
+  line-height: 0.95rem;
+  text-align: center;
+  float: right;
+}
+
+.shuo .shuo_b .sp {
   display: block;
   width: 100%;
-  height: 2.0rem;
+  float: left;
 }
 
-.shuo .shuo_b span img {
+.tab {
+  width: 100%;
+  height: 17rem;
+}
+
+.tab header {
+  height: 1rem;
+  width: 100%;
+  display: flex;
+  border-bottom: 5px solid #F6F5F7;
+}
+
+.tab header span {
+  flex: 1;
+  line-height: 1rem;
+  font-size: 0.34rem;
+  text-align: center;
+}
+
+.tab header span span:first-child {
+  border-right: 1 px solid #F6F5F7;
+}
+
+.tab header .active {
+  color: #F0593F;
+}
+
+.tab .content {
+  position: absolute;
+  height: 15.84rem;
   width: 100%;
 }
 
-.xqimg {
-  width: 100%;
-  height: 14.29rem;
+.tab .content .box1, .tab .content .box2 {
+  width: 97%;
+  position: relative;
+  left: 0;
+  top: 0;
 }
 
-.xqimg img {
+.tab .content .box1, .tab .content .box2 {
+  padding: 0 0.15rem 0 0.15rem;
+}
+
+.tab .content .box1 {
+  font-size: 0.4rem;
+}
+
+.tab .content .box1 .jpg1 {
+  winth: 100%;
+}
+
+.tab .content .box1 .jpg1 img {
   width: 100%;
+}
+
+.tab .content .box1 .jpg3 {
+  winth: 100%;
+}
+
+.tab .content .box1 .jpg3 img {
+  width: 100%;
+}
+
+.tab .content .box2 {
+  font-size: 0.3rem;
+}
+
+.tab .content .box2 dd {
+  padding-bottom: 0.1rem;
+}
+
+.tab .content .box2 dt {
+  padding-bottom: 0.3rem;
+}
+
+.KONG {
+  width: 100%;
+  height: 1.35rem;
 }
 
 .car {
@@ -272,7 +396,8 @@ html ul li, body ul li {
   float: left;
   font-size: 0.4rem;
   margin: 0;
-  padding: 0;
+  padding-left: 0.5rem;
+  position: relative;
 }
 
 .car .s4 img {
@@ -284,9 +409,16 @@ html ul li, body ul li {
 
 .car .s4 .goodsqty {
   display: block;
-  height: 1.07rem;
+  line-height: 0.67rem;
   width: 0.67rem;
   float: left;
+  background: red;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  left: 1rem;
+  top: 0;
 }
 
 .car .s5 {

@@ -1,7 +1,44 @@
 @charset "UTF-8";
-* {
+/*公共css*/
+body, p, ul, li, input, h3, h1, h4, i, h2, dl, dd, dt, img, form {
   margin: 0;
   padding: 0;
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "arial","微软雅黑","宋体";
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+}
+
+img {
+  border: 0;
+  display: block;
+}
+
+.clearfloat {
+  zoom: 1;
+}
+
+.clearfloat::after {
+  content: '';
+  visibility: hidden;
+  overflow: hidden;
+  display: block;
+  clear: both;
+  height: 0;
 }
 
 .money::before {
@@ -12,9 +49,16 @@
   content: '￥';
 }
 
+.g_total::before {
+  content: '￥';
+}
+
+.num {
+  width: 0.20rem;
+}
+
 body {
   background: #fbfafc;
-  margin-bottom: 2.13rem;
 }
 
 .bigbox .head {
@@ -24,10 +68,16 @@ body {
 }
 
 .bigbox .head .shopping {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: #fbfafc;
   height: 1.16rem;
   line-height: 1.16rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .bigbox .head .shopping a {
@@ -39,7 +89,7 @@ body {
   vertical-align: middle;
 }
 
-.bigbox .head .shopping span:nth-of-type(2) {
+.bigbox .head .shopping .edit, .bigbox .head .shopping .complete {
   margin: 0;
   color: #793c9e;
   margin-right: 0.28rem;
@@ -47,7 +97,7 @@ body {
 
 .bigbox .footer {
   position: fixed;
-  bottom: 0;
+  bottom: 1.33rem;
   width: 100%;
   background: #fff;
 }
@@ -64,65 +114,70 @@ body {
   margin-left: 0.45rem;
 }
 
-.bigbox .footer .maidan {
+.bigbox .footer .maidan, .bigbox .footer .remove {
   overflow: hidden;
+  border-top: 2px solid #e5e5e5;
 }
 
-.bigbox .footer .maidan .one {
+.bigbox .footer .maidan .one, .bigbox .footer .remove .one {
   float: left;
 }
 
-.bigbox .footer .maidan .one .button {
+.bigbox .footer .maidan .one .button, .bigbox .footer .remove .one .button {
   display: inline-block;
   width: 0.48rem;
   height: 0.48rem;
+  margin-left: 0.4rem;
+  border: 1px solid #9E9C9E;
+  border-radius: 50%;
 }
 
-.bigbox .footer .maidan .one .fondo {
+.bigbox .footer .maidan .one .fondo, .bigbox .footer .remove .one .fondo {
   background: url(../img/imgIMG_0392_03.jpg) no-repeat;
   display: inline-block;
   width: 0.48rem;
   height: 0.48rem;
+  background-size: cover;
 }
 
-.bigbox .footer .maidan .one span {
-  font-size: 0.28rem;
+.bigbox .footer .maidan .one span, .bigbox .footer .remove .one span {
+  font-size: 0.3rem;
   vertical-align: middle;
 }
 
-.bigbox .footer .maidan .two {
+.bigbox .footer .maidan .two, .bigbox .footer .remove .two {
   float: left;
   margin-left: 0.26rem;
 }
 
-.bigbox .footer .maidan .two .total {
+.bigbox .footer .maidan .two .total, .bigbox .footer .remove .two .total {
   font-size: 0.21rem;
-  margin-top: 0.26rem;
+  margin-top: 0.15rem;
 }
 
-.bigbox .footer .maidan .two .total span:nth-of-type(1) {
+.bigbox .footer .maidan .two .total span:nth-of-type(1), .bigbox .footer .remove .two .total span:nth-of-type(1) {
   font-size: 0.36rem;
 }
 
-.bigbox .footer .maidan .two .total span:nth-of-type(2) {
-  font-size: 0.28rem;
+.bigbox .footer .maidan .two .total span:nth-of-type(2), .bigbox .footer .remove .two .total span:nth-of-type(2) {
+  font-size: 0.36rem;
   color: #f0593f;
 }
 
-.bigbox .footer .maidan .two .rental {
+.bigbox .footer .maidan .two .rental, .bigbox .footer .remove .two .rental {
   font-size: 0.21rem;
   margin-top: 0.13rem;
 }
 
-.bigbox .footer .maidan .two .rental span:nth-of-type(1) {
-  font-size: 0.25rem;
+.bigbox .footer .maidan .two .rental span:nth-of-type(1), .bigbox .footer .remove .two .rental span:nth-of-type(1) {
+  font-size: 0.3rem;
 }
 
-.bigbox .footer .maidan .two .rental span:nth-of-type(2) {
-  font-size: 0.2rem;
+.bigbox .footer .maidan .two .rental span:nth-of-type(2), .bigbox .footer .remove .two .rental span:nth-of-type(2) {
+  font-size: 0.3rem;
 }
 
-.bigbox .footer .maidan .three {
+.bigbox .footer .maidan .three, .bigbox .footer .remove .three {
   width: 2.93rem;
   height: 1.33rem;
   background: #af5bbf;
@@ -130,7 +185,7 @@ body {
   float: right;
 }
 
-.bigbox .footer .maidan .three a {
+.bigbox .footer .maidan .three a, .bigbox .footer .remove .three a {
   text-decoration: none;
   color: #fff;
   line-height: 1.33rem;
@@ -142,11 +197,12 @@ body {
 
 .bigbox .body {
   background: #fff;
+  margin-bottom: 2.5rem;
 }
 
 .bigbox .body p {
   height: 1.05rem;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 2px solid #efefef;
 }
 
 .bigbox .body p span:nth-of-type(1) {
@@ -176,6 +232,9 @@ body {
 }
 
 .bigbox .body .Item_information .choose {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   vertical-align: middle;
 }
 
@@ -184,6 +243,7 @@ body {
   display: inline-block;
   width: 0.48rem;
   height: 0.48rem;
+  background-size: cover;
 }
 
 .bigbox .body .Item_information .choose .lect {
@@ -244,4 +304,93 @@ body {
 
 .bigbox .body .Item_information .message .substract div span:nth-of-type(2) {
   margin: 0 0.29rem;
+}
+
+/* 空购物车 */
+.car-empty {
+  text-align: center;
+}
+
+.car-empty span {
+  display: block;
+  width: 2.67rem;
+  height: 2.67rem;
+  margin: 2.67rem auto;
+  background: url(../img/empty-car.png) no-repeat 0 0;
+  background-size: contain;
+}
+
+.car-empty p {
+  font-size: 0.4rem;
+}
+
+.car-empty a {
+  font-size: 0.4rem;
+  color: #af5bbf;
+  border: 1px solid #ddd;
+  border-radius: 0.07rem;
+  padding: 0.27rem;
+}
+
+.remove a {
+  display: inline-block;
+  font-size: 0.34rem;
+  float: right;
+  line-height: 1.33rem;
+  color: #fff;
+  text-align: center;
+}
+
+.remove .collect {
+  background: #a9aaac;
+  width: 2.67rem;
+}
+
+.remove .removeGood {
+  background: #ee4e38;
+  width: 2.67rem;
+}
+
+.currentRemove {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 111;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.currentRemove ul {
+  width: 8rem;
+  background: #fff;
+  border-radius: 0.13rem;
+  font-size: 0.4rem;
+  margin: 6rem auto;
+}
+
+.currentRemove ul li {
+  text-align: center;
+  line-height: 2rem;
+}
+
+.currentRemove ul li:nth-of-type(2) {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  line-height: 1rem;
+}
+
+.currentRemove ul span {
+  display: block;
+  width: 50%;
+}
+
+.currentRemove ul .cancel {
+  color: #585658;
+}
+
+.currentRemove ul .verify {
+  color: #af5bbf;
+  border-left: 1px solid #ddd;
 }

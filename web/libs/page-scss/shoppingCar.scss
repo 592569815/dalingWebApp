@@ -1,13 +1,19 @@
-*{margin:0;padding:0;}
+
+@import 'common';
 .money::before{
     content:'￥';
 }
 .price::before{
     content:'￥';
 }
+.g_total::before{
+    content:'￥';
+}
+.num{
+    width:0.20rem;
+}
 body{
     background:#fbfafc;
-    margin-bottom:2.13rem;
 }
 .bigbox{
     
@@ -16,13 +22,16 @@ body{
         height:1.16rem;
         border-bottom:2px solid #e5e5e5;
         .shopping{
+            position:fixed;top:0;right:0;left:0;
+            background:#fbfafc;
             height:1.16rem;
             line-height:1.16rem;
             display:flex;
-        justify-content: space-between;
+            justify-content: space-between;
+            align-items: center;
             a{margin-left:0.28rem;}
            span{font-size:0.44rem;vertical-align:middle;} 
-           span:nth-of-type(2){
+           .edit,.complete{
                margin:0;
                color:#793c9e;
                margin-right:0.28rem;
@@ -33,7 +42,7 @@ body{
     }
     .footer{
         position:fixed;
-        bottom:0;
+        bottom:1.33rem;
         width:100%;
         background:#fff;
         .youhui{
@@ -46,16 +55,18 @@ body{
                 margin-left:0.45rem;
             }
         }
-        .maidan{
-            overflow: hidden;
+        .maidan,.remove{
+            overflow: hidden;border-top:2px solid #e5e5e5;
             .one{
                 float:left;
-                .button{display: inline-block;width:0.48rem;height:0.48rem;}
+                .button{
+                    display: inline-block;width:0.48rem;height:0.48rem;margin-left:0.4rem;border:1px solid #9E9C9E;border-radius:50%;
+                }
                 .fondo{
-                    background:url(../img/imgIMG_0392_03.jpg)no-repeat;display:inline-block;width:0.48rem;height:0.48rem;
+                    background:url(../img/imgIMG_0392_03.jpg)no-repeat;display:inline-block;width:0.48rem;height:0.48rem;background-size:cover;
                 }
                 span{
-                    font-size:0.28rem;
+                    font-size:0.3rem;
                     vertical-align: middle;
                 }
             }
@@ -64,12 +75,12 @@ body{
                 margin-left:0.26rem;
                 .total{
                     font-size:0.21rem;
-                    margin-top: 0.26rem;
+                    margin-top: 0.15rem;
                     span:nth-of-type(1){
                         font-size:0.36rem;
                     }
                     span:nth-of-type(2){
-                        font-size:0.28rem;
+                        font-size:0.36rem;
                         color:#f0593f;
                     }
                 }
@@ -77,10 +88,10 @@ body{
                     font-size:0.21rem;
                     margin-top: 0.13rem;
                     span:nth-of-type(1){
-                        font-size:0.25rem;
+                        font-size:0.3rem;
                     }
                     span:nth-of-type(2){
-                        font-size:0.2rem;
+                        font-size:0.3rem;
                     }
                 }
             }
@@ -104,9 +115,10 @@ body{
     }
     .body{
         background:#fff;
+        margin-bottom: 2.5rem;
         p{
             height:1.05rem;
-            border-bottom:1px solid #efefef;
+            border-bottom:2px solid #efefef;
             span:nth-of-type(1){
                 display: inline-block;
                 background:#f0593f;
@@ -131,11 +143,16 @@ body{
             display: flex;
             justify-content: space-around;
             .choose{
+                display:flex;
+                justify-content: space-around;
+                align-items:center;
                 vertical-align: middle;
+
                 .fondo{
-                    background:url(../img/imgIMG_0392_03.jpg)no-repeat;display:inline-block;width:0.48rem;height:0.48rem;
+                    background:url(../img/imgIMG_0392_03.jpg) no-repeat;display:inline-block;width:0.48rem;height:0.48rem;background-size:cover;
                 }
-                .lect{display: inline-block;width:0.48rem;height:0.48rem;border:1px solid #9E9C9E;border-radius:50%;}
+                .lect{display: inline-block;width:0.48rem;height:0.48rem;border:1px solid #9E9C9E;border-radius:50%;
+                }
                 img{height:2.34rem;width:2.34rem;}
             }
             .message{
@@ -183,5 +200,58 @@ body{
                
             }
         }
+    }
+}
+/* 空购物车 */
+.car-empty{
+    text-align:center;
+    span{
+        display:block;
+        width:2.67rem;height:2.67rem;margin:2.67rem auto;
+        background: url(../img/empty-car.png) no-repeat 0 0 ;
+        background-size:contain;
+    }
+    p{
+        font-size: 0.4rem;
+    }
+    a{
+        font-size:0.4rem;
+        color:$mainbg;
+        border:1px solid #ddd;
+        border-radius:0.07rem;padding:0.27rem;
+    }
+}
+.remove{
+    a{  
+    display:inline-block;font-size: 0.34rem;float:right;line-height:1.33rem;color:#fff;text-align:center;
+
+    }
+    .collect{
+        background:#a9aaac;width:2.67rem;
+    }
+    .removeGood{
+        background:#ee4e38;width:2.67rem;
+    }
+}
+//弹出删除框
+.currentRemove{
+    position:fixed; left:0; right:0; top:0; bottom:0; z-index:111;background:rgba(0,0,0,0.6);
+    ul{
+        width:8rem;background:#fff;border-radius:0.13rem;font-size:0.4rem;margin:6rem auto;
+       li{
+        text-align: center;line-height:2rem;
+       }
+       li:nth-of-type(2){
+        display:flex;justify-content:space-between;border-top:1px solid #ddd;line-height:1rem;
+       } 
+       span{
+        display:block;width:50%;
+       }
+       .cancel{
+            color:#585658;
+       }
+       .verify{
+        color:$mainbg;border-left:1px solid #ddd;
+       }
     }
 }

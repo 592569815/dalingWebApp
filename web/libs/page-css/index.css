@@ -1,10 +1,14 @@
 @charset "UTF-8";
 /*公共css*/
-body, p, ul, li, input, h3, h1, h4, i, h2, b, dl, dd, dt, img, form {
+body, p, ul, li, input, h3, h1, h4, i, h2, dl, dd, dt, img, form {
   margin: 0;
   padding: 0;
   font-weight: normal;
   font-style: normal;
+}
+
+body {
+  font-family: "arial","微软雅黑","宋体";
 }
 
 li {
@@ -24,6 +28,19 @@ img {
   display: block;
 }
 
+.clearfloat {
+  zoom: 1;
+}
+
+.clearfloat::after {
+  content: '';
+  visibility: hidden;
+  overflow: hidden;
+  display: block;
+  clear: both;
+  height: 0;
+}
+
 header {
   width: 100%;
   height: 1.2rem;
@@ -31,30 +48,37 @@ header {
   font-size: 0.45rem;
   line-height: 1.2rem;
   position: relative;
-  border-bottom: 0.01rem solid #e5e5e5;
+  background: #af5bbf;
+  color: #fff;
 }
 
 header span {
   position: absolute;
   width: 0.67rem;
   height: 0.67rem;
-  right: 0.13rem;
+  right: 0.33rem;
   top: 0.27rem;
   background-image: url(../img/index-search.png);
 }
 
+header .index-title {
+  font-weight: bolder;
+}
+
 .index-tab {
-  width: 100%;
-  height: 1.04rem;
+  height: 1.0rem;
   font-size: 0.35rem;
-  line-height: 1.04rem;
-  overflow: hidden;
+  line-height: 1.0rem;
+  overflow: auto;
   position: relative;
+  border-bottom: 5px solid #e5e5e5;
 }
 
 .index-tab a {
   margin: 0 0.27rem;
-  color: #585658;
+  color: #af5bbf;
+  display: block;
+  float: left;
 }
 
 .index-tab .tab-none {
@@ -72,8 +96,9 @@ header span {
 }
 
 .index-tab .tabs {
-  width: 100%;
+  width: 21.5rem;
   background: #fff;
+  height: 100%;
 }
 
 .index-tab.fixed {
@@ -173,6 +198,7 @@ header span {
   width: 100%;
   text-align: center;
   height: 1.47rem;
+  border-top: 5px solid #ddd;
 }
 
 .activity .title .line-left, .activity .title .line-right {
@@ -186,6 +212,13 @@ header span {
 .activity .title .text {
   font-size: 0.37rem;
   display: inline-block;
+}
+
+.activity .h10 {
+  height: 1rem;
+  padding: 0;
+  line-height: 1rem;
+  padding-bottom: 0.27rem;
 }
 
 .time-icon {
@@ -211,19 +244,19 @@ header span {
 }
 
 .goods-one .goodsbox {
-  padding: 0.27rem;
+  padding: 0.1rem;
   background-color: #fff;
 }
 
 .goods-one .goodsbox .goods {
-  margin-bottom: 0.27rem;
+  margin-bottom: 0.1rem;
   position: relative;
 }
 
 .goods-one .goodsbox .joincar {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 0.1rem;
+  right: 0.2rem;
   font-size: 0.32rem;
   background: #fff;
   height: 1.0rem;
@@ -256,22 +289,24 @@ header span {
 
 .goods-one .goodsbox .block {
   display: block;
+  padding: 0 0.2rem;
 }
 
 .goods-one .goodsbox .block .goods-img {
   height: 7.0rem;
-  background-size: cover;
+  background-size: contain;
   margin-bottom: 0.13rem;
   position: relative;
   width: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   border: 1px solid #ddd;
+  box-shadow: 0 0 0.27rem #d5d2d2;
 }
 
 .goods-one .goodsbox .block .goods-title {
   font-size: 0.4rem;
-  line-height: 1.07rem;
+  line-height: 1rem;
   color: #585658;
   overflow: hidden;
   white-space: nowrap;
@@ -280,8 +315,8 @@ header span {
 
 .goods-one .goodsbox .block .goods-desc {
   color: #9f9f9f;
-  font-size: 0.27rem;
-  line-height: 2;
+  font-size: 0.35rem;
+  line-height: 0.53rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -291,14 +326,6 @@ header span {
   color: #f0593f;
   font-size: 0.4rem;
   line-height: 1.33rem;
-}
-
-.goods-one .goodsbox .block .price::before {
-  content: '￥';
-}
-
-.goods-list {
-  padding-bottom: 1.33rem;
 }
 
 .join-success {
@@ -311,7 +338,7 @@ header span {
 }
 
 .join-success .join-success-box {
-  max-width: 6.0rem;
+  max-width: 4.0rem;
   font-size: 0.5rem;
   padding: 0.45rem;
   border-radius: 0.3rem;
@@ -330,4 +357,178 @@ header span {
   border: 1px solid #fff;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.back_top {
+  position: fixed;
+  right: 0.5rem;
+  bottom: 2.5rem;
+  display: none;
+  width: 1.04rem;
+  height: 1.04rem;
+  background: url(../img/nav_top.png) no-repeat;
+  background-size: contain;
+}
+
+.holdon {
+  font-size: 0.36rem;
+  text-align: center;
+  color: #ccc;
+  height: 0.8rem;
+  line-height: 0.8rem;
+}
+
+.goods-double {
+  background: #af5bbf;
+}
+
+.g_goods {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.g_goods li {
+  position: relative;
+  background: #fff;
+  width: 49%;
+  margin-bottom: 0.2rem;
+}
+
+.g_goods li .goods-img {
+  display: block;
+  text-align: center;
+  background-size: cover;
+  height: 4.0rem;
+}
+
+.g_goods li .goods-title {
+  color: #252525;
+  font-size: 0.35rem;
+  line-height: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0 0.2rem;
+}
+
+.g_goods li .goods-desc {
+  padding: 0.2rem 0.2rem;
+  font-size: 0.35rem;
+  height: 0.8rem;
+  line-height: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.g_goods li .car-num {
+  padding: 0 0.2rem;
+  font-size: 0.33rem;
+}
+
+.g_goods li .car-num span {
+  color: #af5bbf;
+}
+
+.g_goods li .g_goodsPrice {
+  padding: 0 0.2rem 0.2rem 0.2rem;
+  font-size: 0.416rem;
+  color: #ff4a30;
+  line-height: 100%;
+  overflow: hidden;
+}
+
+.g_goods li .g_goodsPrice span {
+  display: inline-block;
+}
+
+.g_goods li .g_goodsPrice .price {
+  width: 1rem;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+}
+
+.g_goods li .g_addCar {
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.5rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 0.01rem solid #ddd;
+  background: url(../img/car.10e6a1.png) no-repeat;
+  background-size: 0.7rem 0.7rem;
+  margin-top: 0.13rem;
+}
+
+.bottom {
+  height: 4.0rem;
+  text-align: center;
+  line-height: 1.33rem;
+  background: #efefef;
+  font-size: 0.53rem;
+}
+
+.price::before {
+  content: '￥';
+}
+
+/* 热门搜索 */
+.g_hot {
+  display: none;
+  padding: 0.4rem;
+}
+
+.g_hot p {
+  font-size: 0.36rem;
+  line-height: 1.2rem;
+  color: #858385;
+}
+
+.g_hot .g_hot_goods span {
+  display: inline-block;
+  padding: 0.24rem 0.28rem;
+  margin: 0 0.24rem 0.24rem 0;
+  font-size: 0.36rem;
+  text-align: center;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  background: #ddd;
+}
+
+/* 搜索栏 */
+.get_goods {
+  display: none;
+  overflow: hidden;
+  width: 100%;
+}
+
+.get_goods ._search {
+  float: left;
+  border: none;
+  height: 0.72rem;
+  margin-top: 0.18rem;
+  border-radius: 0.72rem;
+  padding: 0 0.68rem;
+  width: 75%;
+  background: #fff url(../img/search.png) no-repeat 0.2rem center;
+  background-size: 0.36rem 0.368rem;
+}
+
+.get_goods ._search input {
+  display: block;
+  width: 100%;
+  height: 0.72rem;
+  line-height: 0.72rem;
+  font-size: 0.336rem;
+  border: none;
+  outline: none;
+}
+
+.get_goods .cancle {
+  float: right;
+  font-size: 0.336rem;
 }

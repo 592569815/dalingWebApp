@@ -3,14 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>商品列表页</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link rel="stylesheet" href="./libs/page-css/goodslist.css">
+	<script src="./libs/page-js/require.js" data-main="./libs/page-js/goodslist"></script>
 	<script src="./libs/common/common.js"></script>
 	<script src="./libs/jquery/jquery-3.2.1.js"></script>
-	<script src="./libs/page-js/goodslist.js"></script>
+	
 </head>
 <body>
-	<div class="head">
+	<!-- 公共搜索栏 -->
+	<div id="g_search"></div>
+	<!-- <div class="head">
 			<div class="search_input">
 				<div class="search" >
 					<input type="text" class="g_search" placeholder="搜索商品">
@@ -21,16 +23,23 @@
 						<input type="text" class="search_goods" placeholder="搜索商品">
 					</div>
 					<div class="cancle">取消</div>
+					<div class="g_search" style="display: none;">搜索</div>
 				</div>
 				
 			</div>
-	</div>
+	</div> -->
 	<div class="g_nav">
 		<ul class="g_nav_list">
-			<li><a href="#" class="g_active">综合</a></li>
-			<li><a href-"#">销量</a></li>
-			<li><a href-"#">新品</a></li>
-			<li class="g_price">
+			<li><a href="#" class="g_active comp">综合</a></li>
+			<li class="g_sales_accounts">
+				<a href="#" >销量</a>
+				<div>
+					<span class="salesUp"></span>
+					<span class = "salesDown"></span>
+				</div>
+			</li>
+			<li class="g_newGoods"><a href="#">新品</a></li>
+			<li class="g_price g_sortPrice">
 				<a href="#">价格</a>
 				<div>
 					<span class="priceUp"></span>
@@ -48,7 +57,7 @@
 	<!-- 点击显示列表 -->
 	<div class="g_goods_sort">
 		<div class="g_sort_nav">	
-			<ul>
+			<ul class="g_nav2">
 				<li>推荐分类</li>
 				<li>极致美护</li>
 				<li>全球零食</li>
@@ -56,9 +65,11 @@
 				<li>创意生活</li>
 				<li>时尚配饰</li>
 				<li>品牌精选</li>
-			</ul>	
+			</ul>
 		</div>
-		<div class="g_sort_nav">
+		<div class="g_sub_nav">
+		</div>	
+		<div class="g_bottom">
 			
 		</div>
 	</div>
@@ -66,36 +77,40 @@
 
 	<div class="g_content">
 		<div class="g_hot">
-			<p>热门搜索</p>
-			<div class="g_hot_goods">
-				<span>面膜</span>
-				<span>化妆水</span>
-				<span>太阳伞</span>
-				<span>洁面</span>
-				<span>资生堂</span>
-				<span>防晒</span>
-				<span>香水</span>
-				<span>花果茶</span>
-				<span>面膜</span>
-				<span>化妆水</span>
-				<span>太阳伞</span>
-				<span>洁面</span>
-				<span>资生堂</span>
-				<span>防晒</span>
-				<span>香水</span>
-				<span>花果茶</span>
+			<div class="g_hot_t">
+				<p>热门搜索</p>
+				<div class="g_hot_goods">
+					
+				</div>
+			</div>
+			<!-- 模糊查询 -->
+			<div class="g_hot_s" style="display: none;">
+			<div class="no_goods" style="display: none;">
+			
+			</div>
+				
 			</div>
 		</div>
 		<div class="g_goodslist">
 		</div>
 		<div class="holdon" style="display:none;">
-			。。。加载中。。。
+			。。。没有更多商品了哦。。。
 		</div>
 	</div>
 
 	<!-- 悬浮返回顶部； -->
 	<div class="fixed_menu">
-		<div class="car_fixed"></div>
+		<div class="car_fixed">
+			<ul class="open_menu">
+				<li>
+					<a href="index.html" class="nav_menu_index">达令首页</a>
+				</li>
+				<li><a href="fenlei.html" class="nav_menu_category">分类</a></li>
+				<li><a href="shoppingCar.html" class="nav_menu_car">购物车</a></li>
+				<li><a href="personer.html" class="nav_menu_profile">个人中心</a></li>
+				<li><a href="goodslist.html" class="nav_menu_scan">浏览记录</a></li>
+			</ul>
+		</div>
 		<div class="back_top"></div>
 	</div>
 <!-- 成功添加购物车提示 -->
@@ -105,6 +120,9 @@
           <p>已成功加入购物车</p>
         </div>
      </div>
+
+    <!-- 懒加载动画 -->
+    <div class="g_loading"></div>
 
 </body>
 </html>

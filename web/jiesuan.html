@@ -3,16 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>结算</title>
-		<script type="text/javascript">		
-			//动态设置viewport的scale
-			 var iScale = 1;
-		    iScale = iScale / window.devicePixelRatio;
-		    document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '">')
-			//动态计算html的font-size
-			var iWidth = document.documentElement.clientWidth;
-	        document.getElementsByTagName('html')[0].style.fontSize = iWidth / 10+ 'px';     
-	        //1rem=75px
-		</script>
+		<script type="text/javascript" src="./libs/common/common.js"></script>
 		<script src="./libs/page-js/require.js" data-main="./libs/page-js/jiesuan"></script>
 		<link rel="stylesheet" type="text/css" href="./libs/page-css/jiesuan.css"/>
 	</head>
@@ -27,11 +18,15 @@
 			</div>
 			
 			<div class="body">
-				<input type="text" placeholder="收货人姓名"/>
-				<input type="text" placeholder="收货人手机"/>
-				<div class="province"><span>选择省市区</span><span></span></div>
-				<input type="text" placeholder="详细街道地址"/>
-				<input type="text" placeholder="收货人真实身份证号"/>
+				<input class="username" type="text" placeholder="收货人姓名"/>
+				<input class="phone" type="text" placeholder="收货人手机"/>
+				<div class="province" data-toggle="distpicker">
+				<select ></select>
+				<select ></select>
+				<select ></select>
+				</div>
+				<input class="site" type="text" placeholder="详细街道地址"/>
+				<input class="identity" type="text" placeholder="收货人真实身份证号"/>
 				<div class="hint">
 					<p>应海关要求请填写身份证信息，达令会保护您的信息安全</p>
 					<img src="./libs/img/imgIMG_0394_02.jpg"/>
@@ -52,7 +47,7 @@
 				
 				<div class="total_price">
 					<span>商品金额</span>
-					<span>¥198.00</span>
+					<span class="g_total"></span>
 				</div>
 				<div class="extra">
 					<div class="total_price">
@@ -70,15 +65,28 @@
 					<div class="total_price">
 						<span>礼物服务</span>
 					</div>
-					<div class="total_price">
-						<span>选择支付方式</span>
+					<div class="paystyle">
+						<p>请选择支付方式</p>
+						<ul>
+							<li>
+								<span class="lect"></span>
+								<span class="icon-zhifubao"></span>	
+								<span>支付宝支付</span>
+							</li>
+							<li>
+								<span class="lect"></span>
+								<span class="icon-weixin"></span>
+								<span>微信支付</span>
+							</li>
+							<li>
+								<span class="lect"></span>
+								<span class="baidu"></span>
+								<span>百度钱包支付</span>
+							</li>
+						</ul>
+						
 					</div>
-					<div class="total_price">
-						<span>支付宝支付</span>
-					</div>
-					<div class="total_price">
-						<span>支付宝支付</span>
-					</div>
+					
 				</div>
 			</div>
 			<div class="footer">
@@ -86,14 +94,17 @@
 					<div class="two">
 						<div class="total">
 							<span>应付金额：</span>
-							<span>￥66.00</span>
+							<span class="money"></span>
 						</div>
 					</div>
 					<div class="three">
-						<a href="personal.html">确认并付款</a>
+						<a class="payment">确认并付款</a>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="errtip" style="display: none">
+			<p>请选择支付方式</p>
 		</div>
 	</body>
 </html>
