@@ -104,6 +104,23 @@ img {
   color: #af5bbf;
 }
 
+.footer-tabs a .cart-num {
+  position: absolute;
+  display: block;
+  top: 4px;
+  left: 0.4rem;
+  padding: 1px 3px;
+  min-width: 0.4rem;
+  font-size: 0.27rem;
+  text-align: center;
+  background: #f0593f;
+  color: #fff;
+  line-height: 100%;
+  height: 0.4rem;
+  border-radius: 50%;
+  line-height: 0.4rem;
+}
+
 .gotop {
   width: 1.07rem;
   height: 1.07rem;

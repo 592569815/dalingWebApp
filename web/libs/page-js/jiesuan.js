@@ -72,7 +72,40 @@ require(['config'],()=>{
 			$(this).addClass('fondo');
 		});
 
+		/*结算*/
+		$('.payment').on('touchend',function(){
 
+			if($('.username').val() == ''){
+				$('.errtip').text('收货人姓名不能为空').fadeIn().delay(1000).fadeOut();
+				return false;
+			}
+			if($('.phone').val() == ''){
+				$('.errtip').text('手机号码不能为空').fadeIn().delay(1000).fadeOut();
+				return false;
+			}
+			if($('.site').val() == ''){
+				$('.errtip').text('详细地址不能为空').fadeIn().delay(1000).fadeOut();
+				return false;
+			}
+			var user = [];
+			var indent = {
+				username:$('.username').val(),
+				phone:$('.phone').val(),
+				sheng:$('select')[0].value,
+				shi:$('select')[1].value,
+				qu:$('select')[2].value,
+				site:$('.site').val(),
+			}
+			user.push(indent);
+			localStorage.user = JSON.stringify(user);
+
+			if($('.lect').hasClass('fondo')){
+				window.location.href = 'personal.html';
+			}else{
+				$('.errtip').text('请选择支付方式').fadeIn().delay(1000).fadeOut();
+			}
+			
+		})
 
 	})
 })

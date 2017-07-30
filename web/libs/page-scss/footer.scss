@@ -34,6 +34,10 @@
 	a:nth-of-type(4).active{background-image:url(../img/my-1.81e333.png)}
 	a.active span{color:#af5bbf;}
 }
+.footer-tabs a .cart-num{
+	position:absolute;display:block;top:4px ;left:0.4rem;padding:1px 3px ;min-width:0.4rem;font-size:0.27rem;text-align:center;background:#f0593f;color:#fff;line-height:100%;height:0.4rem;border-radius:50%;line-height:0.4rem;
+
+}
 .gotop{
 	width:1.07rem;height:1.07rem;background:url(../img/arrow.png) no-repeat center center #9f4d95; border-radius:50%;position:fixed;right:0.4rem;bottom:2.5rem;z-index:99;display:none;
 }

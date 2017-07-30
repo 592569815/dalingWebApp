@@ -53,6 +53,10 @@ img {
   content: '￥';
 }
 
+.num {
+  width: 0.20rem;
+}
+
 body {
   background: #fbfafc;
 }

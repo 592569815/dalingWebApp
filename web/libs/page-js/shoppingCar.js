@@ -5,6 +5,27 @@ require(['config'],()=>{
 			
 			$(this).appendTo('body');
 			$('.tabs-car').addClass('active');
+
+			//先获取localStorage
+			var goodsdatas = localStorage.goodsdatas;
+			if(goodsdatas){
+			
+				goodsdatas = JSON.parse(goodsdatas)
+				console.log(goodsdatas);
+			}else{
+				goodsdatas = [];
+			}
+
+			//封装获取本地存储的商品数量
+			function getNum(){
+				var num = 0;
+				goodsdatas.forEach(function(item){
+					num += item.qty;
+				});
+				return num;
+			}
+			$('.cart-num').html(getNum());
+
 		});
 
 		//先获取localStorage
@@ -17,7 +38,15 @@ require(['config'],()=>{
 			goodsdatas = [];
 		}
 
+		function getNum(){
+			var num = 0;
+			goodsdatas.forEach(function(item){
+				num += item.qty;
+			});
+			return num;
+		}
 
+		$('.cart-num').html(getNum());
 		showempty();
 
 		//显示隐藏空购物车
@@ -80,6 +109,7 @@ require(['config'],()=>{
 			var currentId = $(this).parents('.Item_information').data('id');
 			local(currentId,number);
 			total();
+			$('.cart-num').html(getNum());
 		})
 		//相加
 		$(document).on('touchend','.plus',function(){
@@ -89,6 +119,7 @@ require(['config'],()=>{
 			var currentId = $(this).parents('.Item_information').data('id');
 			local(currentId,number);
 			total();
+			$('.cart-num').html(getNum());
 		})
 
 		/*封装重新写入*/
@@ -136,10 +167,8 @@ require(['config'],()=>{
 		/*封装计算价格,数量*/
 		function total(){
 			var totalPrice = 0;
-			var num = 0;
 			goodsdatas.forEach(function(item){
 				totalPrice += item.price * item.qty;
-				num += item.qty;
 			});
 
 			for(var i = 0 ; i < $('.lect').length ; i++){
@@ -197,6 +226,7 @@ require(['config'],()=>{
 			$('.remove').css({display:'block'});
 			$('.lect').removeClass('fondo');
 			$('.button').removeClass('fondo');
+
 		})
 
 		/*点击完成*/
@@ -207,7 +237,8 @@ require(['config'],()=>{
 			$('.remove').css({display:'none'});
 			$('.lect').addClass('fondo');
 			$('.button').addClass('fondo');
-			
+			total();
+			$('.cart-num').html(getNum());
 		})
 		//点击删除按钮
 		$('.removeGood').on('touchend',function(){
@@ -237,6 +268,7 @@ require(['config'],()=>{
 			$($('.lect.fondo')).parents('.goods').remove();
 			showempty();
 			total();
+			$('.cart-num').html(getNum());
 			$('.currentRemove').css({display:'none'});
 		});
 

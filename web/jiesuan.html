@@ -18,15 +18,15 @@
 			</div>
 			
 			<div class="body">
-				<input type="text" placeholder="收货人姓名"/>
-				<input type="text" placeholder="收货人手机"/>
+				<input class="username" type="text" placeholder="收货人姓名"/>
+				<input class="phone" type="text" placeholder="收货人手机"/>
 				<div class="province" data-toggle="distpicker">
 				<select ></select>
 				<select ></select>
 				<select ></select>
 				</div>
-				<input type="text" placeholder="详细街道地址"/>
-				<input type="text" placeholder="收货人真实身份证号"/>
+				<input class="site" type="text" placeholder="详细街道地址"/>
+				<input class="identity" type="text" placeholder="收货人真实身份证号"/>
 				<div class="hint">
 					<p>应海关要求请填写身份证信息，达令会保护您的信息安全</p>
 					<img src="./libs/img/imgIMG_0394_02.jpg"/>
@@ -98,10 +98,13 @@
 						</div>
 					</div>
 					<div class="three">
-						<a href="">确认并付款</a>
+						<a class="payment">确认并付款</a>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="errtip" style="display: none">
+			<p>请选择支付方式</p>
 		</div>
 	</body>
 </html>

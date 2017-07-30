@@ -67,7 +67,9 @@ body{background:#fbfafc;}
         height:auto;
         font-size:0.34rem;
         margin-bottom:1.35rem;
-        input{font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#d7d7dc;width:9.71rem;}
+        input{
+            font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#000;width:9.71rem;
+        }
         input:nth-of-type(2),input:nth-of-type(3){padding:0.45rem 0 0.45rem 0.29rem;border-bottom:1px solid #e5e5e5;}
         .province{
             font-size:0.34rem;border:0;padding:0.37rem 0 0.37rem 0.29rem;display: block;color:#d7d7dc;border-bottom:1px solid #e5e5e5;background:#fff;
@@ -183,5 +185,7 @@ body{background:#fbfafc;}
         }
     }
 }
-
+.errtip{
+    position:fixed;top:6.0rem;right:2.67rem;left:2.67rem;background:rgba(0,0,0,0.6);color:#fff;height:2.0rem;font-size:0.4rem;text-align:center;line-height:2.0rem;
+}
 

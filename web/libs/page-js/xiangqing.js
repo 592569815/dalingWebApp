@@ -14,7 +14,6 @@
 				id:guid
 			},
 			success:function(res){
-				console.log(res);
 				var resres = res.data[0];
 				console.log(resres);
 				
@@ -37,17 +36,27 @@
 				}else{
 					goodsdatas = [];
 				}
+				//封装获取本地存储的商品数量
+				function getNum(){
+					var num = 0;
+					goodsdatas.forEach(function(item){
+						num += item.qty;
+					});
+					return num;
+				}
 
+				$goodsqty.html(getNum())
 
-				$s5.on('click',function(){
+				$s5.on('touchend',function(){
 					
 					var currentId = resres.id;
 					var str = goodsdatas.filter(function(item){
 						return item.id = currentId;
 					})
+					console.log('str',str[0]);
 					if(str.length>0){
 						str[0].qty++;
-						$goodsqty.html(str[0].qty);
+						$goodsqty.html(getNum());
 					}else{
 						var item = {
 							id:currentId,
@@ -57,7 +66,7 @@
 							price:resres.price,
 							qty:1
 						}
-						$goodsqty.html(item.qty);
+						$goodsqty.html(getNum());
 						goodsdatas.push(item);
 					}
 					localStorage.goodsdatas = JSON.stringify(goodsdatas);
@@ -147,11 +156,13 @@
 		}
 		
 		//点击结算跳转
-		$(".s6").click(function(){
-			location.href = "jiesuan.html";
+		$(".s6").on('touchend',function(){
+			window.location.href = "jiesuan.html";
 		})
-		
-
+		//跳转购物车
+		$('.img').on('touchend',function(){
+			window.location.href = 'shoppingCar.html';
+		})
 		
 
 	})

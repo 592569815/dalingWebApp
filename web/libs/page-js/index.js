@@ -1,12 +1,5 @@
 ;require(['config'],function(){
-	require(['jquery'],function($){
-
-		//载入页尾
-		$('<div/>').addClass('footer').load('./footer.html',function(){
-			
-			$(this).appendTo('body');
-			$('.tabs-home').addClass('active');
-		});
+	require(['jquery','load'],function($){
 
 		//导航栏
 		var actnav = [
@@ -141,15 +134,25 @@
 		goodsdatas = [];
 	}
 	
+	//封装获取本地存储的商品数量
+	function getNum(){
+		var num = 0;
+		goodsdatas.forEach(function(item){
+			num += item.qty;
+		});
+		return num;
+	}
+
+	$('.cart-num').html(getNum());
+	
 	//加入购物车，传数据给购物车
 	$(document).on('touchend','.join-car',function(){	
-		$('.success').stop(true).fadeIn().delay(2000).fadeOut();
+		$('.success').stop(true).fadeIn().delay(1500).fadeOut();
 		//数据传输
 		var currentId = $(this).data('id');
 		var res = goodsdatas.filter(function(item){
 			return item.id === currentId;
 		})	
-		console.log(res);
 		if(res.length>0){
 			res[0].qty++;
 		}else{
@@ -164,6 +167,7 @@
 			goodsdatas.push(item);
 		}
 		localStorage.goodsdatas = JSON.stringify(goodsdatas);
+		$('.cart-num').html(getNum());
 	})
 	
 	//传给详情页的Id
