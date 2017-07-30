@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eeeeee;
+}
+
+.bigbox .head {
+  background: #fbfafc;
+  height: 1.16rem;
+  border-bottom: 1px solid #b2b2b2;
+}
+
+.bigbox .head p {
+  height: 1.16rem;
+  line-height: 1.16rem;
+}
+
+.bigbox .head p a {
+  margin-left: 0.28rem;
+}
+
+.bigbox .head p a img {
+  height: 0.42rem;
+  margin-bottom: 0.1rem;
+}
+
+.bigbox .head p span {
+  font-size: 0.5rem;
+  margin-left: 2.8rem;
+  vertical-align: middle;
+  margin-bottom: 0.1rem;
+  display: inline-block;
+}
+
+.bigbox .body .administration {
+  background: #fff;
+  font-size: 0.36rem;
+}
+
+.bigbox .body .administration .one {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.33rem;
+}
+
+.bigbox .body .administration .one .name {
+  margin-left: 0.33rem;
+}
+
+.bigbox .body .administration .one .phone {
+  margin-right: 0.33rem;
+}
+
+.bigbox .body .administration .site {
+  padding: 0.33rem 0.33rem 0.33rem 0.33rem;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.bigbox .body .administration .site input {
+  display: inline-block;
+  width: 9.33rem;
+  height: 0.96rem;
+  font-size: 0.36rem;
+}
+
+.bigbox .body .administration .compile {
+  overflow: hidden;
+}
+
+.bigbox .body .administration .compile span {
+  display: inline-block;
+  float: right;
+  margin: 0.33rem;
+}
+
+.bigbox .body .administration .compile .redact {
+  position: relative;
+}
+
+.bigbox .body .administration .compile .redact span {
+  position: absolute;
+}
+
+.bigbox .body .administration .compile .redact span:nth-of-type(2) {
+  display: none;
+}

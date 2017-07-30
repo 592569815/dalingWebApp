@@ -1,0 +1,44 @@
+*{margin:0;padding:0;}
+body{background:#eeeeee;}
+.bigbox{
+    .head{
+        background:#fbfafc;
+        height:1.16rem;
+        border-bottom:1px solid #b2b2b2;
+        p{
+            height:1.16rem;
+            line-height:1.16rem;
+            a{
+                margin-left:0.28rem;
+                img{height:0.42rem;margin-bottom:0.1rem;}
+            }
+           span{font-size:0.5rem;margin-left:2.8rem;vertical-align:middle;margin-bottom:0.1rem;display: inline-block;} 
+        } 
+    }
+    .body{
+        .administration{
+            background:#fff;
+            font-size:0.36rem;
+            .one{
+                display: flex;justify-content: space-between;
+                padding-top:0.33rem;
+                .name{margin-left:0.33rem;}
+                .phone{margin-right:0.33rem;}
+            }
+            .site{
+                padding:0.33rem 0.33rem 0.33rem 0.33rem;border-bottom:1px solid #eeeeee;
+                input{display: inline-block;width:9.33rem;height:0.96rem;font-size:0.36rem;}
+            }
+            .compile{
+                overflow: hidden;
+                span{display:inline-block;float:right;margin:0.33rem;}
+                .redact{
+                    position:relative;
+                    span{position:absolute;}
+                    span:nth-of-type(2){display: none;}
+                }
+                
+            }
+        }
+    }
+}

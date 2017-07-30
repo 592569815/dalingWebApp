@@ -1,50 +1,78 @@
 require(['config'],()=>{
-	require(['jquery'],($)=>{
-		var number;
+	require(['jquery','com'],($)=>{
+		
 		$('#gain').on('click',function(){
 			//生成一个随机四位数
-			 number = parseInt(((Math.random()).toFixed(2))*10000);
-			 alert('你的验证码是' + number);
+			var number = parseInt(((Math.random()).toFixed(2))*10000);
+			 $('#gain').html(number);
 		})
-		$('.register').on('click',function(){
+		
+		$('#number').on('focus',function(){
+			$('.register').css({background:'#d847ff'});
+			$('.phoneNumber label').css({color:'black'});
 			
-			console.log(666);
+		})
+		$('#number').on('blur',function(){
 			//表单验证
 			//手机号 11位  1[34578]
 			var _number=$('#number').val();
+			$('.phoneNumber label').css({color:'#c0c1c2'});
+			$('.register').css({background:'#c0c1c2'});
 			if(!/^1[34578]\d{9}$/.test(_number)){
-				alert('你家的手机号码是这样?');
+				$('.hint').html('*你家的手机号码是这样?');
 				return false;
+			}else{
+				$('.hint').html('');
 			}
+			
+		})
+		
+		$('#sureAuth').on('focus',function(){
+			$('.password label').css({color:'black'});
+		})
+		$('#sureAuth').on('blur',function(){
 			//密码 长度6-20 不能包含空格
 			var _password=$('#sureAuth').val();
+			$('.password label').css({color:'#c0c1c2'});
 			if(!/^[^\s]{6,20}$/.test(_password)){
-				alert('密码太low了');
+				$('._hint').html('*密码太low了');
 				return false;
+			}else{
+				$('._hint').html('');
 			}
-			//验证码要跟number相符合
-			/*var _auth=$('#auth').val();
-			var _number=string(number);
-			alert(_auth,_number);*/
-			/*if(_auth !== _number){
-				alert('验证码错了，傻狍子');
-				return false;
-			}
-			console.log(_auth,_number)*/
+		})
+		
+		$('#auth').on('focus',function(){
+			$('.auth_code label').css({color:'black'});
 			
-				$.post(global.baseurl+'register',{username:_number,password:_password},
-					function(res){
-						console.log(res.message)
-						if(res.message!= '注册成功!'){
-							alert('用户已存在,请直接登录')
-							location.href='login.html';
-						}else{
-							alert('注册成功，快去登录')
-							location.href='login.html';
-						}
+		})
+		$('#auth').on('blur',function(){
+			$('.auth_code label').css({color:'#c0c1c2'});
+			//验证码要跟number相符合
+			var _auth = $('#auth').val();
+			var _number = $('#gain').html();
+			if(_auth != _number){
+				$('._hin').html('*验证码错了，傻狍子');
+				return false;
+			}else{
+				$('._hin').html('');
+			}
+		})
+			
+		$('.register').on('touchstart',function(){
+			var _number=$('#number').val();
+			var _password=$('#sureAuth').val();
+			$.post(global.baseurl+'register',{username:_number,password:_password},
+				function(res){
+					if(res.message!= '注册成功!'){
+						//显示遮罩层
+						$('.loginMes').html('用户已存在,请直接登录');
+						$('.success').stop(true).fadeIn().delay(2000).fadeOut();
+					}else{
+						location.href='login.html';
 					}
-				)
-			/*location.href=''*/
+				}
+			)
 		})
 		
 	})

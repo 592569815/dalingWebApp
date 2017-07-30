@@ -6,38 +6,47 @@
 	<script type="text/javascript" src="./libs/common/common.js"></script>
 	<script src="./libs/page-js/require.js" data-main="./libs/page-js/register"></script>
 	<link rel="stylesheet" type="text/css" href="./libs/page-css/register.css"/>
-	
+	<link rel="stylesheet" href="../incont/iconfont.css" />
 </head>
 <body>
 	<div class="bigbox">
 		<div class="head">
 			<p>
-				<a href="index.html"><img src="./libs/img/imgIMG_0396_03.jpg"/></a>
+				<a href="index.html" ><img src="./libs/img/imgIMG_0396_03.jpg"/></a>
 				<span>注册</span>
 			</p>
 		</div>
 		<div class="body">
 			<div class="phoneNumber">
-				<span></span>
+				<label class="iconfont icon-shouji" for="number"></label>
 				<input type="text" placeholder="请输入手机号" id="number"/>
 			</div>
+			<div class="hint"></div>
 			<div class="auth_code">
-                <span></span>
+                <label class="iconfont icon-duihua" for="auth"></label>
                 <input type="text" placeholder="请输入验证码" id="auth"/>
                 <span id="gain">获取短信验证码</span>
             </div>
+            <div class="_hin"></div>
             <div class="password">
-                <span></span>
+                <label class="iconfont icon-suotou-moren" for="sureAuth"></label>
                 <input type="password" placeholder="请输入6-12位登录密码" id="sureAuth"/>
             </div>
+            <div class="_hint"></div>
             <span class="register">注册</span>
             <p>
-                <input type="checkbox" />
-                <span>已阅读并同意</span>
+                <input type="checkbox" id="agree"/>
+                <label for="agree">已阅读并同意</label>
                 <span>达令用户协议</span>
             </p>
 		</div>
 	</div>
-	
+	<div class="join-success success" style="display: none">
+        <div class="join-success-box">
+          <div class="success-icon"></div>
+          <p class="loginMes"></p>
+        </div>
+    </div>
+    <i ></i>
 </body>
 </html>
