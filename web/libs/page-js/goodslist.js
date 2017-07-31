@@ -16,7 +16,7 @@ require(['config'],function(){
 			//创建ul;
 			var $ul = $("<ul/>").addClass("g_goods");
 			res.data.map(function(item){
-				var price = item.price.toFixed(1);
+				var price = item.price;
 				if(item.sales / 10000 >= 1){
 					var sales = (item.sales/10000).toFixed(1) + "万";
 				}else if(!item.sales){
