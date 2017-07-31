@@ -6,9 +6,16 @@ require(['config'],function(){
 			$(this).appendTo('body');
 
 			$('.footer-tabs').on('touchend','a',function(){
-				if($(this).)
+				if($(this).hasClass('tabs-home')){
+				}
+				if($(this).hasClass('tabs-classify')){
+					$('.tabs-classify').addClass('active');
+				}
+				if($(this).hasClass('tabs-car')){
+					$('.tabs-car').addClass('active');
+				}
 			})
-			$('.tabs-home').addClass('active');
+			
 
 			//先获取localStorage
 			var goodsdatas = localStorage.goodsdatas;
