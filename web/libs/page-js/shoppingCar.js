@@ -72,7 +72,7 @@ require(['config'],()=>{
 				<div class="Item_information" data-id="${i.id}">
 					<div class="choose">
 						<span class="fondo lect"></span>
-						<img  class="img" src="./libs/img/${i.imgsrc}" data-id="${i.id}"/>
+						<a href="xiangqing.html?id=${i.id}"><img  class="img" src="./libs/img/${i.imgsrc}" data-id="${i.id}"/></a>
 					</div>
 					<div class="message">
 						<p>${i.desc}</p>
@@ -137,7 +137,16 @@ require(['config'],()=>{
 		//全选/不选
 		$('.button').on('touchend',function(){
 			$(this).toggleClass('fondo');
-			$('.lect').toggleClass('fondo');
+			if($(this).hasClass('fondo')){
+				
+				$('.lect').addClass('fondo');
+			
+			}else{
+				
+				$('.lect').removeClass('fondo');
+				
+			}
+			
 			total();
 		});
 
