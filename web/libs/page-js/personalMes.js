@@ -22,6 +22,9 @@ require(['config'],()=>{
 				}
 			});
 		})*/
+		$('.btn-file').on('touchend',function(){
+			/*$('form').children().eq(2).css({display:'block'});*/
+		})
 		$('.extra').children().eq(4).on('touchend',function(){
 			location.href = 'site.html';
 		})

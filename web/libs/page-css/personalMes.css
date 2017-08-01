@@ -147,12 +147,30 @@ body {
   left: 0.15rem;
 }
 
-.head_portrait div:nth-of-type(2) {
+.head_portrait form input {
   bottom: 1.2rem;
   left: 0.15rem;
+  height: 1.2rem;
+  width: 9.7rem;
+  background: #fff;
+  font-size: 0.46rem;
+  border: 1px solid #f0593f;
+  border-radius: 0.13rem;
+  margin: 0 auto;
+  line-height: 1.2rem;
+  text-align: center;
+  position: fixed;
 }
 
-.head_portrait div:nth-of-type(3) {
+.head_portrait .btn-file {
+  opacity: 0;
+}
+
+.head_portrait form input:nth-of-type(3) {
+  display: none;
+}
+
+.head_portrait div:nth-of-type(2) {
   bottom: 0rem;
   left: 0.15rem;
 }
