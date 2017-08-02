@@ -1,10 +1,9 @@
 var path = require('path');
 var product = require('./product');
-var account = require('./account')
+var account = require('./account');
 
 exports.register = function(express){
     var app = express();
-
 
     //跨域；
     app.all('*', function(req, res, next) {
@@ -22,7 +21,7 @@ exports.register = function(express){
     
     app.get('/', function(request, response){
         response.send('Home Page');
-    })    
+    });    
 
     product.register(app);
     account.register(app);

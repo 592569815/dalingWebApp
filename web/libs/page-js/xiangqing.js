@@ -1,8 +1,9 @@
 ;require(['config'],function(){
 	require(['jquery'],function($){
 		
-
-		var guid = location.search.slice(4);
+		alert(999)
+		var guid = Number(location.search.slice(4));
+		console.log(guid);
 
 		// var goodsqty;
 		// console.log(guid);

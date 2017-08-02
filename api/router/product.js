@@ -37,8 +37,10 @@ exports.register = function(app){
             if(res.status){
 
                 response.send(res.details);
+                return;
             }else{
                 response.send("err");
+                return;
             }
         });
        

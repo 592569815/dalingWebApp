@@ -2,7 +2,7 @@ var bodyParser = require('body-parser');
 
 //新引入的模块；
 var url =require("url");
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: true })
 var db = require('../dbhelpter');
 
 exports.register = function(app){
@@ -57,7 +57,7 @@ exports.register = function(app){
     });
 
     //所有商品查询；
-    app.get("/getAccounts",function(request,response){
+    app.get("/getAccounts", function(request,response){
         console.log(99999)
         db.getAccounts("products",function(data){
              if(data.status){
@@ -66,7 +66,20 @@ exports.register = function(app){
                 response.send({status:false,message:"商品不存在！",data:null});
             }
         })
-    })
+    });
 
+    //用户管理收货地址；
+    app.post("/getAddress", urlencodedParser,function(request,response){
+        db.getAddress("user_address",request.body,function(data){
+            if(data.status){
+                response.send(data);
+            }
+        })
+    });
+
+    app.post("/ajax", urlencodedParser, function(request,response){
+        console.log(999)
+        response.send(request.body);
+    });
 
 }

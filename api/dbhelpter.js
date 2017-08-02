@@ -112,6 +112,43 @@ module.exports = {
          })
     },
 
+    //用户地址管理；
+    getAddress:function(collectionName,address,callback){
+        db.open(function(err,db){
+            if(!err){
+                db.collection(collectionName,function(err,collection){
+                    collection.find({username:address.username}).toArray(function(err,docs){
+
+                        if(docs.length > 0){
+                            var add = docs[0].address;
+                            var username = docs.username;
+                            console.log(docs)
+                            
+                            //添加到数组
+                            add.push(address.address[0]);
+                            console.log(222222,add)
+
+                            collection.update({'username':username},{"$set":add},upsert=true,multi=true);
+                            // collection.update({'id':goodsUpdate.id},{'$set':goodsUpdate},upsert=true,multi=true);
+
+                            console.log(99999999999)
+
+                            if(callback && typeof callback == "function"){
+                                callback({status:true,message:"地址添加成功！",details:null});
+                            }
+                        }else{
+                            collection.insert(address);
+                            if(callback && typeof callback == "function"){
+                                callback({status:true,message:"地址保存成功！",details:null});
+                            };
+                        }
+                        db.close();
+                    })
+                })
+            }
+        })
+    },
+
     //单个商品查询；
     getAccount:function(collectionName, goodsId, callback){
         db.open(function(error, db){
@@ -296,7 +333,7 @@ module.exports = {
                                 // console.log(data);
                                
                                 if(callback && typeof callback == "function"){
-                                     db.close();
+                                    db.close();
                                     callback({status:true,message:"商品获取成功！",details:data});
                                     return;
                                 }

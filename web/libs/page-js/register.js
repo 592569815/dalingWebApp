@@ -64,11 +64,15 @@ require(['config'],()=>{
 			var _password=$('#sureAuth').val();
 			$.post(global.baseurl+'register',{username:_number,password:_password},
 				function(res){
-					if(res.message!= '注册成功!'){
+					console.log(res)
+					if(!res.status){
 						//显示遮罩层
 						$('.loginMes').html('用户已存在,请直接登录');
 						$('.success').stop(true).fadeIn().delay(2000).fadeOut();
 					}else{
+						$('.loginMes').html('注册成功！');
+						$('.success').stop(true).fadeIn().delay(2000).fadeOut();
+	
 						location.href='login.html';
 					}
 				}

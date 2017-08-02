@@ -26,7 +26,7 @@ require(['config'],function(){
 				};
 
 				$("<li/>").attr("data-id",item.id).html(`
-					<div class="g_goodsImg"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></div>
+					<div class="g_goodsImg"><a href="xiangqing.html?id=${item.id}"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></a></div>
 					<div class="g_goodsTitle">${item.title}</div>
 					<div class="g_goodsDesc">${item.desc}</div>
 					<div class="g_goodsPrice">
@@ -40,16 +40,16 @@ require(['config'],function(){
 		}
 
 
-		$(".g_goodslist").on("click","img",function(){
-			console.log(9999)
-		})
+		// $(".g_goodslist").on("click","img",function(){
+		// 	console.log(9999)
+		// })
 
 		//点击商品跳转详情页
-		$(".g_goodslist").on("click","img",function(){
-			var id = $(this).parents("li").data("id");
-			console.log(9999999,id)
-			location.href = "xiangqing.html?id=" + id;
-		});
+		// $(".g_goodslist").on("click","img",function(){
+		// 	var id = $(this).parents("li").data("id");
+		// 	console.log(9999999,id)
+		// 	location.href = "xiangqing.html?id=" + id;
+		// });
 
 		//加入购物车,传数据给购物车
 		//先获取localStorage
@@ -59,7 +59,7 @@ require(['config'],function(){
 		}else{
 			goodsdatas = [];
 		}
-		$(document).on('click','.g_addCar',function(){	
+		$(document).on('touchend','.g_addCar',function(){	
 			console.log($(this).parents("li").find('.g_goodsImg img').data('src'))
 			$('.success').stop(true).fadeIn().delay(2000).fadeOut();
 			//数据传输
@@ -85,11 +85,11 @@ require(['config'],function(){
 		console.log(9999,goodsdatas)
 
 		//跳转购物车
-		$(".car_fixed").click(function(e){
+		$(".car_fixed")[0].addEventListener("touchend",function(e){
 			$(".open_menu").show();
 			e.stopPropagation();
 		});
-		$("body").click(function(){
+		$("body")[0].addEventListener("touchend",function(){
 			$(".open_menu").hide();
 
 		})
@@ -97,7 +97,7 @@ require(['config'],function(){
 		//代码延迟操作；
 		$(document).ready(function(){
 			//点击搜索；
-			$(".search").click(function(){console.log(99999999)
+			$(".search")[0].addEventListener("touchend",function(){console.log(99999999)
 				$(this).hide().siblings(".get_goods").show();
 				//显示热门搜索
 				$(".g_hot_t").show();
@@ -150,7 +150,7 @@ require(['config'],function(){
 							var html = res.data.map(function(item){
 								return `
 									<div data-id = "${item.id}">
-										<img src="./libs/img/${item.img}" alt="" />
+										<a href = "xiangqing.html?id=${item.id}"<img src="./libs/img/${item.img}" alt="" /></a>
 										<p>
 											<span class="g_title">${item.title}</span>
 											<span>${item.desc}</span>
@@ -171,7 +171,7 @@ require(['config'],function(){
 						}
 
 						//点击搜索，找到全部符合条件的商品
-						$(".g_search").click(function(){
+						$(".g_search")[0].addEventListener("touchend",function(){
 
 							$(this).hide();
 							//隐藏搜索页面；
@@ -197,14 +197,14 @@ require(['config'],function(){
 			}
 
 			//点击搜索到的商品跳转到商品详情页；
-			$(".g_hot_s").on("click","div",function(){
+			$(".g_hot_s").on("touchend","div",function(){
 				var id = $(this).data("id");
 				location.href = "xiangqing.html?id=" + id;
 			});
 
 
 			//点击取消搜索；
-			$(".cancle").click(function(){
+			$(".cancle")[0].addEventListener("touchend",function(){
 				$(this).parents(".get_goods").hide();
 				$(".search").show();
 				//显示悬浮菜单；
@@ -223,7 +223,7 @@ require(['config'],function(){
 			});
 
 			//点击热门搜索；
-			$(".g_hot_goods").on("click","span",function(){
+			$(".g_hot_goods").on("touchend","span",function(){
 				var _value = $(this).text();
 				search_goods(_value);
 			})
@@ -231,7 +231,7 @@ require(['config'],function(){
 
 
 		// 点击导航切换；
-		$(".g_nav").on("click","li",function(e){
+		$(".g_nav").on("touchend","li",function(e){
 			$(this).children("a").addClass("g_active");
 			$(this).siblings("li").children("a").removeClass("g_active");
 
@@ -270,7 +270,7 @@ require(['config'],function(){
 		});
 
 		//综合显示商品；
-		$(".comp").click(function(){
+		$(".comp")[0].addEventListener("touchend",function(){
 			
 
 			//请求发送数据；
@@ -282,7 +282,7 @@ require(['config'],function(){
 		})
 
 		//进行销量高低排序；
-		$(".g_sales_accounts").click(function(){
+		$(".g_sales_accounts")[0].addEventListener("touchend",function(){
 			var num;
 
 			if($(".salesUp").hasClass("_salesUp")){
@@ -305,7 +305,7 @@ require(['config'],function(){
 		});
 
 		//显示新品；
-		$(".g_newGoods").click(function(){
+		$(".g_newGoods")[0].addEventListener("touchend",function(){
 			$.post(global.baseurl + "sortPrice",{options:"date",status:-1},function(res){
 				console.log(res);
 				//调用生成商品函数 
@@ -315,7 +315,7 @@ require(['config'],function(){
 		})
 
 		//进行价格高低排序；
-		$(".g_sortPrice").click(function(){
+		$(".g_sortPrice")[0].addEventListener("touchend",function(){
 			var num;
 
 			if($(".priceUp").hasClass("_priceUp")){
@@ -340,7 +340,7 @@ require(['config'],function(){
 
 
 		//点击返回顶部；
-		$(".back_top").click(function(){
+		$(".back_top")[0].addEventListener("touchend",function(){
 			$("body").animate({scrollTop:0});
 		})
 
@@ -461,7 +461,7 @@ require(['config'],function(){
 							var sales = item.sales;
 						}
 						$("<li/>").html(`
-							<div class="g_goodsImg"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></div>
+							<div class="g_goodsImg"><a href="xiangqing.html?id=${item.id}"><img data-src = "${item.img}" src="./libs/img/${item.img}" /></a></div>
 							<div class="g_goodsTitle">${item.title}</div>
 							<div class="g_goodsDesc">${item.desc}</div>
 							<div class="g_goodsPrice">
@@ -528,7 +528,7 @@ require(['config'],function(){
 					$("<h2/>").html(attr).appendTo($div);
 					$ul = $("<ul/>");
 					item2[attr].forEach(function(item3){
-						$("<li/>").html(item3).appendTo($ul);
+						$("<li/>").html(`<a href="goodslist.html">${item3}</a>`).appendTo($ul);
 					});
 					$ul.appendTo($div);
 				}
@@ -537,15 +537,15 @@ require(['config'],function(){
 		});
 
 		//点击切换导航；
-		$(".g_nav2").on("click","li",function(){
+		$(".g_nav2").on("touchend","li",function(){
 			console.log(8888)
 			var idx = $(this).index();
 			$(this).addClass("active_bg").siblings("li").removeClass("active_bg");
 			$(".g_sub_nav").children().eq(idx).show().siblings().hide();
 		});
-		$(".g_sub_nav").on("click","li",function(){
-			location.href = "goodslist.html";
-		})
+		// $(".g_sub_nav").on("click","li",function(){
+		// 	location.href = "goodslist.html";
+		// })
 
 		
 
