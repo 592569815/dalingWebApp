@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>递归</title>
+		<script src="./libs/jquery/jquery-3.2.1.js"></script>
+		<script>
+			var obj = {
+				queue:[],
+				ajaxing:false,
+				ajax:function(){
+					this.ajaxing = true;
+					for(var i = 0;i < this.queue.length;i++){
+						$.get(this.queue[i].api,function(){
+							this.queue.splice(i,1);
+							this.ajax();
+						}.bind(this))
+					}
+					this.ajaxing = false;
+				},
+				init:function(){
+					window.setInterval(function(){
+						var obj = {state:false,api:"http://10.3.134.181:1234/register"};
+						this.queue.push(obj);
+						if(!this.ajaxing){
+							this.ajax();
+						}
+					}.bind(this),5000)
+				}
+				
+			}
+			obj.init();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
