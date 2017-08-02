@@ -31,8 +31,9 @@
 		<button id="login">登录</button>
 		<button id="query">模糊</button>
 		<button id="register">注册</button>
-		<button id="goods">单个商品</button>
-		<button id="goodsAll">所有商品</button>
+		<button id="goods">地址管理</button>
+		<button id="goodsAll">所有商品</button><br>
+		<button id="test">测试</button>
 		<script>
 		function doUpload() {  console.log(9999)
 			$("input").map(function(item){
@@ -89,6 +90,14 @@
 						})
 					}
 				)
+			});
+			$("#test").click(function(){
+				$.post("http://localhost:1234/ajax",{idx:1},
+					function(res){
+						console.log(res)
+						
+					}
+				)
 			})
 			$("#login").click(function(){
 				$.post("http://localhost:1234/login",{username:15011111111,password:1111111111},
@@ -112,9 +121,10 @@
 					}
 				)
 			});
-			$("#goods").click(function(){
-				var id = 10;
-				$.get("http://localhost:1234/getAccount?id="+ id,function(res){
+			$("#goods").click(function(){console.log(333)
+				// "username" : "chen", "address" : [ { "城市" : "广州", "区" : "天河区", "街道" : "元岗村", "电话" : 12345678 } ] }
+				
+				$.post("http://localhost:1234/getAddress",{username:"qiang",address:[ { "城市" : "广州", "区" : "天河区", "街道" : "元岗村", "电话" : 1234567890 }]},function(res){
 					console.log(res);
 				} );
 			})

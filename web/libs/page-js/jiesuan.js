@@ -12,7 +12,7 @@ require(['config'],()=>{
 		var res = goodsdatas.map(function(i){
 			return`
 				<div class="zhuMessage" >
-					<img class="img" src="./libs/img/${i.imgsrc}" data-id="${i.id}"/>
+					<a href="xiangqing.html?id+${i.id}"><img class="img" src="./libs/img/${i.imgsrc}" data-id="${i.id}"/></a>
 					<div class="message">
 						<p>${i.desc}</p>
 						<div class="substract">
@@ -25,11 +25,11 @@ require(['config'],()=>{
 		})
 		$('.move').html(res);
 
-		//点击图片跳转详情页
+		/*//点击图片跳转详情页
 		$(document).on('touchend','.img',function(){
 			var currentId = $(this).data('id');
 			window.location.href = 'xiangqing.html?id=' + currentId;
-		});
+		});*/
 
 		/*封装计算价格,数量*/
 		function total(){

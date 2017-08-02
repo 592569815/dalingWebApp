@@ -117,7 +117,7 @@
 				<div class="goods-one">
 					<div class="goodsbox">
 						<div class="goods">
-							<a class="block" data-id="${item.id}" >
+							<a href="xiangqing.html?id=${item.id}" class="block" data-id="${item.id}" >
 								<div class="goods-img" style="background-image:url(./libs/img/${item.img})" data-url="${item.img}"></div>
 								<div class="goods-title">${item.title}</div>
 								<div class="goods-desc">${item.desc}</div>
@@ -141,7 +141,7 @@
 		var $ul = $('<ul/>').addClass("g_goods")
 		res.data.map(function(item){
 			$("<li/>").attr("data-id",item.id).html(`
-				<div class="goods-img" data-url = "${item.img}" style="background:url(./libs/img/${item.img}) no-repeat center" /></div>
+				<a href="xiangqing.html?id=${item.id}"><div class="goods-img" data-url = "${item.img}" style="background:url(./libs/img/${item.img}) no-repeat center" /></div></a>
 				<div class="goods-title">${item.title}</div>
 				<div class="goods-desc">${item.desc}</div>
 				<div class="car-num"><span>${item.sales}</span>人加入购物车</div>
@@ -197,13 +197,13 @@
 		$('.cart-num').html(getNum());
 	})
 	
-	//传给详情页的Id
+	/*//传给详情页的Id
 		$(document).on('touchend','.goods-img',function(){	
 		//数据传输
 			var currentId = $(this).parent().data('id');
 			console.log(currentId)
 			location.href = "xiangqing.html?id=" + currentId;
-		})
+		})*/
 	//点击返回顶部；
 	$(".back_top").click(function(){
 		$("body").animate({scrollTop:0});
