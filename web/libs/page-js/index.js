@@ -66,7 +66,7 @@
 
 		//倒计时
 		var now = new Date();
-		var end = new Date('2017-08-30 23:59:59')
+		var end = new Date('2017/08/30 23:59:59')
 		var offset = Math.floor((end-now)/1000);  
 
 		// 计算剩余的时、分

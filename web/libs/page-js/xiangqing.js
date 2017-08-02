@@ -1,7 +1,7 @@
 ;require(['config'],function(){
 	require(['jquery'],function($){
 		
-		alert(999)
+		console.log(9999)
 		var guid = Number(location.search.slice(4));
 		console.log(guid);
 
@@ -137,7 +137,7 @@
 
 		title[0].className = 'active';
 
-		for(let i=0;i<title.length;i++){
+		for(var i=0;i<title.length;i++){
 			
 			if(i>0){
 				content[i].style.display = 'none';
@@ -146,7 +146,7 @@
 			title[i].onclick = function(){
 				//闭包
 				return (function(i){
-					for(let i=0;i<title.length;i++){
+					for(var i=0;i<title.length;i++){
 						title[i].className = '';
 						content[i].style.display = 'none';
 					}
