@@ -87,3 +87,21 @@ body {
 .bigbox .body .administration .compile .redact span:nth-of-type(2) {
   display: none;
 }
+
+.bigbox .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.bigbox .footer a {
+  width: 100%;
+  height: 1.35rem;
+  display: block;
+  background: #f0593f;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.5rem;
+  text-align: center;
+  line-height: 1.35rem;
+}

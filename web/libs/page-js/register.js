@@ -60,11 +60,16 @@ require(['config'],()=>{
 		})
 			
 		$('.register').on('touchstart',function(){
+			//同意协议
+			var check = $('#agree');
+			console.log();
+			if(!check.prop('checked')){
+				return false;
+			}
 			var _number=$('#number').val();
 			var _password=$('#sureAuth').val();
 			$.post(global.baseurl+'register',{username:_number,password:_password},
 				function(res){
-					console.log(res)
 					if(!res.status){
 						//显示遮罩层
 						$('.loginMes').html('用户已存在,请直接登录');

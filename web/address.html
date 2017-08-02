@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新增地址</title>
+		<script type="text/javascript" src="./libs/common/common.js"></script>
+		<script src="./libs/page-js/require.js" data-main="./libs/page-js/address"></script>
+		<link rel="stylesheet" type="text/css" href="./libs/page-css/address.css"/>
+		<link rel="stylesheet" href="./libs/incont/iconfont.css" />
+	</head>
+	<body>
+		<div class="bigbox">
+			<div class="head">
+				<p>
+					<a href="personal.html" ><img src="./libs/img/imgIMG_0396_03.jpg"/></a>
+					<span>添加新地址</span>
+					<span>保存</span>
+				</p>
+			</div>
+			<div class="body">
+				<div class="form">
+					<label for="usename">收货人姓名</label>
+					<input class="username" type="text" id="usename"/>
+				</div>
+				<div class="form">
+					<label for="phoneNumber">收货人手机</label>
+					<input class="phone" type="text" id="phoneNumber"/>
+					<span>+</span>
+				</div>
+				<div class="form">
+					<label for="area">所在地区</label>
+					<input class="site" type="text" id="area"/>
+					<span class="iconfont icon-more"></span>
+				</div>
+				<div class="form">
+					<label for="street">街道</label>
+					<input class="row" type="text" id="street"/>
+					<span class="iconfont icon-more"></span>
+				</div>
+				<div class="form">
+					<input class="detailed" type="text" placeholder="请填写详细地址，不少于5个字"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

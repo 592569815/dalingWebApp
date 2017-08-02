@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上传图片</title>
+	</head>
+	<body>
+		<form action="" method="post" enctype="multipart/form-data" name="upload_form" id="fo">
+		
+		<input name="imgfile" type="file" accept="image/gif, image/jpeg"/>
+		<input name="upload" type="submit" value="上传" />
+	</body>
+	<script type="text/javascript">
+		var _fo = document.getElementById('fo');
+		console.log(_fo);
+		var formData = new FormData(_fo);
+		/*document.body.innerHTML = formData;*/
+		console.log(formData);
+	</script>
+</html>

@@ -238,3 +238,5 @@ body {
 .bigbox .body .two:nth-of-type(5) .one .shoppingMall:nth-of-type(1) div p {
   margin-left: 0.3rem;
 }
+
+.bigbox .foo{height:1.35rem;}
