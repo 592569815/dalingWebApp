@@ -112,7 +112,7 @@ module.exports = {
          })
     },
 
-    //用户地址管理；
+    //添加用户地址；
     getAddress:function(collectionName,address,callback){
         db.open(function(err,db){
             if(!err){
@@ -120,24 +120,28 @@ module.exports = {
                     collection.find({username:address.username}).toArray(function(err,docs){
 
                         if(docs.length > 0){
-                            var add = docs[0].address;
-                            var username = docs.username;
-                            console.log(docs)
-                            
+                            var username = docs[0].username;
+                            var add = docs[0].address; 
+                            //定义地址ID;
+                            var ID = add.length + 1;
+
+                            address.address[0]["ID"] = ID;
+
                             //添加到数组
                             add.push(address.address[0]);
-                            console.log(222222,add)
 
-                            collection.update({'username':username},{"$set":add},upsert=true,multi=true);
-                            // collection.update({'id':goodsUpdate.id},{'$set':goodsUpdate},upsert=true,multi=true);
-
-                            console.log(99999999999)
+                            collection.update({'username':username},{'username':username,'address':add});
 
                             if(callback && typeof callback == "function"){
                                 callback({status:true,message:"地址添加成功！",details:null});
                             }
                         }else{
-                            collection.insert(address);
+                            //定义地址ID;
+                            address.address[0]["ID"] = 1;
+
+                            //写入数据库;
+                            collection.insert( address);
+
                             if(callback && typeof callback == "function"){
                                 callback({status:true,message:"地址保存成功！",details:null});
                             };
@@ -146,6 +150,48 @@ module.exports = {
                     })
                 })
             }
+        })
+    },
+
+     //删除用户地址；
+    delAddress:function(collectionName,address,callback){
+        console.log(address.ID)
+
+        db.open(function(err,db){
+            if(!err){
+                db.collection(collectionName,function(err,collection){
+                   collection.find({username:address.username}).toArray(function(err,docs){
+                        if(!err){
+                         /*   for(var item of docs[0].address){
+                                if(item.ID == address.ID){
+
+                                    //找到要删除的地址；
+                                    var idx = docs[0].address.indexOf(item);
+                                    //删除找到的地址；
+                                    docs[0].address.splice(idx,1);
+
+                                    // 更新地址；
+                                    var username = address.username;
+                                    collection.update({'username':username},{'username':username,'address':docs[0].address});
+                                    if(callback && typeof callback == "function"){
+                                        callback({status:true,message:"地址删除成功！",details:null});
+                                    }
+                                    return false;
+                                }
+                            }*/
+                            // console.log(address.username,address.address)
+                            // console.log(docs[0].address[0])
+                            collection.update({username:address.username},{$pull:{address:{ID:Number(address.ID)}}});
+                            console.log("success");
+                            db.close();
+                            if(callback && typeof callback == "function"){
+                                callback({status:true,message:"地址删除成功！",details:null});
+                            }                         
+                        }
+                   })
+                })
+            }
+              
         })
     },
 
@@ -169,7 +215,7 @@ module.exports = {
                             }else{
                                 console.log("找不到对应 id 的商品");
                                 db.close();
-                                 if(callback && typeof callback == "function"){
+                                if(callback && typeof callback == "function"){
                                     callback({status:false,message:"找不到 id 为 " + goodsId + " 的商品",details:null});
                                 }
                             }
@@ -238,7 +284,7 @@ module.exports = {
                             }else{
                                 console.log("找不到对应 id 的商品");
                                 db.close();
-                                 if(callback && typeof callback == "function"){
+                                if(callback && typeof callback == "function"){
                                     callback({status:false,message:"找不到 id 为的商品",details:null});
                                 }
                             }

@@ -77,6 +77,16 @@ exports.register = function(app){
         })
     });
 
+    //用户删除收货地址；
+    app.post("/delAddress", urlencodedParser,function(request,response){
+        
+        db.delAddress("user_address",request.body,function(data){
+            if(data.status){
+                response.send(data);
+            }
+        })
+    });
+
     app.post("/ajax", urlencodedParser, function(request,response){
         console.log(999)
         response.send(request.body);

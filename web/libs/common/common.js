@@ -3,7 +3,7 @@
 var global = global || {};
 
 
-global.baseurl = 'http://10.3.134.181:1234/';
+global.baseurl = 'http://10.3.134.176:1234/';
 
 
 

@@ -97,8 +97,10 @@ require(['config'],function(){
 		//代码延迟操作；
 		$(document).ready(function(){
 			//点击搜索；
-			$(".search")[0].addEventListener("touchend",function(){console.log(99999999)
+			$(".search")[0].addEventListener("touchend",function(){
+				$(this).find(".g_search").blur();
 				$(this).hide().siblings(".get_goods").show();
+
 				//显示热门搜索
 				$(".g_hot_t").show();
 				//隐藏商品列表
@@ -207,6 +209,9 @@ require(['config'],function(){
 			$(".cancle")[0].addEventListener("touchend",function(){
 				$(this).parents(".get_goods").hide();
 				$(".search").show();
+				$(".search .g_search").blur();
+				console.log($(".search .g_search"))
+
 				//显示悬浮菜单；
 				$(".fixed_menu").show();
 
